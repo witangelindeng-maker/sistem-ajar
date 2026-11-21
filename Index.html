@@ -699,7 +699,7 @@ function mulaiListener(){
   db.collection("siswa").onSnapshot(function(snap){
     siswaAksesCache=[]; snap.forEach(function(d){ var s=d.data(); s._id=d.id; siswaAksesCache.push(s); });
     tampilkanSiswaAkses();
-  }, function(err){ console.log("siswa listener error", err); });
+  }, function(err){ console.log("siswa listener error", err); var ae2=el("akses-error"); if(ae2){ ae2.textContent="Daftar siswa gagal dimuat otomatis: "+err.message+" — Coba refresh halaman. Kalau tetap, foto pesan ini & kirim ke aku ya."; ae2.style.display="block"; } });
   db.collection("nilai").orderBy("waktu","desc").limit(500).onSnapshot(function(snap){
     nilaiCache=[]; snap.forEach(function(d){ var n=d.data(); n._id=d.id; nilaiCache.push(n); });
     tampilkanNilaiSiswa(); tampilkanNilaiGuru(); tampilkanNilaiDepan(); perbaruiBadgeNilai();
@@ -1416,6 +1416,12 @@ async function tambahSiswaAkses(){
     el("akses-nama").value="";
     var hasil=el("akses-hasil"); hasil.classList.remove("hidden");
     hasil.innerHTML="✅ Berhasil! Berikan ini ke siswa:<br>Nama: <b>"+nama+"</b><br>Kelas: <b>"+kelas+"</b><br>Kode: <b style='font-size:20px;letter-spacing:1px'>"+kode+"</b><br><span style='font-weight:400;font-size:13px;color:#475569'>Siswa login pakai Nama + Kelas + Kode ini. Jangan dibagikan ke orang lain.</span>";
+    /* V.55b - LANGSUNG muat ulang daftar dari Firebase biar siswa baru langsung muncul (nggak nunggu listener) */
+    try{
+      var snapBaru=await db.collection("siswa").get();
+      siswaAksesCache=[]; snapBaru.forEach(function(d){ var s=d.data(); s._id=d.id; siswaAksesCache.push(s); });
+      tampilkanSiswaAkses();
+    }catch(e2){ var ae=el("akses-error"); if(ae){ ae.textContent="Siswa tersimpan, tapi daftarnya gagal dimuat: "+e2.message+" — Coba refresh halaman ya."; ae.style.display="block"; } }
   }catch(e){ alert("Gagal daftarkan siswa: "+e.message); }
 }
 async function hapusSiswaAkses(id, nama){ if(!confirm("Hapus akses siswa '"+nama+"' ? Siswa ini tidak akan bisa login lagi.")) return; try{ await db.collection("siswa").doc(id).delete(); }catch(e){ alert("Gagal hapus: "+e.message); } }
