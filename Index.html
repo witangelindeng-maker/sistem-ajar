@@ -216,7 +216,7 @@ body.punya-nav .wrap{ padding-bottom:96px; }
 
 <div id="page-siswa" class="hidden">
 <div id="siswa-tab-beranda">
-<div class="card" style="text-align:center"><h2 id="siswa-halo">Halo!</h2><p class="sub" id="siswa-info"></p><p class="sub" id="siswa-bintang" style="font-weight:800;color:#b45309"></p><p class="sub" id="beranda-semangat" style="font-style:italic"></p></div>
+<div class="card" style="text-align:center"><h2 id="siswa-halo">Halo!</h2><p class="sub" id="siswa-info"></p><p class="sub" id="siswa-bintang" style="font-weight:800;color:#b45309"></p><p class="sub" id="siswa-api-permata" style="font-weight:800;color:#c2410c"></p><p class="sub" id="beranda-semangat" style="font-style:italic"></p></div>
 <div class="card" id="pwa-card"><h2 style="font-size:18px">📲 Pasang Aplikasinya!</h2><p class="sub" style="text-align:left">Pasang Sistem Ajar di HP-mu, biar ada ikonnya di layar utama dan bisa dibuka layar penuh kayak aplikasi beneran!</p><button type="button" class="btn btn-green" id="pwa-btn" onclick="pasangAplikasi()">📲 Pasang Aplikasi</button><div id="pwa-petunjuk" class="hidden" style="margin-top:10px;text-align:left;font-size:13px;color:#475569"><b>Cara pasang di HP-mu:</b><br>🍏 <b>iPhone:</b> ketuk tombol <b>Bagikan</b> (kotak + panah ke atas) → <b>Tambah ke Layar Utama</b> → <b>Tambah</b>.<br>🤖 <b>Android:</b> ketuk titik tiga <b>⋮</b> di pojok browser → <b>Tambahkan ke Layar Utama</b> / <b>Instal aplikasi</b>.<br><button type="button" class="btn btn-small" onclick="tutupPetunjukPWA()">OK, mengerti</button></div></div>
 <div class="card"><h2 style="font-size:18px">🎯 Tantangan Harian</h2><p class="sub" style="text-align:left">1 soal setiap hari. Jawab benar 7 hari berturut-turut, dapat lencana 🔥 Semangat 7 Hari!</p><div id="tantangan-harian-box"></div></div> <div class="card"><h2 style="font-size:18px">🗺️ Peta Petualanganku</h2><p class="sub" style="text-align:left">Ikuti jalannya, satu pos demi satu pos! Pos yang sudah lulus jadi bintang ⭐. Tap 📖 Baca untuk belajar, ▶️ Tes untuk mulai tes.</p><div id="peta-petualangan" class="peta-jalur"></div></div> <div class="card"><h2 style="font-size:18px">🃏 Koleksi Kartuku</h2><p class="sub" id="kartu-beranda-teks" style="text-align:left">🃏 Koleksi Kartuku: 0 dari 0 kartu</p><button type="button" class="btn btn-green" onclick="bukaKoleksiKartu()">🃏 Lihat Koleksiku</button></div> <div class="card"><h2 style="font-size:18px">▶️ Lanjutkan Belajar</h2><div id="beranda-lanjut"></div></div>
 <div style="display:flex;gap:10px;margin-bottom:14px"><div class="card" style="flex:1;text-align:center;margin:0;padding:14px 6px"><div id="stat-tes" style="font-size:22px;font-weight:900"></div><div style="font-size:11px;color:#64748b;font-weight:700">📝 Total Tes</div></div><div class="card" style="flex:1;text-align:center;margin:0;padding:14px 6px"><div id="stat-rata" style="font-size:22px;font-weight:900"></div><div style="font-size:11px;color:#64748b;font-weight:700">📊 Rata-rata</div></div><div class="card" style="flex:1;text-align:center;margin:0;padding:14px 6px"><div id="stat-bintang" style="font-size:22px;font-weight:900"></div><div style="font-size:11px;color:#64748b;font-weight:700">⭐ Bintang</div></div></div>
@@ -303,6 +303,7 @@ body.punya-nav .wrap{ padding-bottom:96px; }
 <div class="progress"><div class="progress-fill" id="bintang-progress-bar"></div></div>
 <p class="hint" style="margin-top:10px">Nilai 100 = ⭐⭐⭐ • 80–99 = ⭐⭐ • 60–79 = ⭐ • Tes Latihan tidak dapat bintang.</p>
 </div>
+<div class="card" style="text-align:center"><h2 style="font-size:18px">💎 Permataku</h2><div id="permata-besar" style="font-size:44px;font-weight:900"></div><p class="sub" id="permata-teks"></p><button type="button" class="btn btn-green" onclick="tukarHadiah()">🎁 Tukar 5 💎 = 🍦 Es Krim</button><p class="hint" style="margin-top:8px">Tiap 10 ⭐ = 1 💎. Kalau udah 5 💎, tuker jadi kupon es krim, tunjukin ke Ibu ya!</p></div>
 <div class="card"><h2 style="font-size:18px">🏆 Level Bintang</h2><div id="bintang-level-list"></div></div></div><div id="koleksi-tab-wrap" style="display:none"><div class="card"><h2 style="font-size:18px">🃏 Koleksi Kartuku</h2><p class="sub" id="koleksi-ringkas" style="text-align:left"></p><div style="background:#fef9c3;border:1px solid #fde68a;border-radius:10px;padding:10px 12px;font-size:12.5px;line-height:1.6;color:#713f12;margin:8px 0 12px">⭐ <b>Mau kartu ini?</b> Ikuti Tes <b>minimal 10 soal</b> dalam 1 kali Tes ya! Tes di bawah 10 soal tetap masuk Papan Nilai. <b>Semangat!</b> 💪</div><div id="koleksi-grid" class="kartu-grid"></div><p class="hint" style="margin-top:10px">Nilai 80+ = 🥉 Perunggu • 90+ = 🥈 Perak • 100 = 🥇 Emas. Kartu bisa naik tingkat kalau nilaimu naik! 👆 Ketuk kartumu untuk membaliknya — di belakang kartu ada tombol ⬇️ Unduh & 📤 Bagikan!</p></div></div>
 </div>
 <div id="page-profil" class="hidden">
@@ -582,18 +583,11 @@ function sbAmbilBintang(){
     var url=SUPABASE_URL+"/rest/v1/bintang?kode_siswa=eq."+encodeURIComponent(kode)+"&select=*";
     return fetch(url,{headers:{"apikey":SUPABASE_KEY,"Authorization":"Bearer "+SUPABASE_KEY}})
       .then(function(res){ return res.ok?res.json():null; })
-      .then(function(rows){ return (rows&&rows[0]&&typeof rows[0].total==="number")?rows[0].total:null; })
+      .then(function(rows){ return (rows&&rows[0])?rows[0]:null; })
       .catch(function(){ return null; });
   }catch(e){ return Promise.resolve(null); }
 }
-function sbKirimBintang(total){
-  try{
-    var kode=(typeof kodeSiswaAktif!=="undefined"?kodeSiswaAktif:"")||"";
-    if(!kode) return;
-    var url=SUPABASE_URL+"/rest/v1/bintang?on_conflict=kode_siswa";
-    fetch(url,{method:"POST",headers:{"apikey":SUPABASE_KEY,"Authorization":"Bearer "+SUPABASE_KEY,"Content-Type":"application/json","Prefer":"return=minimal,resolution=merge-duplicates"},body:JSON.stringify({kode_siswa:kode,nama_siswa:siswaNama||"",kelas:siswaKelas||"",total:total})}).catch(function(){});
-  }catch(e){}
-}
+function sbKirimBintang(total){ try{ var d=ambilBintang(); if(typeof total==="number") d.total=total; sbKirimBintangObj(d); }catch(e){} }
 function segarkanTampilanBintang(){
   try{
     var t=ambilBintang().total;
@@ -607,14 +601,19 @@ function segarkanTampilanBintang(){
 }
 function sinkronBintangDariSupabase(){
   try{
-    sbAmbilBintang().then(function(totalSB){
-      var lokal=ambilBintang().total;
-      if(totalSB!=null&&totalSB>lokal){
-        try{ localStorage.setItem(kunciBintang(), JSON.stringify({total:totalSB})); }catch(e){}
-        segarkanTampilanBintang();
-      } else if(lokal>(totalSB||0)){
-        sbKirimBintang(lokal);
-      }
+    sbAmbilBintang().then(function(cloud){
+      var lokal=ambilBintang();
+      var c=cloud||{total:0, streak:0, terakhir_main:"", permata_pakai:0};
+      var cTotal=(typeof c.total==="number"?c.total:0), cStreak=(typeof c.streak==="number"?c.streak:0), cTgl=(typeof c.terakhir_main==="string"?c.terakhir_main:""), cPakai=(typeof c.permata_pakai==="number"?c.permata_pakai:0);
+      var gabung={
+        total: Math.max(lokal.total||0, cTotal),
+        streak: cTgl>(lokal.terakhir_main||"") ? cStreak : ((lokal.terakhir_main||"")>cTgl ? (lokal.streak||0) : Math.max(lokal.streak||0, cStreak)),
+        terakhir_main: cTgl>(lokal.terakhir_main||"") ? cTgl : (lokal.terakhir_main||""),
+        permata_pakai: Math.max(lokal.permata_pakai||0, cPakai)
+      };
+      try{ localStorage.setItem(kunciBintang(), JSON.stringify(gabung)); }catch(e){}
+      if(gabung.total!==cTotal||gabung.streak!==cStreak||gabung.terakhir_main!==cTgl||gabung.permata_pakai!==cPakai){ sbKirimBintangObj(gabung); }
+      segarkanTampilanBintang();
     });
   }catch(e){}
 }
@@ -987,8 +986,8 @@ function simpanLoginTetap(peran){ try{ var d={peran:peran, nama:(peran==="guru"?
 function hapusLoginTetap(){ try{ localStorage.removeItem("sistemajar_login"); }catch(err){} }
 function pulihkanLogin(){ try{ var mentah=null; try{ mentah=localStorage.getItem("sistemajar_login"); }catch(err){} if(!mentah) return false; var d=JSON.parse(mentah); if(!d || !d.peran || !d.nama) return false; if(d.peran==="guru"){ guruNama=d.nama; el("guru-halo").textContent="Halo, "+d.nama+"! 👩‍🏫"; el("top-sub").textContent="Login sebagai Guru • "+d.nama; show("btn-logout"); keDashboardGuru(); } else { siswaNama=d.nama; siswaKelas=d.kelas||""; kodeSiswaAktif=d.kode||""; el("siswa-halo").textContent=avatarSiswa()+" Halo, "+d.nama+"!"; el("siswa-info").textContent="Kelas "+(d.kelas||""); el("top-sub").textContent="Login sebagai Siswa • "+d.nama+" • Kelas "+(d.kelas||""); show("btn-logout"); isiDropdownMateriSiswa(); tampilkanAvatarPicker(); keDashboardSiswa(); sinkronKartuDariSupabase(); /* V.54 */ sinkronBintangDariSupabase(); /* V.54b */ } return true; }catch(err){ return false; } }
 function logout(){ hapusLoginTetap(); keluarModeTes(); sembunyikanSemua(); show("page-login"); show("page-depan-nilai"); hide("btn-logout"); el("top-sub").textContent="📷 Instagram: @krisnagita97"; window.scrollTo(0,0); }
-function keDashboardSiswa(){ keluarModeTes(); sembunyikanSemua(); show("page-siswa"); tampilkanNilaiSiswa(); tampilSiswaTab("beranda"); tampilNavAplikasi(); setNavAktif("beranda"); window.scrollTo(0,0); }
-function keDashboardGuru(){ sembunyikanSemua(); show("page-guru"); tampilkanMateriGuru(); tampilkanNilaiGuru(); tampilGuruTab('beranda'); tampilNavGuru(); setNavGuruAktif('beranda'); window.scrollTo(0,0); }
+function keDashboardSiswa(){ keluarModeTes(); sembunyikanSemua(); show("page-siswa"); tampilkanNilaiSiswa(); tampilSiswaTab("beranda"); tampilNavAplikasi(); setNavAktif("beranda"); var kw=el("kelinci-wrap"); if(kw) kw.style.display="flex"; window.scrollTo(0,0); }
+function keDashboardGuru(){ sembunyikanSemua(); show("page-guru"); tampilkanMateriGuru(); tampilkanNilaiGuru(); tampilGuruTab('beranda'); tampilNavGuru(); setNavGuruAktif('beranda'); var kw2=el("kelinci-wrap"); if(kw2) kw2.style.display="none"; window.scrollTo(0,0); }
 /* V.29 - Bottom Navigation Guru (5 tombol) + Beranda ringkasan + Badge titik merah di Nilai */
 var guruTabAktif="beranda";
 function tampilNavGuru(){ show("nav-guru"); document.body.classList.add("punya-nav"); }
@@ -1189,7 +1188,7 @@ function isiHalamanBintang(){
   var pt=el("bintang-progress-teks"); var pb=el("bintang-progress-bar");
   if(next){ if(pt) pt.textContent="Kurang "+(next-total)+" bintang lagi ke level berikutnya!"; if(pb) pb.style.width=Math.round((total/next)*100)+"%"; }
   else { if(pt) pt.textContent="Level tertinggi! Kamu Bintang Get Up! 🎉"; if(pb) pb.style.width="100%"; }
-  var lst=el("bintang-level-list"); if(lst){ while(lst.firstChild) lst.removeChild(lst.firstChild); ["🌱 Bintang Baru — 0 bintang","✨ Bintang Bersinar — 5 bintang","🌟 Bintang Hebat — 15 bintang","⭐ Bintang Get Up! — 30 bintang"].forEach(function(t){ var p=document.createElement("p"); p.className="sub"; p.style.fontWeight="700"; p.textContent=t; lst.appendChild(p); }); }
+  var lst=el("bintang-level-list"); if(lst){ while(lst.firstChild) lst.removeChild(lst.firstChild); ["🌱 Bintang Baru — 0 bintang","✨ Bintang Bersinar — 5 bintang","🌟 Bintang Hebat — 15 bintang","⭐ Bintang Get Up! — 30 bintang"].forEach(function(t){ var p=document.createElement("p"); p.className="sub"; p.style.fontWeight="700"; p.textContent=t; lst.appendChild(p); }); var pm=el("permata-besar"); if(pm) pm.textContent="💎 "+hitungPermata(); var pt2=el("permata-teks"); if(pt2) pt2.textContent="Tiap 10 ⭐ = 1 💎 • Sudah ditukar: "+(ambilBintang().permata_pakai||0)+" 💎"; }
 }
 function isiHalamanProfil(){
   var n1=el("profil-nama"); if(n1) n1.textContent="👦 Nama: "+siswaNama;
@@ -1278,11 +1277,71 @@ function unduhKartuBagi(){
 }
 /* V.23 - Bintang & Lencana: hanya dari TES asli (bukan Latihan / Ulangi). Tersimpan per siswa (kode) di HP/browser siswa. */
 function kunciBintang(){ return "bintang_"+(kodeSiswaAktif||siswaNama||"anon"); }
-function ambilBintang(){ try{ var v=JSON.parse(localStorage.getItem(kunciBintang())||"null"); if(v&&typeof v.total==="number") return v; }catch(e){} return {total:0}; }
+function ambilBintang(){ try{ var v=JSON.parse(localStorage.getItem(kunciBintang())||"null"); if(v&&typeof v.total==="number"){ if(typeof v.streak!=="number") v.streak=0; if(typeof v.terakhir_main!=="string") v.terakhir_main=""; if(typeof v.permata_pakai!=="number") v.permata_pakai=0; return v; } }catch(e){} return {total:0, streak:0, terakhir_main:"", permata_pakai:0}; }
 function tambahBintang(n){ if(!n) return ambilBintang(); var d=ambilBintang(); d.total+=n; try{ localStorage.setItem(kunciBintang(), JSON.stringify(d)); }catch(e){} sbKirimBintang(d.total); /* V.54b - langsung dorong ke brankas */ return d; }
+
+/* ================= V.55 - MODE DUOLINGO: Api Main, Permata, Kelinci ================= */
+function tanggalHariIniISO(){ var n=new Date(); return n.getFullYear()+"-"+("0"+(n.getMonth()+1)).slice(-2)+"-"+("0"+n.getDate()).slice(-2); }
+function hitungPermata(){ var d=ambilBintang(); return Math.max(0, Math.floor((d.total||0)/10)-(d.permata_pakai||0)); }
+function emojiApi(streak){ if(!streak) return "\uD83D\uDCA4"; if(streak>=14) return "\uD83D\uDD25\uD83D\uDD25\uD83D\uDD25\uD83D\uDD25"; if(streak>=7) return "\uD83D\uDD25\uD83D\uDD25\uD83D\uDD25"; if(streak>=3) return "\uD83D\uDD25\uD83D\uDD25"; return "\uD83D\uDD25"; }
+function catatApiMain(){
+  var d=ambilBintang(); var hariIni=tanggalHariIniISO(); var lama=d.terakhir_main||"";
+  if(lama===hariIni){ return {hari:d.streak||0, baru:false, milestone:false}; }
+  var kem=new Date(); kem.setDate(kem.getDate()-1);
+  var kemISO=kem.getFullYear()+"-"+("0"+(kem.getMonth()+1)).slice(-2)+"-"+("0"+kem.getDate()).slice(-2);
+  if(lama===kemISO&&(d.streak||0)>0){ d.streak=(d.streak||0)+1; } else { d.streak=1; }
+  d.terakhir_main=hariIni;
+  try{ localStorage.setItem(kunciBintang(), JSON.stringify(d)); }catch(e){}
+  sbKirimBintangObj(d);
+  return {hari:d.streak, baru:true, milestone:([3,7,14,30].indexOf(d.streak)>=0)};
+}
+function sbKirimBintangObj(d){
+  try{
+    var kode=(typeof kodeSiswaAktif!=="undefined"?kodeSiswaAktif:"")||"";
+    if(!kode) return;
+    var url=SUPABASE_URL+"/rest/v1/bintang?on_conflict=kode_siswa";
+    var head={"apikey":SUPABASE_KEY,"Authorization":"Bearer "+SUPABASE_KEY,"Content-Type":"application/json","Prefer":"return=minimal,resolution=merge-duplicates"};
+    var penuh={kode_siswa:kode,nama_siswa:siswaNama||"",kelas:siswaKelas||"",total:d.total||0,streak:d.streak||0,terakhir_main:d.terakhir_main||"",permata_pakai:d.permata_pakai||0};
+    var mini={kode_siswa:kode,nama_siswa:siswaNama||"",kelas:siswaKelas||"",total:d.total||0};
+    fetch(url,{method:"POST",headers:head,body:JSON.stringify(penuh)}).then(function(r){ if(!r.ok){ fetch(url,{method:"POST",headers:head,body:JSON.stringify(mini)}).catch(function(){}); } }).catch(function(){});
+  }catch(e){}
+}
+var pesanKelinciAcak=["Semangat, Chaca! Kelinci selalu di sini nemenin! \uD83D\uDC30\uD83D\uDC96","Chaca hebat! Hari ini udah belajar, itu yang paling penting! \uD83C\uDF1F","Capek? Istirahat dulu, minum air, nanti lanjut lagi ya! \uD83D\uDC30","Kelinci bangga sama Chaca! Terus belajar ya, pelan-pelan aja! \uD83D\uDC96","Wah, Chaca rajin banget! Kelinci kasih peluk! \uD83D\uDC30\uD83E\uDD17","Ingat, salah itu nggak apa-apa! Yang penting berani coba! \uD83D\uDCAA","Chaca itu bintang! Bintang yang paling bersinar! \u2B50","Besok main lagi ya! Kelinci udah kangen! \uD83D\uDC30\uD83D\uDC95"];
+function kelinciNgomong(pesan){
+  try{
+    var w=el("kelinci-wrap"); if(w) w.style.display="flex";
+    var b=el("kelinci-bubble"); if(b){ b.textContent=pesan; b.style.display="block"; }
+    if(window.__timerKelinci) clearTimeout(window.__timerKelinci);
+    window.__timerKelinci=setTimeout(function(){ var b2=el("kelinci-bubble"); if(b2) b2.style.display="none"; }, 9000);
+  }catch(e){}
+}
+function kelinciAcak(){ kelinciNgomong(pesanKelinciAcak[Math.floor(Math.random()*pesanKelinciAcak.length)]); }
+function rayakanHasilTes(hasilKartu, levelLama, levelBaru, permataBaru, infoApi){
+  try{
+    if(levelBaru!==levelLama){ kelinciNgomong("\uD83C\uDF89 Chaca NAIK LEVEL! Sekarang "+levelBaru+"! Kelinci bangga banget! \uD83D\uDC30\u2728"); }
+    else if(permataBaru){ kelinciNgomong("TING! \uD83D\uDC8E Chaca dapet 1 PERMATA baru! Sekarang punya "+hitungPermata()+" permata! Kumpulin 5 buat es krim! \uD83C\uDF66"); }
+    else if(infoApi&&infoApi.milestone){ kelinciNgomong("\uD83D\uDD25 WOW! Api Chaca udah "+infoApi.hari+" hari berturut-turut! Apinya makin GEDE! Hebat banget! \uD83D\uDC30\uD83D\uDD25"); }
+    else if(hasilKartu&&(hasilKartu.status==="baru"||hasilKartu.status==="naik")){ kelinciNgomong("WAAAH! Kartu barumu KEREN! Kelinci loncat-loncat saking senengnya! \uD83D\uDC30\uD83D\uDC96"); }
+    else { kelinciAcak(); }
+  }catch(e){}
+}
+function tukarHadiah(){
+  try{
+    var p=hitungPermata();
+    if(p<5){ alert("Permatamu masih "+p+" \uD83D\uDC8E, kurang "+(5-p)+" lagi! Semangat, dikit lagi dapet es krim! \uD83D\uDCAA\uD83C\uDF66"); return; }
+    if(!confirm("Tukar 5 \uD83D\uDC8E jadi 1 Kupon Es Krim? \uD83C\uDF66")) return;
+    var d=ambilBintang(); d.permata_pakai=(d.permata_pakai||0)+5;
+    try{ localStorage.setItem(kunciBintang(), JSON.stringify(d)); }catch(e){}
+    sbKirimBintangObj(d); segarkanTampilanBintang();
+    var pop=el("popup-kartu"), judul=el("popup-kartu-judul"), isi=el("popup-kartu-isi");
+    if(pop&&judul&&isi){ judul.textContent="\uD83C\uDFAB KUPON ES KRIM!"; isi.innerHTML="<p style='line-height:1.9;text-align:center;font-size:18px'>\uD83C\uDF66\uD83C\uDF66\uD83C\uDF66<br><b>1 Kupon Es Krim!</b><br>Tunjukin ke Ibu ya, Chaca!<br>Ibu janji kasih es krim! \uD83D\uDC96</p>"; pop.style.display="flex"; }
+    kelinciNgomong("YAAAY! \uD83C\uDF66 Kupon es krim berhasil ditukar! Lari ke Ibu, tunjukin kuponnya! \uD83D\uDC30\uD83D\uDC96");
+  }catch(e){}
+}
+/* ================= Akhir V.55 ================= */
 function bintangDariNilai(nilai){ if(nilai>=100) return 3; if(nilai>=80) return 2; if(nilai>=60) return 1; return 0; }
 function levelBintang(total){ if(total>=30) return "⭐ Bintang Get Up!"; if(total>=15) return "🌟 Bintang Hebat"; if(total>=5) return "✨ Bintang Bersinar"; return "🌱 Bintang Baru"; }
-function tampilkanBintangSiswa(){ var b=el("siswa-bintang"); if(b) b.textContent="⭐ Total Bintang: "+ambilBintang().total+" • "+levelBintang(ambilBintang().total); }
+function tampilkanBintangSiswa(){ var b=el("siswa-bintang"); if(b) b.textContent="⭐ Total Bintang: "+ambilBintang().total+" • "+levelBintang(ambilBintang().total); var ap=el("siswa-api-permata"); if(ap){ var st=ambilBintang().streak||0; ap.textContent=emojiApi(st)+(st>0?" Api: "+st+" hari berturut-turut":" Api belum nyala — ikut Tes hari ini yuk!")+" • 💎 Permata: "+hitungPermata(); } }
 async function selesai(dipaksaKarenaPelanggaran){
   sedangSelesai=true; hentikanTimerTes(); nonaktifkanAntiCheat(); hapusProgress(); keluarModeTes();
   var benar=0, total=soalList.length, rev=el("box-review"); while(rev.firstChild) rev.removeChild(rev.firstChild);
@@ -1297,7 +1356,7 @@ async function selesai(dipaksaKarenaPelanggaran){
   if(jmlPG>0 && jmlEsai>0){ nilaiTotal=Math.round((nilaiPG+nilaiEsai)/2); }
   else if(jmlPG>0){ nilaiTotal=nilaiPG; }
   else if(jmlEsai>0){ nilaiTotal=nilaiEsai; }
-  daftarSalahTerakhir=soalList.filter(function(s,i){ var d=detailJawaban[i]; return d && !d.benar; }); var bintangBaru=(modeTesAktif==="tes")?bintangDariNilai(nilaiTotal):0; var totalBintang=bintangBaru>0?tambahBintang(bintangBaru).total:ambilBintang().total;
+  daftarSalahTerakhir=soalList.filter(function(s,i){ var d=detailJawaban[i]; return d && !d.benar; }); var bintangBaru=(modeTesAktif==="tes")?bintangDariNilai(nilaiTotal):0; var levelBintangLama=levelBintang(ambilBintang().total); var permataLama=hitungPermata(); var totalBintang=bintangBaru>0?tambahBintang(bintangBaru).total:ambilBintang().total; var levelBintangBaru=levelBintang(totalBintang); var permataBaru=hitungPermata()>permataLama; var infoApi=(modeTesAktif==="tes")?catatApiMain():{hari:(ambilBintang().streak||0),baru:false,milestone:false};
   var now=new Date(); var tgl=now.getDate()+"/"+(now.getMonth()+1)+"/"+now.getFullYear()+" "+("0"+now.getHours()).slice(-2)+":"+("0"+now.getMinutes()).slice(-2);
   if(modeTesAktif==="tes"){ try{ await db.collection("nilai").add({tanggal:tgl, waktu: Date.now(), nama:siswaNama, kelas:siswaKelas, materi:materiKuis.split(" • ")[0], mapel:mapelKuis||"", subbabJudul:subbabKuisNama||"", testNama:tesKuisNama||"", tesId:subbabKuisId||"", total:total, benar:benar, salah:(total-benar), nilai:nilaiTotal, nilaiPG:nilaiPG, nilaiEsai:nilaiEsai, nilaiTotal:nilaiTotal, pelanggaran: 0, status: statusNilai, jenisTes: (jmlPG>0&&jmlEsai>0?"Kombinasi":(jmlEsai>0?"Esai":"Pilihan Ganda")), jmlPG:jmlPG, benarPG:benarPG, jmlEsai:jmlEsai, benarEsai:benarEsai, detailJawaban:detailJawaban, esaiDinilai:true}); }catch(e){ alert("Gagal simpan online: "+e.message); } }
   el("res-id").textContent="Nama: "+siswaNama+" • Kelas "+siswaKelas+" • "+materiKuis;
@@ -1316,7 +1375,7 @@ async function selesai(dipaksaKarenaPelanggaran){
   var kbM=el("kb-materi"); if(kbM) kbM.textContent=materiKuis;
   var kbNi=el("kb-nilai"); if(kbNi) kbNi.textContent=nilaiTotal;
   var kbB=el("kb-bintang"); if(kbB) kbB.textContent = modeTesAktif==="tes" ? (bintangBaru>0 ? "⭐ Dapat "+bintangBaru+" bintang!" : "⭐ Tetap semangat!") : "🎮 Mode Latihan";
-  var kbL=el("kb-level"); if(kbL) kbL.textContent="Total ⭐ "+totalBintang+" • "+levelBintang(totalBintang); segarkanAvatar(); if(nilaiTotal>=80) ledakanConfetti(); if(modeTesAktif==="tes"){ tampilkanPopupKartu(beriKartu(nilaiTotal)); }
+  var kbL=el("kb-level"); if(kbL) kbL.textContent="Total ⭐ "+totalBintang+" • "+levelBintang(totalBintang); segarkanAvatar(); if(nilaiTotal>=80) ledakanConfetti(); if(modeTesAktif==="tes"){ var hasilKartuTes=beriKartu(nilaiTotal); tampilkanPopupKartu(hasilKartuTes); rayakanHasilTes(hasilKartuTes, levelBintangLama, levelBintangBaru, permataBaru, infoApi); }
   tampilNavAplikasi(); setNavAktif("");
   sembunyikanSemua(); show("page-hasil"); tampilNavAplikasi(); window.scrollTo(0,0);
 }
@@ -1704,4 +1763,9 @@ try{
   var btnMulai=null;
   var inp=el("login-nama"); if(inp){ inp.addEventListener("keydown", function(e){ if(e.key==="Enter") loginSiswa(); }); }
 }catch(e){ alert("Error: "+e.message); }
-</script><div id="popup-kartu" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:9999;align-items:center;justify-content:center;padding:16px"><div class="card" style="max-width:360px;width:100%;text-align:center"><h2 id="popup-kartu-judul" style="font-size:20px"></h2><div id="popup-kartu-isi"></div><div style="height:12px"></div><button type="button" class="btn btn-green" onclick="tutupPopupKartu()">✅ Oke, Siap!</button></div></div><div id="kartu-unduh" style="position:fixed;left:-9999px;top:0;width:320px"><div id="ku-desain" class="kartu-desain emas" style="height:460px"><div class="kd-plak" style="font-size:13px">SISTEM AJAR BY WITA GEMINI</div><div class="kd-avatar-wrap" style="width:96px;height:96px"><div id="ku-avatar" class="kd-avatar" style="font-size:64px">🦄</div></div><div id="ku-nama" class="kd-nama" style="font-size:18px"></div><div id="ku-materi" class="kd-materi" style="font-size:14px"></div><div class="kd-pembatas">─ ◆ ─</div><div class="kd-label" style="font-size:12px">NILAIKU</div><div id="ku-nilai" class="kd-nilai" style="font-size:76px"></div><div><span id="ku-tier" class="kd-tier" style="font-size:14px"></span></div><div style="margin-top:10px"><span class="pita" style="font-size:12px">✦ Belajar sambil bermain ✦</span></div></div></div></body></html>
+</script><div id="popup-kartu" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:9999;align-items:center;justify-content:center;padding:16px"><div class="card" style="max-width:360px;width:100%;text-align:center"><h2 id="popup-kartu-judul" style="font-size:20px"></h2><div id="popup-kartu-isi"></div><div style="height:12px"></div><button type="button" class="btn btn-green" onclick="tutupPopupKartu()">✅ Oke, Siap!</button></div></div><div id="kartu-unduh" style="position:fixed;left:-9999px;top:0;width:320px"><div id="ku-desain" class="kartu-desain emas" style="height:460px"><div class="kd-plak" style="font-size:13px">SISTEM AJAR BY WITA GEMINI</div><div class="kd-avatar-wrap" style="width:96px;height:96px"><div id="ku-avatar" class="kd-avatar" style="font-size:64px">🦄</div></div><div id="ku-nama" class="kd-nama" style="font-size:18px"></div><div id="ku-materi" class="kd-materi" style="font-size:14px"></div><div class="kd-pembatas">─ ◆ ─</div><div class="kd-label" style="font-size:12px">NILAIKU</div><div id="ku-nilai" class="kd-nilai" style="font-size:76px"></div><div><span id="ku-tier" class="kd-tier" style="font-size:14px"></span></div><div style="margin-top:10px"><span class="pita" style="font-size:12px">✦ Belajar sambil bermain ✦</span></div></div></div><!-- V.55 - Kelinci Chaca -->
+<div id="kelinci-wrap" style="display:none;position:fixed;right:14px;bottom:76px;z-index:9999;flex-direction:column;align-items:flex-end;gap:6px">
+  <div id="kelinci-bubble" style="display:none;max-width:230px;background:#fff7ed;border:2px solid #fb923c;border-radius:14px;padding:10px 12px;font-size:13.5px;line-height:1.55;color:#7c2d12;box-shadow:0 6px 18px rgba(0,0,0,.18)"></div>
+  <button type="button" onclick="kelinciAcak()" style="width:56px;height:56px;border-radius:50%;border:3px solid #fff;background:#fff7ed;font-size:30px;box-shadow:0 6px 18px rgba(0,0,0,.22);cursor:pointer" title="Sapa Kelinci!">🐰</button>
+</div>
+</body></html>
