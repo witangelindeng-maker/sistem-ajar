@@ -168,7 +168,7 @@ body.punya-nav .wrap{ padding-bottom:96px; }
 .kartu-desain .tombol-kartu{margin-top:6px;display:flex;gap:4px;justify-content:center}
 .kartu-desain .tombol-kartu button{font-size:10px;font-weight:800;border:none;border-radius:999px;padding:5px 8px;cursor:pointer}
 </style><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script></head><body>
-<div class="topbar"><div><h1>Sistem ajar By Wita Gemini <span style="font-size:11px;background:#16a34a;padding:2px 7px;border-radius:99px">ONLINE</span> <span style="font-size:11px;background:#fff;color:#2563eb;padding:2px 7px;border-radius:99px;font-weight:900">V.47</span></h1><p id="top-sub">📷 Instagram: @krisnagita97</p></div><button type="button" onclick="logout()" id="btn-logout" class="hidden" style="width:auto;padding:9px 12px;font-size:13px;background:#fff;color:#2563eb;border:none;border-radius:10px;font-weight:800;cursor:pointer">Keluar</button></div>
+<div class="topbar"><div><h1>Sistem ajar By Wita Gemini <span style="font-size:11px;background:#16a34a;padding:2px 7px;border-radius:99px">ONLINE</span> <span style="font-size:11px;background:#fff;color:#2563eb;padding:2px 7px;border-radius:99px;font-weight:900">V.47a</span></h1><p id="top-sub">📷 Instagram: @krisnagita97</p></div><button type="button" onclick="logout()" id="btn-logout" class="hidden" style="width:auto;padding:9px 12px;font-size:13px;background:#fff;color:#2563eb;border:none;border-radius:10px;font-weight:800;cursor:pointer">Keluar</button></div>
 <div class="wrap">
 <div id="js-status">Memuat...</div>
 <div id="online-status">⏳ Menghubungkan ke Supabase...</div>
@@ -809,6 +809,12 @@ function loginGuru(){
   sembunyikanSemua(); show("page-guru"); show("btn-logout"); el("top-sub").textContent="Login sebagai Guru • "+n;
   tampilkanMateriGuru(); tampilkanNilaiGuru(); tampilGuruTab('beranda'); tampilNavGuru(); setNavGuruAktif('beranda');
 }
+/* V.47-PERBAIKAN - Ingat login (3 fungsi ini hilang di V.45, makanya muncul
+   "pulihkanLogin is not defined"). Disimpan di localStorage HP, jadi habis
+   refresh / tutup-buka aplikasi, langsung masuk dashboard tanpa login lagi. */
+function simpanLoginTetap(peran){ try{ var d={peran:peran, nama:(peran==="guru"?guruNama:siswaNama), kelas:siswaKelas, kode:kodeSiswaAktif||""}; localStorage.setItem("sistemajar_login", JSON.stringify(d)); }catch(err){} }
+function hapusLoginTetap(){ try{ localStorage.removeItem("sistemajar_login"); }catch(err){} }
+function pulihkanLogin(){ try{ var mentah=null; try{ mentah=localStorage.getItem("sistemajar_login"); }catch(err){} if(!mentah) return false; var d=JSON.parse(mentah); if(!d || !d.peran || !d.nama) return false; if(d.peran==="guru"){ guruNama=d.nama; el("guru-halo").textContent="Halo, "+d.nama+"! 👩‍🏫"; el("top-sub").textContent="Login sebagai Guru • "+d.nama; show("btn-logout"); keDashboardGuru(); } else { siswaNama=d.nama; siswaKelas=d.kelas||""; kodeSiswaAktif=d.kode||""; el("siswa-halo").textContent=avatarSiswa()+" Halo, "+d.nama+"!"; el("siswa-info").textContent="Kelas "+(d.kelas||""); el("top-sub").textContent="Login sebagai Siswa • "+d.nama+" • Kelas "+(d.kelas||""); show("btn-logout"); isiDropdownMateriSiswa(); tampilkanAvatarPicker(); keDashboardSiswa(); } return true; }catch(err){ return false; } }
 function logout(){ hapusLoginTetap(); keluarModeTes(); sembunyikanSemua(); show("page-login"); show("page-depan-nilai"); hide("btn-logout"); el("top-sub").textContent="📷 Instagram: @krisnagita97"; window.scrollTo(0,0); }
 function keDashboardSiswa(){ keluarModeTes(); sembunyikanSemua(); show("page-siswa"); tampilkanNilaiSiswa(); tampilSiswaTab("beranda"); tampilNavAplikasi(); setNavAktif("beranda"); window.scrollTo(0,0); }
 function keDashboardGuru(){ sembunyikanSemua(); show("page-guru"); tampilkanMateriGuru(); tampilkanNilaiGuru(); tampilGuruTab('beranda'); tampilNavGuru(); setNavGuruAktif('beranda'); window.scrollTo(0,0); }
