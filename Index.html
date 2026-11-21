@@ -24,7 +24,7 @@
 <meta property="og:image" content="https://witangelindeng-maker.github.io/sistem-ajar/ikon-sistem-ajar.png">
 <meta property="og:url" content="https://witangelindeng-maker.github.io/sistem-ajar/Index.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://witangelindeng-maker.github.io/sistem-ajar/ikon-sistem-ajar.png"><title>Sistem ajar By Wita Gemini — V.55</title><!-- V.47 - Dikunci: V.46 + BISA DI-INSTALL: tambah file manifest.json + sw.js (seperti aplikasi keuangan dulu) + ikon 192 & 512. Tombol Install aplikasi di Chrome kini bisa dipakai, ikon buku nempel. <!-- V.46 - Dikunci: V.45 + IKON BUKU NEMPEL: ikon aplikasi resmi diganti jadi buku tersenyum (file ikon-sistem-ajar.png). Dipakai untuk Install/PWA, Tambah ke Layar Utama, tab browser, dan preview WhatsApp (og:image). <!-- V.45 - Dikunci: V.43 + (1) NAVIGASI GURU TIDAK HILANG: Buat Soal, Kembali ke Soal, Buka Materi tetap menampilkan navigasi bawah - tidak perlu logout. (2) INGAT LOGIN: login guru & siswa tersimpan di HP/browser, refresh tidak perlu login lagi. Logout menghapus simpanan. <!-- V.43 - Dikunci: V.42 + SUARA MATEMATIKA: tombol Dengarkan Soal kini membaca simbol dengan kata (x = kali, + = tambah, - = kurang, : = bagi, = = sama dengan, ... = berapa) agar tidak lagi terbaca ex / samadengan. Bahasa Inggris: x = times, = = equals. <!-- V.42 - Dikunci: V.41 + PINDAH TOTAL KE SUPABASE. Firebase DIHAPUS TOTAL dari aplikasi: SDK Firebase dicabut, config kuis-kelas4 dibuang, db + storage kini mesin Supabase (REST) dengan API mirip Firestore sehingga 20 titik kode lama tidak berubah. Tabel: materi, siswa, nilai (diperluas), kartu. File besar (800KB-10MB) kini ke Supabase Storage bucket "materi". Jembatan V.41 (sbKirimNilai) dihapus karena nilai kini LANGSUNG ke Supabase lewat mesin baru - tidak ada dobel. Kartu tetap localStorage + upsert Supabase. <!-- V.41 - Dikunci: V.40 + JEMBATAN SUPABASE: setiap nilai tes baru + kartu baru/naik juga dikirim ke Supabase (tabel nilai + kartu, proyek sistem-ajar). Firebase lama (kuis-kelas4) TETAP jalan, tidak disentuh - Supabase adalah gudang kedua + cadangan. Pengiriman fire-and-forget: kalau Supabase/internet bermasalah, tes tetap jalan normal. Status sinkron tampil di panel Nilai guru (#supabase-status). <!-- V.40 - Dikunci: V.39 + PWA (Progressive Web App): aplikasi bisa DIPASANG di HP siswa (ikon di layar utama, dibuka layar penuh kayak aplikasi beneran). Kartu "Pasang Aplikasinya" di Beranda siswa + tombol Pasang (pakai prompt browser kalau ada, kalau tidak tampil petunjuk iPhone Bagikan > Tambah ke Layar Utama / Android titik tiga > Tambahkan ke Layar Utama). Manifest + ikon aplikasi (navy+emas+rubah) dibuat otomatis di dalam file, tetap 1 file, tanpa server tambahan. <!-- V.39 - Dikunci: V.38 + KARTU PAKAI BINGKAI GAMBAR ASLI: latar kartu koleksi (depan, belakang, terkunci) + gambar unduh/bagi kini memakai bingkai filigree navy+Emas/Perak/Perunggu hasil desain (ditanam base64 di dalam file, jadi tetap 1 file & bisa diunduh offline). Teks/nilai/avatar tetap dinamis ditempel di atas bingkai. Ornamen CSS emoji dihapus supaya tidak menumpuk dengan bingkai gambar. <!-- V.38 - Dikunci: V.37 + KARTU TIDAK POLOS LAGI: DEPAN kartu koleksi yang tadinya gradient polos kini navy elegan full ornamen (bingkai ganda, sudut ❦, avatar dalam lingkaran cahaya tier, pembatas ◆, pita tier berlaurel ❧, kilau radial, bintik bintang). Belakang kartu + gambar unduh/bagi diperkaya ornamen yang sama. Kartu terkunci juga navy elegan. <!-- V.37 - Dikunci: V.36 + DESAIN KARTU ELEGAN: belakang kartu koleksi + gambar unduh/bagi jadi navy elegan + aksen Emas/Perak/Perunggu (bingkai laurel, plakat judul, avatar siswa besar bercahaya, nilai besar warna tier, pita footer hanya "Belajar sambil bermain") + hapus teks "Matematika & Bahasa Inggris" dari kartu bagi. Avatar kartu sudah ikut pilihan Profil (12 emoji) sejak V.33/V.36, jadi tiap siswa kartunya pakai avatarnya sendiri. <!-- V.36 - Dikunci: V.35 + KARTU FLIP: kartu koleksi bisa diketuk untuk membalik (depan = ringkasan tier, belakang = desain kartu full warna Emas/Perak/Perunggu + pita "Belajar sambil bermain") + tombol ⬇️ Unduh & 📤 Bagikan di belakang kartu (gambar PNG via html2canvas, iOS Share Sheet) + kartu unduh tersembunyi tanpa efek flip. <!-- V.35 - Dikunci: V.34 + KOLEKSI KARTU (80+ Perunggu, 90+ Perak, 100 Emas; 1 materi = 1 kartu, bisa naik tingkat; popup kartu baru/naik tingkat/tetap + popup penyemangat A di bawah 80; hanya mode Tes, Latihan tidak dapat kartu) + TAB Bintangku | Koleksi Kartu di halaman Bintangku + jalan pintas Koleksi di Beranda + kartu Emas berkilau. <!-- V.34 - Dikunci: V.33 + PETA PETUALANGAN (jalur pos materi, pos lulus jadi bintang, tombol Baca/Tes) + AVATAR BEREAKSI (pesan Yeay/coba lagi + lompat saat benar, di kuis & tantangan) + HUJAN BINTANG (jawab benar) + CONFETTI (nilai >=80 & lencana 7 hari). <!-- V.33 - Dikunci: V.32 + TANTANGAN HARIAN (1 soal/hari, streak, lencana Semangat 7 Hari) + AVATAR (12 pilihan, muncul di Beranda/Hasil/Kartu Bagi) + LISTENING (tombol Dengarkan Soal di kuis & tantangan, en-US untuk Bahasa Inggris, id-ID untuk lainnya). <!-- V.32 - Dikunci: V.31 + PERBAIKAN: Tombol kembali (dan semua tombol outline) tulisannya hilang saat tema warna aktif, karena aturan tema menimpa latar jadi warna tema sementara warna tulisan juga warna tema (biru di atas biru). Aturan tema untuk .btn-outline kini mengembalikan background:#fff sehingga tulisan kembali terlihat. <!-- V.31 - Dikunci: V.30 + PERBAIKAN: Daftar Materi kosong karena di tampilkanMateriGuru tertulis if(s.gambar) padahal variabel perulangan-nya m (s tidak ada -> error, daftar berhenti tergambar). Diperbaiki jadi if(m.gambar) / _th.src=m.gambar. Data tidak hilang. <!-- V.30 - Dikunci: V.29 + PERBAIKAN PENTING: tutup tag <div> Beranda guru yang tertinggal di V.29 (panel Materi/Soal/Nilai/Siswa tertelan di dalam Beranda sehingga layar blank saat pindah tab). Data tidak hilang, hanya tersembunyi. <!-- V.29 - Dikunci: V.28 + Bottom Navigation Guru 5 tombol (Beranda, Materi, Soal, Nilai, Siswa) + Beranda guru ringkasan (jumlah materi/soal/siswa/nilai + nilai terbaru) + Badge titik merah di Nilai kalau ada nilai baru belum dilihat (hilang begitu menu Nilai dibuka). Menu 4 tombol lama di halaman guru dihapus, diganti nav bawah. <!-- V.28 - Dikunci: V.27 + Perbaiki iPhone hitam blank: download materi & kartu di iPhone pakai Share Sheet (navigator.share + file, iOS 15+), bukan tab baru blob URL. Kalau Share Sheet tidak tersedia, tampil panel dengan link asli yang diketuk sendiri. Android/laptop tidak berubah. <!-- V.27 - Dikunci: V.26 + Download materi ramah iPhone (file data: dibuka di tab baru + petunjuk Simpan ke File, file Storage tetap tab baru) + Unduh Kartu ramah iPhone (buka tab baru + petunjuk Simpan ke Foto). Android/laptop tidak berubah. <!-- V.26 - Dikunci: V.25 + Bagikan Kartu ke WhatsApp lewat Share Sheet HP (gambar PNG langsung, teks ikut) + cadangan link teks WhatsApp di laptop + batal share tidak membuka WhatsApp. <!-- V.25 - Dikunci: V.24 + Beranda baru (sapaan + Lanjutkan Belajar + ringkasan + Materi Terbaru + Tes Terakhirmu + kata penyemangat, tombol Ulangi/Baca mengatur dropdown otomatis) + menu Latihan di bar bawah (6 tombol) + kartu atas 3 tombol dihapus. <!-- V.24 - Dikunci: V.23 + Bar Aplikasi bawah (Beranda/Tes/Materi/Bintangku/Profil) + Halaman Bintang & Profil + Tema Warna (Biru/Pink/Hijau/Ungu) + Kartu Hasil Bagi (WhatsApp + Unduh gambar buat IG Story). <!-- V.23 - Dikunci: V.22 + Mode Latihan (tanpa nilai) + Ulangi Soal yang Salah (selalu latihan, nilai asli tidak ditimpa) + Bintang & Lencana (100=3⭐, 80+=2⭐, 60+=1⭐, hanya dari tes asli). <!-- V.22 - Dikunci: V.21 + Anti-nyontek: acak opsi A-D tiap siswa (kunci ikut pindah) + Soal Bergambar (gambar di dalam soal, dikecilkan maks ~150KB, tampil di atas pilihan). <!-- V.21 - Dikunci: V.20 + Pembahasan hormati Enter (white-space: pre-line), label "Pembahasan:" di baris sendiri, spasi antarbaris 1.6. <!-- V.20 - Dikunci: V.19 + Pembahasan hanya tampil kalau jawaban siswa SALAH. Kalau benar, hanya tampil "Betul! Kamu hebat!" tanpa Pembahasan. <!-- V.19 - Dikunci: V.18 - kolom Umpan Balik dihapus, hanya Pembahasan saja (teks lama yang sempat salah isi otomatis pindah ke Pembahasan saat soal diedit). <!-- V.18 - Dikunci: V.17 + Perbaikan timer: semua jalur mulai tes (baru & lanjut) menjalankan timer; kolom baru Umpan Balik Salah per soal, tampil hanya kalau jawaban siswa salah, di atas Pembahasan. <!-- V.17 - Dikunci: V.16 + Mode Tes Interaktif: timer naik (tanpa batas waktu), jawaban PG langsung dinilai + terkunci begitu diklik (benar = hijau ✓, salah = merah ✗ + kunci benar ditampilkan), esai dinilai lewat tombol Cek Jawaban, Pembahasan tampil setelah menjawab (field baru per soal), Daftar Nomor Soal (grid 1-N, warna hijau/merah/biru), skor benar live, waktu tampil di hasil, progress tersimpan termasuk jawaban terkunci. <!-- V.16 - Dikunci: V.15 + cara penilaian esai ke-2: URUTAN KATA (untuk Susun Kata / Perbaiki Kalimat) — BENAR hanya kalau urutan kata jawaban siswa sama persis dengan kunci. Soal esai kini punya field caraNilai (kunci/urutan), dipilih di form Buat Soal. Soal lama tanpa caraNilai tetap dinilai pakai Kata Kunci. -->
+<meta name="twitter:image" content="https://witangelindeng-maker.github.io/sistem-ajar/ikon-sistem-ajar.png"><title>Sistem ajar By Wita Gemini — V.56</title><!-- V.47 - Dikunci: V.46 + BISA DI-INSTALL: tambah file manifest.json + sw.js (seperti aplikasi keuangan dulu) + ikon 192 & 512. Tombol Install aplikasi di Chrome kini bisa dipakai, ikon buku nempel. <!-- V.46 - Dikunci: V.45 + IKON BUKU NEMPEL: ikon aplikasi resmi diganti jadi buku tersenyum (file ikon-sistem-ajar.png). Dipakai untuk Install/PWA, Tambah ke Layar Utama, tab browser, dan preview WhatsApp (og:image). <!-- V.45 - Dikunci: V.43 + (1) NAVIGASI GURU TIDAK HILANG: Buat Soal, Kembali ke Soal, Buka Materi tetap menampilkan navigasi bawah - tidak perlu logout. (2) INGAT LOGIN: login guru & siswa tersimpan di HP/browser, refresh tidak perlu login lagi. Logout menghapus simpanan. <!-- V.43 - Dikunci: V.42 + SUARA MATEMATIKA: tombol Dengarkan Soal kini membaca simbol dengan kata (x = kali, + = tambah, - = kurang, : = bagi, = = sama dengan, ... = berapa) agar tidak lagi terbaca ex / samadengan. Bahasa Inggris: x = times, = = equals. <!-- V.42 - Dikunci: V.41 + PINDAH TOTAL KE SUPABASE. Firebase DIHAPUS TOTAL dari aplikasi: SDK Firebase dicabut, config kuis-kelas4 dibuang, db + storage kini mesin Supabase (REST) dengan API mirip Firestore sehingga 20 titik kode lama tidak berubah. Tabel: materi, siswa, nilai (diperluas), kartu. File besar (800KB-10MB) kini ke Supabase Storage bucket "materi". Jembatan V.41 (sbKirimNilai) dihapus karena nilai kini LANGSUNG ke Supabase lewat mesin baru - tidak ada dobel. Kartu tetap localStorage + upsert Supabase. <!-- V.41 - Dikunci: V.40 + JEMBATAN SUPABASE: setiap nilai tes baru + kartu baru/naik juga dikirim ke Supabase (tabel nilai + kartu, proyek sistem-ajar). Firebase lama (kuis-kelas4) TETAP jalan, tidak disentuh - Supabase adalah gudang kedua + cadangan. Pengiriman fire-and-forget: kalau Supabase/internet bermasalah, tes tetap jalan normal. Status sinkron tampil di panel Nilai guru (#supabase-status). <!-- V.40 - Dikunci: V.39 + PWA (Progressive Web App): aplikasi bisa DIPASANG di HP siswa (ikon di layar utama, dibuka layar penuh kayak aplikasi beneran). Kartu "Pasang Aplikasinya" di Beranda siswa + tombol Pasang (pakai prompt browser kalau ada, kalau tidak tampil petunjuk iPhone Bagikan > Tambah ke Layar Utama / Android titik tiga > Tambahkan ke Layar Utama). Manifest + ikon aplikasi (navy+emas+rubah) dibuat otomatis di dalam file, tetap 1 file, tanpa server tambahan. <!-- V.39 - Dikunci: V.38 + KARTU PAKAI BINGKAI GAMBAR ASLI: latar kartu koleksi (depan, belakang, terkunci) + gambar unduh/bagi kini memakai bingkai filigree navy+Emas/Perak/Perunggu hasil desain (ditanam base64 di dalam file, jadi tetap 1 file & bisa diunduh offline). Teks/nilai/avatar tetap dinamis ditempel di atas bingkai. Ornamen CSS emoji dihapus supaya tidak menumpuk dengan bingkai gambar. <!-- V.38 - Dikunci: V.37 + KARTU TIDAK POLOS LAGI: DEPAN kartu koleksi yang tadinya gradient polos kini navy elegan full ornamen (bingkai ganda, sudut ❦, avatar dalam lingkaran cahaya tier, pembatas ◆, pita tier berlaurel ❧, kilau radial, bintik bintang). Belakang kartu + gambar unduh/bagi diperkaya ornamen yang sama. Kartu terkunci juga navy elegan. <!-- V.37 - Dikunci: V.36 + DESAIN KARTU ELEGAN: belakang kartu koleksi + gambar unduh/bagi jadi navy elegan + aksen Emas/Perak/Perunggu (bingkai laurel, plakat judul, avatar siswa besar bercahaya, nilai besar warna tier, pita footer hanya "Belajar sambil bermain") + hapus teks "Matematika & Bahasa Inggris" dari kartu bagi. Avatar kartu sudah ikut pilihan Profil (12 emoji) sejak V.33/V.36, jadi tiap siswa kartunya pakai avatarnya sendiri. <!-- V.36 - Dikunci: V.35 + KARTU FLIP: kartu koleksi bisa diketuk untuk membalik (depan = ringkasan tier, belakang = desain kartu full warna Emas/Perak/Perunggu + pita "Belajar sambil bermain") + tombol ⬇️ Unduh & 📤 Bagikan di belakang kartu (gambar PNG via html2canvas, iOS Share Sheet) + kartu unduh tersembunyi tanpa efek flip. <!-- V.35 - Dikunci: V.34 + KOLEKSI KARTU (80+ Perunggu, 90+ Perak, 100 Emas; 1 materi = 1 kartu, bisa naik tingkat; popup kartu baru/naik tingkat/tetap + popup penyemangat A di bawah 80; hanya mode Tes, Latihan tidak dapat kartu) + TAB Bintangku | Koleksi Kartu di halaman Bintangku + jalan pintas Koleksi di Beranda + kartu Emas berkilau. <!-- V.34 - Dikunci: V.33 + PETA PETUALANGAN (jalur pos materi, pos lulus jadi bintang, tombol Baca/Tes) + AVATAR BEREAKSI (pesan Yeay/coba lagi + lompat saat benar, di kuis & tantangan) + HUJAN BINTANG (jawab benar) + CONFETTI (nilai >=80 & lencana 7 hari). <!-- V.33 - Dikunci: V.32 + TANTANGAN HARIAN (1 soal/hari, streak, lencana Semangat 7 Hari) + AVATAR (12 pilihan, muncul di Beranda/Hasil/Kartu Bagi) + LISTENING (tombol Dengarkan Soal di kuis & tantangan, en-US untuk Bahasa Inggris, id-ID untuk lainnya). <!-- V.32 - Dikunci: V.31 + PERBAIKAN: Tombol kembali (dan semua tombol outline) tulisannya hilang saat tema warna aktif, karena aturan tema menimpa latar jadi warna tema sementara warna tulisan juga warna tema (biru di atas biru). Aturan tema untuk .btn-outline kini mengembalikan background:#fff sehingga tulisan kembali terlihat. <!-- V.31 - Dikunci: V.30 + PERBAIKAN: Daftar Materi kosong karena di tampilkanMateriGuru tertulis if(s.gambar) padahal variabel perulangan-nya m (s tidak ada -> error, daftar berhenti tergambar). Diperbaiki jadi if(m.gambar) / _th.src=m.gambar. Data tidak hilang. <!-- V.30 - Dikunci: V.29 + PERBAIKAN PENTING: tutup tag <div> Beranda guru yang tertinggal di V.29 (panel Materi/Soal/Nilai/Siswa tertelan di dalam Beranda sehingga layar blank saat pindah tab). Data tidak hilang, hanya tersembunyi. <!-- V.29 - Dikunci: V.28 + Bottom Navigation Guru 5 tombol (Beranda, Materi, Soal, Nilai, Siswa) + Beranda guru ringkasan (jumlah materi/soal/siswa/nilai + nilai terbaru) + Badge titik merah di Nilai kalau ada nilai baru belum dilihat (hilang begitu menu Nilai dibuka). Menu 4 tombol lama di halaman guru dihapus, diganti nav bawah. <!-- V.28 - Dikunci: V.27 + Perbaiki iPhone hitam blank: download materi & kartu di iPhone pakai Share Sheet (navigator.share + file, iOS 15+), bukan tab baru blob URL. Kalau Share Sheet tidak tersedia, tampil panel dengan link asli yang diketuk sendiri. Android/laptop tidak berubah. <!-- V.27 - Dikunci: V.26 + Download materi ramah iPhone (file data: dibuka di tab baru + petunjuk Simpan ke File, file Storage tetap tab baru) + Unduh Kartu ramah iPhone (buka tab baru + petunjuk Simpan ke Foto). Android/laptop tidak berubah. <!-- V.26 - Dikunci: V.25 + Bagikan Kartu ke WhatsApp lewat Share Sheet HP (gambar PNG langsung, teks ikut) + cadangan link teks WhatsApp di laptop + batal share tidak membuka WhatsApp. <!-- V.25 - Dikunci: V.24 + Beranda baru (sapaan + Lanjutkan Belajar + ringkasan + Materi Terbaru + Tes Terakhirmu + kata penyemangat, tombol Ulangi/Baca mengatur dropdown otomatis) + menu Latihan di bar bawah (6 tombol) + kartu atas 3 tombol dihapus. <!-- V.24 - Dikunci: V.23 + Bar Aplikasi bawah (Beranda/Tes/Materi/Bintangku/Profil) + Halaman Bintang & Profil + Tema Warna (Biru/Pink/Hijau/Ungu) + Kartu Hasil Bagi (WhatsApp + Unduh gambar buat IG Story). <!-- V.23 - Dikunci: V.22 + Mode Latihan (tanpa nilai) + Ulangi Soal yang Salah (selalu latihan, nilai asli tidak ditimpa) + Bintang & Lencana (100=3⭐, 80+=2⭐, 60+=1⭐, hanya dari tes asli). <!-- V.22 - Dikunci: V.21 + Anti-nyontek: acak opsi A-D tiap siswa (kunci ikut pindah) + Soal Bergambar (gambar di dalam soal, dikecilkan maks ~150KB, tampil di atas pilihan). <!-- V.21 - Dikunci: V.20 + Pembahasan hormati Enter (white-space: pre-line), label "Pembahasan:" di baris sendiri, spasi antarbaris 1.6. <!-- V.20 - Dikunci: V.19 + Pembahasan hanya tampil kalau jawaban siswa SALAH. Kalau benar, hanya tampil "Betul! Kamu hebat!" tanpa Pembahasan. <!-- V.19 - Dikunci: V.18 - kolom Umpan Balik dihapus, hanya Pembahasan saja (teks lama yang sempat salah isi otomatis pindah ke Pembahasan saat soal diedit). <!-- V.18 - Dikunci: V.17 + Perbaikan timer: semua jalur mulai tes (baru & lanjut) menjalankan timer; kolom baru Umpan Balik Salah per soal, tampil hanya kalau jawaban siswa salah, di atas Pembahasan. <!-- V.17 - Dikunci: V.16 + Mode Tes Interaktif: timer naik (tanpa batas waktu), jawaban PG langsung dinilai + terkunci begitu diklik (benar = hijau ✓, salah = merah ✗ + kunci benar ditampilkan), esai dinilai lewat tombol Cek Jawaban, Pembahasan tampil setelah menjawab (field baru per soal), Daftar Nomor Soal (grid 1-N, warna hijau/merah/biru), skor benar live, waktu tampil di hasil, progress tersimpan termasuk jawaban terkunci. <!-- V.16 - Dikunci: V.15 + cara penilaian esai ke-2: URUTAN KATA (untuk Susun Kata / Perbaiki Kalimat) — BENAR hanya kalau urutan kata jawaban siswa sama persis dengan kunci. Soal esai kini punya field caraNilai (kunci/urutan), dipilih di form Buat Soal. Soal lama tanpa caraNilai tetap dinilai pakai Kata Kunci. -->
 
 
 <style>
@@ -181,7 +181,7 @@ body.punya-nav .wrap{ padding-bottom:96px; }
 .kartu-desain.emas .pita{background:linear-gradient(180deg,#3a2a05,#5e460a);color:#ffe9a3;border-color:#2c1f03}.kartu-desain .tombol-kartu{margin-top:6px;display:flex;gap:4px;justify-content:center}
 .kartu-desain .tombol-kartu button{font-size:10px;font-weight:800;border:none;border-radius:999px;padding:5px 8px;cursor:pointer}
 </style><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script></head><body>
-<div class="topbar"><div><h1>Sistem ajar By Wita Gemini <span style="font-size:11px;background:#16a34a;padding:2px 7px;border-radius:99px">ONLINE</span> <span id="label-versi" style="font-size:11px;background:#fff;color:#2563eb;padding:2px 7px;border-radius:99px;font-weight:900">V.55</span></h1><p id="top-sub">📷 Instagram: @krisnagita97</p></div><button type="button" onclick="logout()" id="btn-logout" class="hidden" style="width:auto;padding:9px 12px;font-size:13px;background:#fff;color:#2563eb;border:none;border-radius:10px;font-weight:800;cursor:pointer">Keluar</button></div>
+<div class="topbar"><div><h1>Sistem ajar By Wita Gemini <span style="font-size:11px;background:#16a34a;padding:2px 7px;border-radius:99px">ONLINE</span> <span id="label-versi" style="font-size:11px;background:#fff;color:#2563eb;padding:2px 7px;border-radius:99px;font-weight:900">V.56</span></h1><p id="top-sub">📷 Instagram: @krisnagita97</p></div><button type="button" onclick="logout()" id="btn-logout" class="hidden" style="width:auto;padding:9px 12px;font-size:13px;background:#fff;color:#2563eb;border:none;border-radius:10px;font-weight:800;cursor:pointer">Keluar</button></div>
 <div class="wrap">
 <div id="js-status">Memuat...</div>
 <div id="online-status">⏳ Menghubungkan ke Supabase...</div>
@@ -303,7 +303,9 @@ body.punya-nav .wrap{ padding-bottom:96px; }
 <div class="progress"><div class="progress-fill" id="bintang-progress-bar"></div></div>
 <p class="hint" style="margin-top:10px">Nilai 100 = ⭐⭐⭐ • 80–99 = ⭐⭐ • 60–79 = ⭐ • Tes Latihan tidak dapat bintang.</p>
 </div>
-<div class="card" style="text-align:center"><h2 style="font-size:18px">💎 Permataku</h2><div id="permata-besar" style="font-size:44px;font-weight:900"></div><p class="sub" id="permata-teks"></p><button type="button" class="btn btn-green" onclick="tukarHadiah()">🎁 Tukar 5 💎 = 🍦 Es Krim</button><p class="hint" style="margin-top:8px">Tiap 10 ⭐ = 1 💎. Kalau udah 5 💎, tuker jadi kupon es krim, tunjukin ke Ibu ya!</p></div>
+<div class="card" style="text-align:center"><h2 style="font-size:18px">💎 Permataku</h2><div id="permata-besar" style="font-size:44px;font-weight:900"></div><p class="sub" id="permata-teks"></p><p class="hint" style="margin-top:8px">Tiap 10 ⭐ = 1 💎. Tuker permatamu jadi kupon hadiah di bawah ya!</p></div>
+<div class="card" id="toko-hadiah-wrap"></div>
+<div class="card" id="kuponku-wrap"></div>
 <div class="card"><h2 style="font-size:18px">🏆 Level Bintang</h2><div id="bintang-level-list"></div></div></div><div id="koleksi-tab-wrap" style="display:none"><div class="card"><h2 style="font-size:18px">🃏 Koleksi Kartuku</h2><p class="sub" id="koleksi-ringkas" style="text-align:left"></p><div style="background:#fef9c3;border:1px solid #fde68a;border-radius:10px;padding:10px 12px;font-size:12.5px;line-height:1.6;color:#713f12;margin:8px 0 12px">⭐ <b>Mau kartu ini?</b> Ikuti Tes <b>minimal 10 soal</b> dalam 1 kali Tes ya! Tes di bawah 10 soal tetap masuk Papan Nilai. <b>Semangat!</b> 💪</div><div id="koleksi-grid" class="kartu-grid"></div><p class="hint" style="margin-top:10px">Nilai 80+ = 🥉 Perunggu • 90+ = 🥈 Perak • 100 = 🥇 Emas. Kartu bisa naik tingkat kalau nilaimu naik! 👆 Ketuk kartumu untuk membaliknya — di belakang kartu ada tombol ⬇️ Unduh & 📤 Bagikan!</p></div></div>
 </div>
 <div id="page-profil" class="hidden">
@@ -605,14 +607,25 @@ function sinkronBintangDariSupabase(){
       var lokal=ambilBintang();
       var c=cloud||{total:0, streak:0, terakhir_main:"", permata_pakai:0};
       var cTotal=(typeof c.total==="number"?c.total:0), cStreak=(typeof c.streak==="number"?c.streak:0), cTgl=(typeof c.terakhir_main==="string"?c.terakhir_main:""), cPakai=(typeof c.permata_pakai==="number"?c.permata_pakai:0);
+      var cKupon=Array.isArray(c.kupon)?c.kupon:[];
       var gabung={
         total: Math.max(lokal.total||0, cTotal),
         streak: cTgl>(lokal.terakhir_main||"") ? cStreak : ((lokal.terakhir_main||"")>cTgl ? (lokal.streak||0) : Math.max(lokal.streak||0, cStreak)),
         terakhir_main: cTgl>(lokal.terakhir_main||"") ? cTgl : (lokal.terakhir_main||""),
         permata_pakai: Math.max(lokal.permata_pakai||0, cPakai)
       };
+      /* V.56 - gabung kupon dari HP + Supabase (samakan by id, yang TERKLAIM menang) */
+      var mapKupon={};
+      (lokal.kupon||[]).concat(cKupon).forEach(function(k){
+        if(!k||!k.id) return;
+        var lama=mapKupon[k.id];
+        if(!lama) mapKupon[k.id]=k;
+        else if(k.status==="terklaim" && lama.status!=="terklaim") mapKupon[k.id]=k;
+        else if(k.status==="terklaim" && lama.status==="terklaim" && (k.waktu||0)>(lama.waktu||0)) mapKupon[k.id]=k;
+      });
+      gabung.kupon=Object.keys(mapKupon).map(function(id){ return mapKupon[id]; });
       try{ localStorage.setItem(kunciBintang(), JSON.stringify(gabung)); }catch(e){}
-      if(gabung.total!==cTotal||gabung.streak!==cStreak||gabung.terakhir_main!==cTgl||gabung.permata_pakai!==cPakai){ sbKirimBintangObj(gabung); }
+      if(gabung.total!==cTotal||gabung.streak!==cStreak||gabung.terakhir_main!==cTgl||gabung.permata_pakai!==cPakai||JSON.stringify(gabung.kupon)!==JSON.stringify(cKupon)){ sbKirimBintangObj(gabung); }
       segarkanTampilanBintang();
     });
   }catch(e){}
@@ -866,7 +879,7 @@ function beriKartu(nilai){ if(modeTesAktif!=="tes") return {status:"tidak"}; var
 function tampilkanPopupKartu(hasil){ var pop=el("popup-kartu"); if(!pop) return; var judul=el("popup-kartu-judul"), isi=el("popup-kartu-isi"); if(!judul||!isi) return; if(hasil.status==="kurang_soal"){ judul.textContent="📋 Masuk Papan Nilai!"; isi.innerHTML="<p style='line-height:1.7'>Tes ini cuma <b>"+hasil.jumlahSoal+" soal</b>. Nilaimu tetap masuk <b>Papan Nilai</b> kok! ⭐<br><br>Mau kartu ini? Ikuti Tes <b>minimal 10 soal</b> dalam 1 kali Tes ya! <b>Semangat!</b> 💪</p>"; } else if(hasil.status==="tidak"){ judul.textContent="💪 Tetap Semangat!"; isi.innerHTML="<p style='line-height:1.7'>Tidak apa-apa, kamu sudah berusaha hebat! 💪 Coba baca materinya sekali lagi, lalu tes lagi ya — Kartu Perunggumu sudah menunggu!</p>"; } else if(hasil.status==="tetap"){ var infoT=infoTier(hasil.tier); judul.textContent="🃏 Koleksi Kartu"; isi.innerHTML="<div class='kartu "+hasil.tier+"'><div style='font-size:44px'>"+infoT.emoji+"</div><div style='font-weight:800'>"+infoT.nama+"</div><div style='font-size:12px'>"+escapeHtml((materiKuis||"").split(" • ")[0])+"</div></div><p style='line-height:1.7'>Kartu ini sudah kamu miliki! Nilai terbaikmu: <b>"+hasil.nilai+"</b>. Terus berlatih biar naik tingkat! 💪</p>"; } else { var info=infoTier(hasil.tier); judul.textContent=(hasil.status==="naik"?"✨ Kartumu NAIK TINGKAT!":"🎉 Kartu Baru!"); var naikHtml=(hasil.status==="naik")?"<p style='line-height:1.7'>WOW! Kartumu naik dari "+infoTier(hasil.tierLama).nama+" menjadi "+info.nama+"! Hebat! 🎉</p>":""; isi.innerHTML="<div class='kartu "+hasil.tier+"'><div style='font-size:44px'>"+info.emoji+"</div><div style='font-weight:800'>"+info.nama+"</div><div style='font-size:12px'>"+escapeHtml((materiKuis||"").split(" • ")[0])+"</div></div>"+naikHtml+"<p style='line-height:1.7'>"+info.pesan+"</p>"; } pop.style.display="flex"; }
 function tutupPopupKartu(){ var pop=el("popup-kartu"); if(pop) pop.style.display="none"; }
 function tampilkanKoleksiKartu(){ var grid=el("koleksi-grid"); if(!grid) return; var arr=muatKartu(); var byJudul={}; arr.forEach(function(k){ byJudul[k.judul]=k; }); var dimiliki=0, emas=0; while(grid.firstChild) grid.removeChild(grid.firstChild); if(materiCache.length===0){ var p=document.createElement("p"); p.className="sub"; p.textContent="Belum ada materi. Minta guru buat materi dulu ya!"; grid.appendChild(p); } materiCache.forEach(function(m){ var k=byJudul[m.judul]; if(k){ dimiliki++; if(k.tier==="emas") emas++; var info=infoTier(k.tier); var kurangHtml=(k.tier!=="emas")?"<div style='font-size:11px;margin-top:4px'>Kurang "+((k.tier==="perunggu"?90:100)-k.nilai)+" poin lagi menuju "+(k.tier==="perunggu"?"🥈 Perak":"🥇 Emas")+"!</div>":"<div style='font-size:11px;margin-top:4px'>✨ Koleksi sempurna!</div>"; var w=document.createElement("div"); w.className="kartu-flip"; w._kartuData={judul:m.judul, tier:k.tier, nilai:k.nilai}; w.onclick=function(){ balikKartu(this); }; var avFlip="🦄"; try{ avFlip=avatarSiswa()||"🦄"; }catch(e){} w.innerHTML="<div class='kartu-inner'><div class='kartu-face kartu-depan'><div class='kartu-desain "+k.tier+"'><div class='kd-plak'>🎓 MATERI</div><div class='kd-avatar-wrap'><div class='kd-avatar'>"+avFlip+"</div></div><div class='kd-nama' style='font-size:13px'>"+escapeHtml(m.judul)+"</div><div class='kd-pembatas'>─ ◆ ─</div><div class='kd-label'>NILAI TERBAIKKU</div><div class='kd-nilai' style='font-size:30px'>"+k.nilai+"</div><div><span class='kd-tier'>❧ "+info.emoji+" "+info.nama.toUpperCase()+" ❧</span></div>"+kurangHtml+"<div style='font-size:10px;opacity:.75;margin-top:6px'>👆 Ketuk untuk membalik!</div></div></div><div class='kartu-face kartu-belakang'><div class='kartu-desain "+k.tier+"'><div class='kd-plak'>SISTEM AJAR BY WITA GEMINI</div><div class='kd-avatar-wrap'><div class='kd-avatar'>"+avFlip+"</div></div><div class='kd-nama'>"+escapeHtml(siswaNama||"Siswa")+" • Kelas "+escapeHtml(siswaKelas||"")+"</div><div class='kd-materi'>"+escapeHtml(m.judul)+"</div><div class='kd-pembatas'>─ ◆ ─</div><div class='kd-label'>NILAIKU</div><div class='kd-nilai'>"+k.nilai+"</div><div><span class='kd-tier'>❧ "+info.emoji+" "+info.nama.toUpperCase()+" ❧</span></div><div><span class='pita'>✦ Belajar sambil bermain ✦</span></div><div class='tombol-kartu'><button type='button' style='background:#2563eb;color:#fff' onclick='unduhKartuKoleksi(this,event)'>⬇️ Unduh</button><button type='button' style='background:#16a34a;color:#fff' onclick='bagikanKartuKoleksi(this,event)'>📤 Bagikan</button></div></div></div></div>"; grid.appendChild(w); } else { var d=document.createElement("div"); d.className="kartu-flip"; d.innerHTML="<div class='kartu-inner'><div class='kartu-face kartu-depan'><div class='kartu-desain perak' style='opacity:.92'><div style='font-size:30px'>🔒</div><div class='kd-nama' style='font-size:13px'>"+escapeHtml(m.judul)+"</div><div class='kd-materi'>Nilai 80+ untuk membuka kartu ini!</div></div></div></div>"; grid.appendChild(d); } }); var ring=el("koleksi-ringkas"); if(ring) ring.textContent="Kamu punya "+dimiliki+" dari "+materiCache.length+" kartu • "+emas+" Kartu Emas 🥇"; var rb=el("kartu-beranda-teks"); if(rb) rb.textContent="🃏 Koleksi Kartuku: "+dimiliki+" dari "+materiCache.length+" kartu • "+emas+" Emas 🥇"; }
-function tampilkanTabBintang(){ var a=el("bintang-tab-wrap"), b=el("koleksi-tab-wrap"); if(a) a.style.display=""; if(b) b.style.display="none"; var bb=el("tab-btn-bintang"), kb=el("tab-btn-koleksi"); if(bb) bb.classList.add("btn-green"); if(kb) kb.classList.remove("btn-green"); }
+function tampilkanTabBintang(){ var a=el("bintang-tab-wrap"), b=el("koleksi-tab-wrap"); if(a) a.style.display=""; if(b) b.style.display="none"; var bb=el("tab-btn-bintang"), kb=el("tab-btn-koleksi"); if(bb) bb.classList.add("btn-green"); if(kb) kb.classList.remove("btn-green"); try{ segarkanTampilanBintang(); }catch(e){} }
 function tampilkanTabKoleksi(){ var a=el("bintang-tab-wrap"), b=el("koleksi-tab-wrap"); if(a) a.style.display="none"; if(b) b.style.display=""; var bb=el("tab-btn-bintang"), kb=el("tab-btn-koleksi"); if(bb) bb.classList.remove("btn-green"); if(kb) kb.classList.add("btn-green"); tampilkanKoleksiKartu(); }
 function bukaKoleksiKartu(){ navKe("bintang"); tampilkanTabKoleksi(); }
 
@@ -1189,6 +1202,7 @@ function isiHalamanBintang(){
   if(next){ if(pt) pt.textContent="Kurang "+(next-total)+" bintang lagi ke level berikutnya!"; if(pb) pb.style.width=Math.round((total/next)*100)+"%"; }
   else { if(pt) pt.textContent="Level tertinggi! Kamu Bintang Get Up! 🎉"; if(pb) pb.style.width="100%"; }
   var lst=el("bintang-level-list"); if(lst){ while(lst.firstChild) lst.removeChild(lst.firstChild); ["🌱 Bintang Baru — 0 bintang","✨ Bintang Bersinar — 5 bintang","🌟 Bintang Hebat — 15 bintang","⭐ Bintang Get Up! — 30 bintang"].forEach(function(t){ var p=document.createElement("p"); p.className="sub"; p.style.fontWeight="700"; p.textContent=t; lst.appendChild(p); }); var pm=el("permata-besar"); if(pm) pm.textContent="💎 "+hitungPermata(); var pt2=el("permata-teks"); if(pt2) pt2.textContent="Tiap 10 ⭐ = 1 💎 • Sudah ditukar: "+(ambilBintang().permata_pakai||0)+" 💎"; }
+  tampilkanTokoHadiah(); tampilkanKuponku();
 }
 function isiHalamanProfil(){
   var n1=el("profil-nama"); if(n1) n1.textContent="👦 Nama: "+siswaNama;
@@ -1277,12 +1291,12 @@ function unduhKartuBagi(){
 }
 /* V.23 - Bintang & Lencana: hanya dari TES asli (bukan Latihan / Ulangi). Tersimpan per siswa (kode) di HP/browser siswa. */
 function kunciBintang(){ return "bintang_"+(kodeSiswaAktif||siswaNama||"anon"); }
-function ambilBintang(){ try{ var v=JSON.parse(localStorage.getItem(kunciBintang())||"null"); if(v&&typeof v.total==="number"){ if(typeof v.streak!=="number") v.streak=0; if(typeof v.terakhir_main!=="string") v.terakhir_main=""; if(typeof v.permata_pakai!=="number") v.permata_pakai=0; return v; } }catch(e){} return {total:0, streak:0, terakhir_main:"", permata_pakai:0}; }
+function ambilBintang(){ try{ var v=JSON.parse(localStorage.getItem(kunciBintang())||"null"); if(v&&typeof v.total==="number"){ if(typeof v.streak!=="number") v.streak=0; if(typeof v.terakhir_main!=="string") v.terakhir_main=""; if(typeof v.permata_pakai!=="number") v.permata_pakai=0; if(!Array.isArray(v.kupon)) v.kupon=[]; return v; } }catch(e){} return {total:0, streak:0, terakhir_main:"", permata_pakai:0, kupon:[]}; }
 function tambahBintang(n){ if(!n) return ambilBintang(); var d=ambilBintang(); d.total+=n; try{ localStorage.setItem(kunciBintang(), JSON.stringify(d)); }catch(e){} sbKirimBintang(d.total); /* V.54b - langsung dorong ke brankas */ return d; }
 
 /* ================= V.55 - MODE DUOLINGO: Api Main, Permata, Kelinci ================= */
 /* V.55 - LABEL VERSI: 1 tempat aja! Tiap upgrade, cukup ganti angka di sini -> badge + tab browser ikut berubah */
-var VERSI_APLIKASI="V.55";
+var VERSI_APLIKASI="V.56";
 function tampilkanVersi(){ try{ var lv=el("label-versi"); if(lv) lv.textContent=VERSI_APLIKASI; document.title="Sistem ajar By Wita Gemini — "+VERSI_APLIKASI; }catch(e){} }
 function tanggalHariIniISO(){ var n=new Date(); return n.getFullYear()+"-"+("0"+(n.getMonth()+1)).slice(-2)+"-"+("0"+n.getDate()).slice(-2); }
 function hitungPermata(){ var d=ambilBintang(); return Math.max(0, Math.floor((d.total||0)/10)-(d.permata_pakai||0)); }
@@ -1304,7 +1318,7 @@ function sbKirimBintangObj(d){
     if(!kode) return;
     var url=SUPABASE_URL+"/rest/v1/bintang?on_conflict=kode_siswa";
     var head={"apikey":SUPABASE_KEY,"Authorization":"Bearer "+SUPABASE_KEY,"Content-Type":"application/json","Prefer":"return=minimal,resolution=merge-duplicates"};
-    var penuh={kode_siswa:kode,nama_siswa:siswaNama||"",kelas:siswaKelas||"",total:d.total||0,streak:d.streak||0,terakhir_main:d.terakhir_main||"",permata_pakai:d.permata_pakai||0};
+    var penuh={kode_siswa:kode,nama_siswa:siswaNama||"",kelas:siswaKelas||"",total:d.total||0,streak:d.streak||0,terakhir_main:d.terakhir_main||"",permata_pakai:d.permata_pakai||0,kupon:d.kupon||[]};
     var mini={kode_siswa:kode,nama_siswa:siswaNama||"",kelas:siswaKelas||"",total:d.total||0};
     fetch(url,{method:"POST",headers:head,body:JSON.stringify(penuh)}).then(function(r){ if(!r.ok){ fetch(url,{method:"POST",headers:head,body:JSON.stringify(mini)}).catch(function(){}); } }).catch(function(){});
   }catch(e){}
@@ -1328,17 +1342,122 @@ function rayakanHasilTes(hasilKartu, levelLama, levelBaru, permataBaru, infoApi)
     else { kelinciAcak(); }
   }catch(e){}
 }
-function tukarHadiah(){
+/* ================= V.56 - TOKO HADIAH + KUPON ================= */
+/* Harga: semua kupon 5 permata. Kupon ngikutin AKUN (kayak kartu & bintang).
+   Alur: Toko (pilih jenis + jumlah) -> Tukar -> Kuponku (Klaim / Batalkan).
+   Opsi B (disepakati): kupon sejenis DIGABUNG tampilnya (x N), Klaim/Batalkan 1 per pencet. */
+var HARGA_KUPON=5;
+var DAFTAR_HADIAH=[
+  {jenis:"eskrim", emoji:"🍦", nama:"Kupon Es Krim", nilai:"1 Es Krim"},
+  {jenis:"pulsa", emoji:"📱", nama:"Kupon Pulsa 10rb", nilai:"Pulsa Rp10.000"},
+  {jenis:"uang", emoji:"💵", nama:"Kupon Uang 10.000", nilai:"Uang Rp10.000"}
+];
+var jumlahTukar={eskrim:1, pulsa:1, uang:1}; /* jumlah di kotak tiap baris Toko */
+function cariHadiah(jenis){ for(var i=0;i<DAFTAR_HADIAH.length;i++){ if(DAFTAR_HADIAH[i].jenis===jenis) return DAFTAR_HADIAH[i]; } return null; }
+function simpanBintang(d){ try{ localStorage.setItem(kunciBintang(), JSON.stringify(d)); }catch(e){} sbKirimBintangObj(d); }
+function tampilkanPopupPesan(judul, isiHtml){ var pop=el("popup-kartu"), j=el("popup-kartu-judul"), isi=el("popup-kartu-isi"); if(pop&&j&&isi){ j.textContent=judul; isi.innerHTML=isiHtml; pop.style.display="flex"; } }
+function popupPermataKurang(butuh){
+  var g=hitungPermata();
+  tampilkanPopupPesan("😢 Permatamu tidak cukup!", "<p style='line-height:1.8;text-align:center'>Kamu punya <b>"+g+" 💎</b>, butuh <b>"+butuh+" 💎</b>.<br>Kumpulin bintang lagi yuk, dikit lagi! 💪</p>");
+}
+function ubahJumlah(jenis, delta){
+  var g=hitungPermata();
+  var baru=(jumlahTukar[jenis]||1)+delta;
+  if(baru<1) baru=1;
+  if(delta>0 && baru*HARGA_KUPON>g){ popupPermataKurang(baru*HARGA_KUPON); return; }
+  jumlahTukar[jenis]=baru;
+  tampilkanTokoHadiah();
+}
+function ketikJumlah(jenis, nilai){
+  var n=parseInt(nilai,10); if(isNaN(n)||n<1) n=1;
+  jumlahTukar[jenis]=n;
+  tampilkanTokoHadiah();
+}
+function tampilkanTokoHadiah(){
+  var wrap=el("toko-hadiah-wrap"); if(!wrap) return;
+  var g=hitungPermata();
+  var html='<h2 style="font-size:18px;text-align:center">🎁 Toko Hadiah</h2><p class="sub" style="text-align:center">Permatamu: <b>'+g+' 💎</b> • Semua kupon harga '+HARGA_KUPON+' 💎</p>';
+  html+='<table style="width:100%;border-collapse:collapse;font-size:14px"><tr style="color:#64748b;font-size:12px"><th style="text-align:left;padding:6px 4px">Jenis Kupon</th><th style="padding:6px 4px">Jumlah Tukar</th><th style="padding:6px 4px">Proses</th></tr>';
+  DAFTAR_HADIAH.forEach(function(h){
+    var j=jumlahTukar[h.jenis]||1;
+    var biaya=j*HARGA_KUPON;
+    var mentok=(j+1)*HARGA_KUPON>g;
+    var kurang=biaya>g;
+    html+='<tr style="border-top:1px solid #e2e8f0"><td style="padding:8px 4px"><b>'+h.emoji+' '+h.nama+'</b></td>';
+    html+='<td style="padding:8px 4px;text-align:center;white-space:nowrap"><button type="button" class="btn btn-small" onclick="ubahJumlah(\''+h.jenis+'\',-1)">➖</button> <input type="number" min="1" value="'+j+'" onchange="ketikJumlah(\''+h.jenis+'\',this.value)" style="width:52px;text-align:center;padding:6px;border:1px solid #cbd5e1;border-radius:8px;font-size:15px;font-weight:800"> <button type="button" class="btn btn-small" onclick="ubahJumlah(\''+h.jenis+'\',1)" style="'+(mentok?'opacity:.45':'')+'">➕</button><div style="font-size:11px;color:#64748b;margin-top:3px">= '+biaya+' 💎</div></td>';
+    html+='<td style="padding:8px 4px;text-align:center"><button type="button" class="btn btn-green btn-small" onclick="tukarKupon(\''+h.jenis+'\')" style="'+(kurang?'opacity:.45':'')+'">Tukar</button></td></tr>';
+  });
+  html+='</table><p class="hint" style="margin-top:8px">Tanya Ibu dulu ya sebelum pencet Tukar! Kalau Ibu bilang iya, baru tukar bareng-bareng! 🍦</p>';
+  wrap.innerHTML=html;
+}
+function tukarKupon(jenis){
   try{
-    var p=hitungPermata();
-    if(p<5){ alert("Permatamu masih "+p+" \uD83D\uDC8E, kurang "+(5-p)+" lagi! Semangat, dikit lagi dapet es krim! \uD83D\uDCAA\uD83C\uDF66"); return; }
-    if(!confirm("Tukar 5 \uD83D\uDC8E jadi 1 Kupon Es Krim? \uD83C\uDF66")) return;
-    var d=ambilBintang(); d.permata_pakai=(d.permata_pakai||0)+5;
-    try{ localStorage.setItem(kunciBintang(), JSON.stringify(d)); }catch(e){}
-    sbKirimBintangObj(d); segarkanTampilanBintang();
-    var pop=el("popup-kartu"), judul=el("popup-kartu-judul"), isi=el("popup-kartu-isi");
-    if(pop&&judul&&isi){ judul.textContent="\uD83C\uDFAB KUPON ES KRIM!"; isi.innerHTML="<p style='line-height:1.9;text-align:center;font-size:18px'>\uD83C\uDF66\uD83C\uDF66\uD83C\uDF66<br><b>1 Kupon Es Krim!</b><br>Tunjukin ke Ibu ya, Chaca!<br>Ibu janji kasih es krim! \uD83D\uDC96</p>"; pop.style.display="flex"; }
-    kelinciNgomong("YAAAY! \uD83C\uDF66 Kupon es krim berhasil ditukar! Lari ke Ibu, tunjukin kuponnya! \uD83D\uDC30\uD83D\uDC96");
+    var h=cariHadiah(jenis); if(!h) return;
+    var j=jumlahTukar[jenis]||1;
+    var g=hitungPermata();
+    var biaya=j*HARGA_KUPON;
+    if(biaya>g){ popupPermataKurang(biaya); return; }
+    if(!confirm("Udah tanya Ibu belum? "+h.emoji+"\n\nTukar "+biaya+" 💎 jadi "+j+" "+h.nama+"?\nKalau Ibu belum setuju, pencet BATAL dulu, tanya Ibu dulu ya!")) return;
+    var d=ambilBintang();
+    d.permata_pakai=(d.permata_pakai||0)+biaya;
+    for(var i=0;i<j;i++){ d.kupon.push({id:"K"+Date.now()+"_"+i+"_"+Math.floor(Math.random()*1000), jenis:jenis, dibuat:Date.now(), status:"aktif"}); }
+    simpanBintang(d);
+    jumlahTukar[jenis]=1;
+    segarkanTampilanBintang();
+    kelinciNgomong("YAAAY! 🎉 "+j+" "+h.nama+" berhasil ditukar! Lihat di Kuponku ya, terus tunjukin ke Ibu! 🐰💖");
+    var kw=el("kuponku-wrap"); if(kw) kw.scrollIntoView({behavior:"smooth", block:"start"});
+  }catch(e){}
+}
+function tampilkanKuponku(){
+  var wrap=el("kuponku-wrap"); if(!wrap) return;
+  var d=ambilBintang();
+  var aktif=(d.kupon||[]).filter(function(k){ return k.status==="aktif"; });
+  var riw=(d.kupon||[]).filter(function(k){ return k.status==="terklaim"; }).sort(function(a,b){ return (b.waktu||0)-(a.waktu||0); });
+  var html='<h2 style="font-size:18px;text-align:center">🎟️ Kuponku</h2>';
+  html+='<p class="sub" style="text-align:center">Kupon Aktif: <b>'+aktif.length+'</b> • Sudah Terklaim: <b>'+riw.length+'</b></p>';
+  if(aktif.length===0){
+    html+='<p class="sub" style="text-align:center">Belum ada kupon. Tuker permatamu di Toko Hadiah ya! 🎁</p>';
+  } else {
+    DAFTAR_HADIAH.forEach(function(h){
+      var n=aktif.filter(function(k){ return k.jenis===h.jenis; }).length; if(n<=0) return;
+      html+='<div style="border:1px solid #e2e8f0;border-radius:12px;padding:11px;margin:8px 0;background:#f8fafc"><div><b>'+h.emoji+' '+h.nama+'</b> <span style="background:#2563eb;color:#fff;border-radius:99px;padding:1px 8px;font-size:12px;font-weight:900">× '+n+'</span> <span style="font-size:12px;color:#b45309;font-weight:700">⏳ AKTIF</span></div><div class="row" style="margin-top:8px"><button type="button" class="btn btn-green btn-small" onclick="klaimKupon(\''+h.jenis+'\')">✅ Klaim 1</button><button type="button" class="btn btn-small" onclick="batalkanKupon(\''+h.jenis+'\')">↩ Batalkan 1</button></div></div>';
+    });
+  }
+  if(riw.length>0){
+    html+='<h3 style="font-size:14px;margin:14px 0 6px;text-align:center">✅ Riwayat Terklaim</h3>';
+    riw.slice(0,5).forEach(function(r){
+      var h=cariHadiah(r.jenis);
+      var tgl=""; try{ tgl=new Date(r.waktu||r.dibuat).toLocaleDateString("id-ID",{day:"numeric",month:"short",year:"numeric"}); }catch(e){}
+      html+='<p class="sub" style="text-align:left;margin:3px 0">✅ '+(h?h.emoji+" "+h.nama:"Kupon")+' — '+tgl+'</p>';
+    });
+  }
+  wrap.innerHTML=html;
+}
+function klaimKupon(jenis){
+  try{
+    var h=cariHadiah(jenis); if(!h) return;
+    if(!confirm("Beneran udah dikasih ke Chaca? "+h.emoji+"\n\n1 "+h.nama+" mau ditandai TERKLAIM.\nKalau belum dikasih, pencet BATAL dulu ya!")) return;
+    var d=ambilBintang();
+    var ketemu=false;
+    for(var i=0;i<d.kupon.length;i++){ if(d.kupon[i].jenis===jenis && d.kupon[i].status==="aktif"){ d.kupon[i].status="terklaim"; d.kupon[i].waktu=Date.now(); ketemu=true; break; } }
+    if(!ketemu) return;
+    simpanBintang(d);
+    segarkanTampilanBintang();
+    kelinciNgomong("Horeee! 🎉 1 "+h.nama+" udah diklaim! Makasih Ibu! 💖🐰");
+  }catch(e){}
+}
+function batalkanKupon(jenis){
+  try{
+    var h=cariHadiah(jenis); if(!h) return;
+    if(!confirm("Batalkan 1 "+h.nama+"? "+HARGA_KUPON+" 💎-nya balik ke Chaca ya.")) return;
+    var d=ambilBintang();
+    var ketemu=false;
+    for(var i=0;i<d.kupon.length;i++){ if(d.kupon[i].jenis===jenis && d.kupon[i].status==="aktif"){ d.kupon.splice(i,1); ketemu=true; break; } }
+    if(!ketemu) return;
+    d.permata_pakai=Math.max(0,(d.permata_pakai||0)-HARGA_KUPON);
+    simpanBintang(d);
+    segarkanTampilanBintang();
+    kelinciNgomong("Oke, 1 "+h.nama+" dibatalkan, "+HARGA_KUPON+" 💎 balik lagi! 😊🐰");
   }catch(e){}
 }
 /* ================= Akhir V.55 ================= */
