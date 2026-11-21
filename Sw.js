@@ -1,10 +1,14 @@
-/* V.47 - Service Worker Sistem Ajar: biar bisa di-Install jadi aplikasi.
-   File ini WAJIB ada di repo (seperti aplikasi keuangan dulu) supaya
-   Chrome mengizinkan tombol "Install aplikasi". */
-var CACHE = 'sistem-ajar-v47';
+/* V.47c - Service Worker Sistem Ajar (tahan banting).
+   Dulu: caches.addAll() gagal total kalau 1 file saja tidak ada
+   (misal ikon-sistem-ajar.png salah nama) -> SW tidak ter-install ->
+   Chrome bilang "aplikasi ini tidak dapat diinstal".
+   Sekarang: tiap file disimpan satu-satu, yang gagal dilewati saja. */
+var CACHE = 'sistem-ajar-v47c';
 var FILE = ['Index.html', 'manifest.json', 'icon-192.png', 'icon-512.png', 'ikon-sistem-ajar.png'];
 self.addEventListener('install', function(e) {
-  e.waitUntil(caches.open(CACHE).then(function(c) { return c.addAll(FILE); }).then(function() { return self.skipWaiting(); }));
+  e.waitUntil(caches.open(CACHE).then(function(c) {
+    return Promise.all(FILE.map(function(f) { return c.add(f).catch(function(){}); }));
+  }).then(function() { return self.skipWaiting(); }));
 });
 self.addEventListener('activate', function(e) {
   e.waitUntil(caches.keys().then(function(keys) {

@@ -168,7 +168,7 @@ body.punya-nav .wrap{ padding-bottom:96px; }
 .kartu-desain .tombol-kartu{margin-top:6px;display:flex;gap:4px;justify-content:center}
 .kartu-desain .tombol-kartu button{font-size:10px;font-weight:800;border:none;border-radius:999px;padding:5px 8px;cursor:pointer}
 </style><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script></head><body>
-<div class="topbar"><div><h1>Sistem ajar By Wita Gemini <span style="font-size:11px;background:#16a34a;padding:2px 7px;border-radius:99px">ONLINE</span> <span style="font-size:11px;background:#fff;color:#2563eb;padding:2px 7px;border-radius:99px;font-weight:900">V.47b</span></h1><p id="top-sub">📷 Instagram: @krisnagita97</p></div><button type="button" onclick="logout()" id="btn-logout" class="hidden" style="width:auto;padding:9px 12px;font-size:13px;background:#fff;color:#2563eb;border:none;border-radius:10px;font-weight:800;cursor:pointer">Keluar</button></div>
+<div class="topbar"><div><h1>Sistem ajar By Wita Gemini <span style="font-size:11px;background:#16a34a;padding:2px 7px;border-radius:99px">ONLINE</span> <span style="font-size:11px;background:#fff;color:#2563eb;padding:2px 7px;border-radius:99px;font-weight:900">V.47c</span></h1><p id="top-sub">📷 Instagram: @krisnagita97</p></div><button type="button" onclick="logout()" id="btn-logout" class="hidden" style="width:auto;padding:9px 12px;font-size:13px;background:#fff;color:#2563eb;border:none;border-radius:10px;font-weight:800;cursor:pointer">Keluar</button></div>
 <div class="wrap">
 <div id="js-status">Memuat...</div>
 <div id="online-status">⏳ Menghubungkan ke Supabase...</div>
@@ -780,7 +780,14 @@ async function bagikanKartuKoleksi(btn, ev){ if(ev) ev.stopPropagation(); var d=
 var promptPasang=null;
 window.addEventListener('beforeinstallprompt', function(e){ e.preventDefault(); promptPasang=e; var b=el('pwa-btn'); if(b) b.textContent='📲 Pasang Aplikasi'; });
 function buatIkonPWA(){ try{ var c=document.createElement('canvas'); c.width=512; c.height=512; var x=c.getContext('2d'); var g=x.createLinearGradient(0,0,0,512); g.addColorStop(0,'#142c6b'); g.addColorStop(1,'#081736'); x.fillStyle=g; x.fillRect(0,0,512,512); x.strokeStyle='#e8b93a'; x.lineWidth=14; x.strokeRect(20,20,472,472); x.font='240px serif'; x.textAlign='center'; x.textBaseline='middle'; x.fillText('🦊',256,272); x.font='bold 44px sans-serif'; x.fillStyle='#f5d76e'; x.fillText('WITA GEMINI',256,440); return c.toDataURL('image/png'); }catch(err){ return ''; } }
-function pasangManifestPWA(){ try{ var link=document.createElement('link'); link.rel='apple-touch-icon'; link.href='ikon-sistem-ajar.png'; document.head.appendChild(link); if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js').catch(function(){}); } }catch(err){} }
+/* V.47c-PERBAIKAN - Instalasi: (1) pasangManifestPWA dulu TIDAK PERNAH dipanggil,
+   jadi Service Worker tidak terdaftar -> Chrome bilang "tidak dapat diinstal".
+   (2) pasangAplikasi() dulu TIDAK ADA, jadi tombol hijau tidak bergerak. Keduanya
+   sekarang dibuat + dipanggil di START. */
+var _promptPasang=null;
+function pasangManifestPWA(){ try{ var link=document.createElement('link'); link.rel='apple-touch-icon'; link.href='ikon-sistem-ajar.png'; document.head.appendChild(link); if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js').catch(function(){}); } window.addEventListener('beforeinstallprompt', function(e){ e.preventDefault(); _promptPasang=e; }); }catch(err){} }
+function pasangAplikasi(){ try{ if(_promptPasang){ _promptPasang.prompt(); _promptPasang.userChoice.then(function(){ _promptPasang=null; }); return; } var pj=el('pwa-petunjuk'); if(pj) pj.classList.remove('hidden'); }catch(err){ var pj2=el('pwa-petunjuk'); if(pj2) pj2.classList.remove('hidden'); } }
+function tutupPetunjukPWA(){ try{ var pj=el('pwa-petunjuk'); if(pj) pj.classList.add('hidden'); }catch(err){} }
 function loginSiswa(){
   var n=el("login-nama").value.trim(); var k=el("login-kelas").value.trim().toUpperCase(); var kode=el("login-kode-siswa").value.trim().toUpperCase().replace(/\s+/g,"");
   if(!n){ el("login-error").textContent="Isi nama siswa dulu ya!"; el("login-error").style.display="block"; el("login-nama").focus(); return; }
@@ -1477,6 +1484,7 @@ function downloadCSV(){
 try{
   var st=el("js-status"); if(st){ st.textContent="✅ JavaScript AKTIF - siap dipakai"; st.style.background="#f0fdf4"; st.style.color="#16a34a"; }
   seedJikaKosong().then(function(){ mulaiListener(); }); pulihkanLogin(); // resume HANYA dicek setelah siswa login, bukan saat halaman dibuka
+  pasangManifestPWA(); // V.47c: daftarkan Service Worker + siapkan tombol Pasang
   var btnMulai=null;
   var inp=el("login-nama"); if(inp){ inp.addEventListener("keydown", function(e){ if(e.key==="Enter") loginSiswa(); }); }
 }catch(e){ alert("Error: "+e.message); }
