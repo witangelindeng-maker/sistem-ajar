@@ -1,7 +1,7 @@
-/* V.56g - Service Worker Sistem Ajar: biar bisa di-Install jadi aplikasi.
+/* V.56h - Service Worker Sistem Ajar: biar bisa di-Install jadi aplikasi.
    File ini WAJIB ada di repo (seperti aplikasi keuangan dulu) supaya
    Chrome mengizinkan tombol "Install aplikasi". */
-var CACHE = 'sistem-ajar-v56g';
+var CACHE = 'sistem-ajar-v56h';
 var FILE = ['Index.html', 'manifest.json', 'icon-192.png', 'icon-512.png', 'ikon-sistem-ajar.png'];
 self.addEventListener('install', function(e) {
   e.waitUntil(caches.open(CACHE).then(function(c) { return c.addAll(FILE); }).then(function() { return self.skipWaiting(); }));
