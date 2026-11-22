@@ -24,7 +24,7 @@
 <meta property="og:image" content="https://witangelindeng-maker.github.io/sistem-ajar/ikon-sistem-ajar.png">
 <meta property="og:url" content="https://witangelindeng-maker.github.io/sistem-ajar/Index.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://witangelindeng-maker.github.io/sistem-ajar/ikon-sistem-ajar.png"><title>Sistem ajar By Wita Gemini — V.56k</title><!-- V.47 - Dikunci: V.46 + BISA DI-INSTALL: tambah file manifest.json + sw.js (seperti aplikasi keuangan dulu) + ikon 192 & 512. Tombol Install aplikasi di Chrome kini bisa dipakai, ikon buku nempel. <!-- V.46 - Dikunci: V.45 + IKON BUKU NEMPEL: ikon aplikasi resmi diganti jadi buku tersenyum (file ikon-sistem-ajar.png). Dipakai untuk Install/PWA, Tambah ke Layar Utama, tab browser, dan preview WhatsApp (og:image). <!-- V.45 - Dikunci: V.43 + (1) NAVIGASI GURU TIDAK HILANG: Buat Soal, Kembali ke Soal, Buka Materi tetap menampilkan navigasi bawah - tidak perlu logout. (2) INGAT LOGIN: login guru & siswa tersimpan di HP/browser, refresh tidak perlu login lagi. Logout menghapus simpanan. <!-- V.43 - Dikunci: V.42 + SUARA MATEMATIKA: tombol Dengarkan Soal kini membaca simbol dengan kata (x = kali, + = tambah, - = kurang, : = bagi, = = sama dengan, ... = berapa) agar tidak lagi terbaca ex / samadengan. Bahasa Inggris: x = times, = = equals. <!-- V.42 - Dikunci: V.41 + PINDAH TOTAL KE SUPABASE. Firebase DIHAPUS TOTAL dari aplikasi: SDK Firebase dicabut, config kuis-kelas4 dibuang, db + storage kini mesin Supabase (REST) dengan API mirip Firestore sehingga 20 titik kode lama tidak berubah. Tabel: materi, siswa, nilai (diperluas), kartu. File besar (800KB-10MB) kini ke Supabase Storage bucket "materi". Jembatan V.41 (sbKirimNilai) dihapus karena nilai kini LANGSUNG ke Supabase lewat mesin baru - tidak ada dobel. Kartu tetap localStorage + upsert Supabase. <!-- V.41 - Dikunci: V.40 + JEMBATAN SUPABASE: setiap nilai tes baru + kartu baru/naik juga dikirim ke Supabase (tabel nilai + kartu, proyek sistem-ajar). Firebase lama (kuis-kelas4) TETAP jalan, tidak disentuh - Supabase adalah gudang kedua + cadangan. Pengiriman fire-and-forget: kalau Supabase/internet bermasalah, tes tetap jalan normal. Status sinkron tampil di panel Nilai guru (#supabase-status). <!-- V.40 - Dikunci: V.39 + PWA (Progressive Web App): aplikasi bisa DIPASANG di HP siswa (ikon di layar utama, dibuka layar penuh kayak aplikasi beneran). Kartu "Pasang Aplikasinya" di Beranda siswa + tombol Pasang (pakai prompt browser kalau ada, kalau tidak tampil petunjuk iPhone Bagikan > Tambah ke Layar Utama / Android titik tiga > Tambahkan ke Layar Utama). Manifest + ikon aplikasi (navy+emas+rubah) dibuat otomatis di dalam file, tetap 1 file, tanpa server tambahan. <!-- V.39 - Dikunci: V.38 + KARTU PAKAI BINGKAI GAMBAR ASLI: latar kartu koleksi (depan, belakang, terkunci) + gambar unduh/bagi kini memakai bingkai filigree navy+Emas/Perak/Perunggu hasil desain (ditanam base64 di dalam file, jadi tetap 1 file & bisa diunduh offline). Teks/nilai/avatar tetap dinamis ditempel di atas bingkai. Ornamen CSS emoji dihapus supaya tidak menumpuk dengan bingkai gambar. <!-- V.38 - Dikunci: V.37 + KARTU TIDAK POLOS LAGI: DEPAN kartu koleksi yang tadinya gradient polos kini navy elegan full ornamen (bingkai ganda, sudut ❦, avatar dalam lingkaran cahaya tier, pembatas ◆, pita tier berlaurel ❧, kilau radial, bintik bintang). Belakang kartu + gambar unduh/bagi diperkaya ornamen yang sama. Kartu terkunci juga navy elegan. <!-- V.37 - Dikunci: V.36 + DESAIN KARTU ELEGAN: belakang kartu koleksi + gambar unduh/bagi jadi navy elegan + aksen Emas/Perak/Perunggu (bingkai laurel, plakat judul, avatar siswa besar bercahaya, nilai besar warna tier, pita footer hanya "Belajar sambil bermain") + hapus teks "Matematika & Bahasa Inggris" dari kartu bagi. Avatar kartu sudah ikut pilihan Profil (12 emoji) sejak V.33/V.36, jadi tiap siswa kartunya pakai avatarnya sendiri. <!-- V.36 - Dikunci: V.35 + KARTU FLIP: kartu koleksi bisa diketuk untuk membalik (depan = ringkasan tier, belakang = desain kartu full warna Emas/Perak/Perunggu + pita "Belajar sambil bermain") + tombol ⬇️ Unduh & 📤 Bagikan di belakang kartu (gambar PNG via html2canvas, iOS Share Sheet) + kartu unduh tersembunyi tanpa efek flip. <!-- V.35 - Dikunci: V.34 + KOLEKSI KARTU (80+ Perunggu, 90+ Perak, 100 Emas; 1 materi = 1 kartu, bisa naik tingkat; popup kartu baru/naik tingkat/tetap + popup penyemangat A di bawah 80; hanya mode Tes, Latihan tidak dapat kartu) + TAB Bintangku | Koleksi Kartu di halaman Bintangku + jalan pintas Koleksi di Beranda + kartu Emas berkilau. <!-- V.34 - Dikunci: V.33 + PETA PETUALANGAN (jalur pos materi, pos lulus jadi bintang, tombol Baca/Tes) + AVATAR BEREAKSI (pesan Yeay/coba lagi + lompat saat benar, di kuis & tantangan) + HUJAN BINTANG (jawab benar) + CONFETTI (nilai >=80 & lencana 7 hari). <!-- V.33 - Dikunci: V.32 + TANTANGAN HARIAN (1 soal/hari, streak, lencana Semangat 7 Hari) + AVATAR (12 pilihan, muncul di Beranda/Hasil/Kartu Bagi) + LISTENING (tombol Dengarkan Soal di kuis & tantangan, en-US untuk Bahasa Inggris, id-ID untuk lainnya). <!-- V.32 - Dikunci: V.31 + PERBAIKAN: Tombol kembali (dan semua tombol outline) tulisannya hilang saat tema warna aktif, karena aturan tema menimpa latar jadi warna tema sementara warna tulisan juga warna tema (biru di atas biru). Aturan tema untuk .btn-outline kini mengembalikan background:#fff sehingga tulisan kembali terlihat. <!-- V.31 - Dikunci: V.30 + PERBAIKAN: Daftar Materi kosong karena di tampilkanMateriGuru tertulis if(s.gambar) padahal variabel perulangan-nya m (s tidak ada -> error, daftar berhenti tergambar). Diperbaiki jadi if(m.gambar) / _th.src=m.gambar. Data tidak hilang. <!-- V.30 - Dikunci: V.29 + PERBAIKAN PENTING: tutup tag <div> Beranda guru yang tertinggal di V.29 (panel Materi/Soal/Nilai/Siswa tertelan di dalam Beranda sehingga layar blank saat pindah tab). Data tidak hilang, hanya tersembunyi. <!-- V.29 - Dikunci: V.28 + Bottom Navigation Guru 5 tombol (Beranda, Materi, Soal, Nilai, Siswa) + Beranda guru ringkasan (jumlah materi/soal/siswa/nilai + nilai terbaru) + Badge titik merah di Nilai kalau ada nilai baru belum dilihat (hilang begitu menu Nilai dibuka). Menu 4 tombol lama di halaman guru dihapus, diganti nav bawah. <!-- V.28 - Dikunci: V.27 + Perbaiki iPhone hitam blank: download materi & kartu di iPhone pakai Share Sheet (navigator.share + file, iOS 15+), bukan tab baru blob URL. Kalau Share Sheet tidak tersedia, tampil panel dengan link asli yang diketuk sendiri. Android/laptop tidak berubah. <!-- V.27 - Dikunci: V.26 + Download materi ramah iPhone (file data: dibuka di tab baru + petunjuk Simpan ke File, file Storage tetap tab baru) + Unduh Kartu ramah iPhone (buka tab baru + petunjuk Simpan ke Foto). Android/laptop tidak berubah. <!-- V.26 - Dikunci: V.25 + Bagikan Kartu ke WhatsApp lewat Share Sheet HP (gambar PNG langsung, teks ikut) + cadangan link teks WhatsApp di laptop + batal share tidak membuka WhatsApp. <!-- V.25 - Dikunci: V.24 + Beranda baru (sapaan + Lanjutkan Belajar + ringkasan + Materi Terbaru + Tes Terakhirmu + kata penyemangat, tombol Ulangi/Baca mengatur dropdown otomatis) + menu Latihan di bar bawah (6 tombol) + kartu atas 3 tombol dihapus. <!-- V.24 - Dikunci: V.23 + Bar Aplikasi bawah (Beranda/Tes/Materi/Bintangku/Profil) + Halaman Bintang & Profil + Tema Warna (Biru/Pink/Hijau/Ungu) + Kartu Hasil Bagi (WhatsApp + Unduh gambar buat IG Story). <!-- V.23 - Dikunci: V.22 + Mode Latihan (tanpa nilai) + Ulangi Soal yang Salah (selalu latihan, nilai asli tidak ditimpa) + Bintang & Lencana (100=3⭐, 80+=2⭐, 60+=1⭐, hanya dari tes asli). <!-- V.22 - Dikunci: V.21 + Anti-nyontek: acak opsi A-D tiap siswa (kunci ikut pindah) + Soal Bergambar (gambar di dalam soal, dikecilkan maks ~150KB, tampil di atas pilihan). <!-- V.21 - Dikunci: V.20 + Pembahasan hormati Enter (white-space: pre-line), label "Pembahasan:" di baris sendiri, spasi antarbaris 1.6. <!-- V.20 - Dikunci: V.19 + Pembahasan hanya tampil kalau jawaban siswa SALAH. Kalau benar, hanya tampil "Betul! Kamu hebat!" tanpa Pembahasan. <!-- V.19 - Dikunci: V.18 - kolom Umpan Balik dihapus, hanya Pembahasan saja (teks lama yang sempat salah isi otomatis pindah ke Pembahasan saat soal diedit). <!-- V.18 - Dikunci: V.17 + Perbaikan timer: semua jalur mulai tes (baru & lanjut) menjalankan timer; kolom baru Umpan Balik Salah per soal, tampil hanya kalau jawaban siswa salah, di atas Pembahasan. <!-- V.17 - Dikunci: V.16 + Mode Tes Interaktif: timer naik (tanpa batas waktu), jawaban PG langsung dinilai + terkunci begitu diklik (benar = hijau ✓, salah = merah ✗ + kunci benar ditampilkan), esai dinilai lewat tombol Cek Jawaban, Pembahasan tampil setelah menjawab (field baru per soal), Daftar Nomor Soal (grid 1-N, warna hijau/merah/biru), skor benar live, waktu tampil di hasil, progress tersimpan termasuk jawaban terkunci. <!-- V.16 - Dikunci: V.15 + cara penilaian esai ke-2: URUTAN KATA (untuk Susun Kata / Perbaiki Kalimat) — BENAR hanya kalau urutan kata jawaban siswa sama persis dengan kunci. Soal esai kini punya field caraNilai (kunci/urutan), dipilih di form Buat Soal. Soal lama tanpa caraNilai tetap dinilai pakai Kata Kunci. -->
+<meta name="twitter:image" content="https://witangelindeng-maker.github.io/sistem-ajar/ikon-sistem-ajar.png"><title>Sistem ajar By Wita Gemini — V.56q</title><!-- V.47 - Dikunci: V.46 + BISA DI-INSTALL: tambah file manifest.json + sw.js (seperti aplikasi keuangan dulu) + ikon 192 & 512. Tombol Install aplikasi di Chrome kini bisa dipakai, ikon buku nempel. <!-- V.46 - Dikunci: V.45 + IKON BUKU NEMPEL: ikon aplikasi resmi diganti jadi buku tersenyum (file ikon-sistem-ajar.png). Dipakai untuk Install/PWA, Tambah ke Layar Utama, tab browser, dan preview WhatsApp (og:image). <!-- V.45 - Dikunci: V.43 + (1) NAVIGASI GURU TIDAK HILANG: Buat Soal, Kembali ke Soal, Buka Materi tetap menampilkan navigasi bawah - tidak perlu logout. (2) INGAT LOGIN: login guru & siswa tersimpan di HP/browser, refresh tidak perlu login lagi. Logout menghapus simpanan. <!-- V.43 - Dikunci: V.42 + SUARA MATEMATIKA: tombol Dengarkan Soal kini membaca simbol dengan kata (x = kali, + = tambah, - = kurang, : = bagi, = = sama dengan, ... = berapa) agar tidak lagi terbaca ex / samadengan. Bahasa Inggris: x = times, = = equals. <!-- V.42 - Dikunci: V.41 + PINDAH TOTAL KE SUPABASE. Firebase DIHAPUS TOTAL dari aplikasi: SDK Firebase dicabut, config kuis-kelas4 dibuang, db + storage kini mesin Supabase (REST) dengan API mirip Firestore sehingga 20 titik kode lama tidak berubah. Tabel: materi, siswa, nilai (diperluas), kartu. File besar (800KB-10MB) kini ke Supabase Storage bucket "materi". Jembatan V.41 (sbKirimNilai) dihapus karena nilai kini LANGSUNG ke Supabase lewat mesin baru - tidak ada dobel. Kartu tetap localStorage + upsert Supabase. <!-- V.41 - Dikunci: V.40 + JEMBATAN SUPABASE: setiap nilai tes baru + kartu baru/naik juga dikirim ke Supabase (tabel nilai + kartu, proyek sistem-ajar). Firebase lama (kuis-kelas4) TETAP jalan, tidak disentuh - Supabase adalah gudang kedua + cadangan. Pengiriman fire-and-forget: kalau Supabase/internet bermasalah, tes tetap jalan normal. Status sinkron tampil di panel Nilai guru (#supabase-status). <!-- V.40 - Dikunci: V.39 + PWA (Progressive Web App): aplikasi bisa DIPASANG di HP siswa (ikon di layar utama, dibuka layar penuh kayak aplikasi beneran). Kartu "Pasang Aplikasinya" di Beranda siswa + tombol Pasang (pakai prompt browser kalau ada, kalau tidak tampil petunjuk iPhone Bagikan > Tambah ke Layar Utama / Android titik tiga > Tambahkan ke Layar Utama). Manifest + ikon aplikasi (navy+emas+rubah) dibuat otomatis di dalam file, tetap 1 file, tanpa server tambahan. <!-- V.39 - Dikunci: V.38 + KARTU PAKAI BINGKAI GAMBAR ASLI: latar kartu koleksi (depan, belakang, terkunci) + gambar unduh/bagi kini memakai bingkai filigree navy+Emas/Perak/Perunggu hasil desain (ditanam base64 di dalam file, jadi tetap 1 file & bisa diunduh offline). Teks/nilai/avatar tetap dinamis ditempel di atas bingkai. Ornamen CSS emoji dihapus supaya tidak menumpuk dengan bingkai gambar. <!-- V.38 - Dikunci: V.37 + KARTU TIDAK POLOS LAGI: DEPAN kartu koleksi yang tadinya gradient polos kini navy elegan full ornamen (bingkai ganda, sudut ❦, avatar dalam lingkaran cahaya tier, pembatas ◆, pita tier berlaurel ❧, kilau radial, bintik bintang). Belakang kartu + gambar unduh/bagi diperkaya ornamen yang sama. Kartu terkunci juga navy elegan. <!-- V.37 - Dikunci: V.36 + DESAIN KARTU ELEGAN: belakang kartu koleksi + gambar unduh/bagi jadi navy elegan + aksen Emas/Perak/Perunggu (bingkai laurel, plakat judul, avatar siswa besar bercahaya, nilai besar warna tier, pita footer hanya "Belajar sambil bermain") + hapus teks "Matematika & Bahasa Inggris" dari kartu bagi. Avatar kartu sudah ikut pilihan Profil (12 emoji) sejak V.33/V.36, jadi tiap siswa kartunya pakai avatarnya sendiri. <!-- V.36 - Dikunci: V.35 + KARTU FLIP: kartu koleksi bisa diketuk untuk membalik (depan = ringkasan tier, belakang = desain kartu full warna Emas/Perak/Perunggu + pita "Belajar sambil bermain") + tombol ⬇️ Unduh & 📤 Bagikan di belakang kartu (gambar PNG via html2canvas, iOS Share Sheet) + kartu unduh tersembunyi tanpa efek flip. <!-- V.35 - Dikunci: V.34 + KOLEKSI KARTU (80+ Perunggu, 90+ Perak, 100 Emas; 1 materi = 1 kartu, bisa naik tingkat; popup kartu baru/naik tingkat/tetap + popup penyemangat A di bawah 80; hanya mode Tes, Latihan tidak dapat kartu) + TAB Bintangku | Koleksi Kartu di halaman Bintangku + jalan pintas Koleksi di Beranda + kartu Emas berkilau. <!-- V.34 - Dikunci: V.33 + PETA PETUALANGAN (jalur pos materi, pos lulus jadi bintang, tombol Baca/Tes) + AVATAR BEREAKSI (pesan Yeay/coba lagi + lompat saat benar, di kuis & tantangan) + HUJAN BINTANG (jawab benar) + CONFETTI (nilai >=80 & lencana 7 hari). <!-- V.33 - Dikunci: V.32 + TANTANGAN HARIAN (1 soal/hari, streak, lencana Semangat 7 Hari) + AVATAR (12 pilihan, muncul di Beranda/Hasil/Kartu Bagi) + LISTENING (tombol Dengarkan Soal di kuis & tantangan, en-US untuk Bahasa Inggris, id-ID untuk lainnya). <!-- V.32 - Dikunci: V.31 + PERBAIKAN: Tombol kembali (dan semua tombol outline) tulisannya hilang saat tema warna aktif, karena aturan tema menimpa latar jadi warna tema sementara warna tulisan juga warna tema (biru di atas biru). Aturan tema untuk .btn-outline kini mengembalikan background:#fff sehingga tulisan kembali terlihat. <!-- V.31 - Dikunci: V.30 + PERBAIKAN: Daftar Materi kosong karena di tampilkanMateriGuru tertulis if(s.gambar) padahal variabel perulangan-nya m (s tidak ada -> error, daftar berhenti tergambar). Diperbaiki jadi if(m.gambar) / _th.src=m.gambar. Data tidak hilang. <!-- V.30 - Dikunci: V.29 + PERBAIKAN PENTING: tutup tag <div> Beranda guru yang tertinggal di V.29 (panel Materi/Soal/Nilai/Siswa tertelan di dalam Beranda sehingga layar blank saat pindah tab). Data tidak hilang, hanya tersembunyi. <!-- V.29 - Dikunci: V.28 + Bottom Navigation Guru 5 tombol (Beranda, Materi, Soal, Nilai, Siswa) + Beranda guru ringkasan (jumlah materi/soal/siswa/nilai + nilai terbaru) + Badge titik merah di Nilai kalau ada nilai baru belum dilihat (hilang begitu menu Nilai dibuka). Menu 4 tombol lama di halaman guru dihapus, diganti nav bawah. <!-- V.28 - Dikunci: V.27 + Perbaiki iPhone hitam blank: download materi & kartu di iPhone pakai Share Sheet (navigator.share + file, iOS 15+), bukan tab baru blob URL. Kalau Share Sheet tidak tersedia, tampil panel dengan link asli yang diketuk sendiri. Android/laptop tidak berubah. <!-- V.27 - Dikunci: V.26 + Download materi ramah iPhone (file data: dibuka di tab baru + petunjuk Simpan ke File, file Storage tetap tab baru) + Unduh Kartu ramah iPhone (buka tab baru + petunjuk Simpan ke Foto). Android/laptop tidak berubah. <!-- V.26 - Dikunci: V.25 + Bagikan Kartu ke WhatsApp lewat Share Sheet HP (gambar PNG langsung, teks ikut) + cadangan link teks WhatsApp di laptop + batal share tidak membuka WhatsApp. <!-- V.25 - Dikunci: V.24 + Beranda baru (sapaan + Lanjutkan Belajar + ringkasan + Materi Terbaru + Tes Terakhirmu + kata penyemangat, tombol Ulangi/Baca mengatur dropdown otomatis) + menu Latihan di bar bawah (6 tombol) + kartu atas 3 tombol dihapus. <!-- V.24 - Dikunci: V.23 + Bar Aplikasi bawah (Beranda/Tes/Materi/Bintangku/Profil) + Halaman Bintang & Profil + Tema Warna (Biru/Pink/Hijau/Ungu) + Kartu Hasil Bagi (WhatsApp + Unduh gambar buat IG Story). <!-- V.23 - Dikunci: V.22 + Mode Latihan (tanpa nilai) + Ulangi Soal yang Salah (selalu latihan, nilai asli tidak ditimpa) + Bintang & Lencana (100=3⭐, 80+=2⭐, 60+=1⭐, hanya dari tes asli). <!-- V.22 - Dikunci: V.21 + Anti-nyontek: acak opsi A-D tiap siswa (kunci ikut pindah) + Soal Bergambar (gambar di dalam soal, dikecilkan maks ~150KB, tampil di atas pilihan). <!-- V.21 - Dikunci: V.20 + Pembahasan hormati Enter (white-space: pre-line), label "Pembahasan:" di baris sendiri, spasi antarbaris 1.6. <!-- V.20 - Dikunci: V.19 + Pembahasan hanya tampil kalau jawaban siswa SALAH. Kalau benar, hanya tampil "Betul! Kamu hebat!" tanpa Pembahasan. <!-- V.19 - Dikunci: V.18 - kolom Umpan Balik dihapus, hanya Pembahasan saja (teks lama yang sempat salah isi otomatis pindah ke Pembahasan saat soal diedit). <!-- V.18 - Dikunci: V.17 + Perbaikan timer: semua jalur mulai tes (baru & lanjut) menjalankan timer; kolom baru Umpan Balik Salah per soal, tampil hanya kalau jawaban siswa salah, di atas Pembahasan. <!-- V.17 - Dikunci: V.16 + Mode Tes Interaktif: timer naik (tanpa batas waktu), jawaban PG langsung dinilai + terkunci begitu diklik (benar = hijau ✓, salah = merah ✗ + kunci benar ditampilkan), esai dinilai lewat tombol Cek Jawaban, Pembahasan tampil setelah menjawab (field baru per soal), Daftar Nomor Soal (grid 1-N, warna hijau/merah/biru), skor benar live, waktu tampil di hasil, progress tersimpan termasuk jawaban terkunci. <!-- V.16 - Dikunci: V.15 + cara penilaian esai ke-2: URUTAN KATA (untuk Susun Kata / Perbaiki Kalimat) — BENAR hanya kalau urutan kata jawaban siswa sama persis dengan kunci. Soal esai kini punya field caraNilai (kunci/urutan), dipilih di form Buat Soal. Soal lama tanpa caraNilai tetap dinilai pakai Kata Kunci. -->
 
 
 <style>
@@ -372,9 +372,14 @@ body.punya-nav .wrap{ padding-bottom:96px; }
 <div class="card"><button type="button" class="btn btn-outline btn-small" onclick="kembaliKeSoal()">← Kembali ke Soal</button>
 <h2 id="buat-soal-judul" style="margin-top:14px">✍️ Buat Soal</h2><p class="sub" id="buat-soal-info"></p></div>
 <div class="card"><h2 style="font-size:18px">✍️ Buat Soal Baru</h2>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 4px">
+  <button type="button" class="btn btn-green" id="btn-mode-manual" onclick="setModeBuatSoal('manual')">✍️ Manual</button>
+  <button type="button" class="btn" id="btn-mode-somatis" onclick="setModeBuatSoal('somatis')">📋 Somatis (Otomatis)</button>
+</div>
 <label>Soal ini untuk Subbab:</label><select id="soal-subbab" onchange="onPilihSubbabGuru()"></select>
 <div id="wrap-soal-tes" style="display:none"><label>Tes (nama bebas):</label><select id="soal-tes"></select></div>
 <p class="hint" style="text-align:left">Soal tersimpan ke Sub Bab ini. Semua soal di Sub Bab ini jadi satu bank soal untuk worksheet + tes siswa.</p>
+<div id="wrap-form-manual">
 <label style="color:#1d4ed8">Jenis Soal — Pilih dulu, Esai atau Pilihan Ganda:</label><select id="soal-jenis" onchange="onJenisSoal()" style="border:2px solid #2563eb;font-weight:800"><option value="pg">1. Pilihan Ganda (A-D, langsung dinilai otomatis)</option><option value="esai">2. Esai / Uraian (siswa ketik jawaban, dikoreksi guru)</option></select><p class="hint" id="hint-jenis-soal">1 materi bisa campur: ada soal Pilihan Ganda + ada soal Esai = jadi Tes Kombinasi. Kalau semua soalnya PG = Tes Pilihan Ganda. Kalau semua Esai = Tes Esai.</p>
 <label>Soal / Pertanyaan:</label><textarea id="soal-tanya" placeholder="Tulis soal di sini..."></textarea>
 <label>Gambar Soal (opsional):</label><input type="file" id="soal-gambar" accept="image/*" onchange="if(this.files[0]) kompresGambarSoal(this.files[0])"><div id="preview-gambar-soal"></div><p class="hint">Gambar tampil di atas pilihan jawaban. Otomatis dikecilkan (maks ~150KB) supaya tidak berat. Kosongkan kalau soal tidak pakai gambar.</p>
@@ -386,6 +391,36 @@ body.punya-nav .wrap{ padding-bottom:96px; }
 </div><div id="box-esai" class="hidden"><label>Kunci Jawaban Esai — dinilai dari kata kunci (tidak harus persis):</label><textarea id="soal-kunci-esai" placeholder="Contoh: My mother is a teacher. Tulis jawaban yang diharapkan — sesingkat mungkin, hanya kata yang wajib ada."></textarea><label style="margin-top:10px">Cara Penilaian Esai:</label><select id="soal-cara-nilai"><option value="kunci">1. Kata Kunci — BENAR kalau minimal 60% kata kunci muncul (untuk Terjemahkan / Lengkapi / Jawab Pertanyaan)</option><option value="urutan">2. Urutan Kata — BENAR kalau urutan katanya persis sama dengan kunci (untuk Susun Kata / Perbaiki Kalimat)</option></select><p class="hint">Untuk Susun Kata / Perbaiki Kalimat, pilih "Urutan Kata". Soal ditulis seperti biasa di atas (misal: "Susun kata-kata ini menjadi 1 kalimat yang benar: usually / I / at 6 o'clock / get up / ."), kunci = kalimat yang benar.</p><p class="hint">Esai dinilai OTOMATIS dari kata kunci: BENAR kalau minimal 60% kata kunci muncul di jawaban siswa. Huruf besar/kecil, tanda baca, dan kata a/an/the tidak dihitung. I'm = I am, don't = do not. Sinonim: tulis mom/mother (salah satu diterima). Kata opsional: tulis dalam kurung, contoh: I (am) happy. Contoh: kunci = My mother is a teacher → siswa jawab "My mother is teacher" / "mother is a teacher" = BENAR. Kalau ragu, guru bisa ubah di tab Nilai Siswa.</p></div><label>Pembahasan (opsional) — hanya tampil kalau jawaban siswa SALAH:</label><textarea id="soal-pembahasan" placeholder="Contoh: Angka 2 di ribuan, 3 di ratusan, 4 di puluhan, dan 5 di satuan. Tulis kenapa jawabannya benar. Kalau kosong, siswa hanya melihat Betul / Belum tepat."></textarea><p class="hint">Pembahasan hanya muncul kalau jawaban siswa SALAH, dan baru muncul SETELAH siswa menjawab — jadi tidak bisa dicontek sebelum menjawab. Kalau jawabannya BENAR, siswa hanya melihat "Betul! Kamu hebat!". Tekan Enter di kolom ini untuk membuat baris baru — baris baru tampil persis seperti itu ke siswa.</p><button type="button" class="btn btn-green" id="btn-simpan-soal" onclick="tambahSoal()" style="margin-top:14px">💾 Simpan Soal Ini (Online)</button>
 <button type="button" class="btn btn-gray hidden" id="btn-batal-edit" onclick="batalEditSoal()" style="margin-top:10px">❌ Batal Edit - Kembali ke Buat Soal Baru</button><p id="soal-error" class="error"></p>
 <p id="label-edit-soal" class="hidden" style="text-align:center;font-weight:800;color:#ea580c;background:#fff7ed;border:1px solid #fed7aa;padding:10px;border-radius:10px;margin-top:10px">✏️ MODE EDIT: Kamu sedang mengedit soal lama. Klik "Update Soal" untuk menyimpan perubahan.</p></div>
+<div id="wrap-form-somatis" class="hidden">
+<div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;padding:10px;margin:6px 0;font-size:13px;line-height:1.65">
+<b>📋 Mode Somatis — Tempel soal, langsung jadi soal!</b><br>
+Tulis / tempel soal pakai format ini. 1 soal = 1 blok, antar soal dipisah garis <b>---</b> (3 strip). Somatis otomatis bedain PG & Esai: ada A-D = PG, ada KUNCI ESAI = Esai. Boleh campur PG + Esai dalam 1x paste.<br>
+<span style="display:block;background:#fff;border:1px dashed #93c5fd;border-radius:8px;padding:8px;margin:6px 0;font-family:monospace;font-size:12px;white-space:pre-line">PG:
+TANYA: Berapa 2 + 3?
+A: 4
+B: 5
+C: 6
+D: 7
+KUNCI: B
+UMPAN BALIK: 2 + 3 = 5, jadi jawabannya B.
+---
+ESAI:
+TANYA: Tuliskan semua faktor dari 18.
+KUNCI ESAI: 1, 2, 3, 6, 9, 18
+UMPAN BALIK: Faktor 18 adalah bilangan yang habis membagi 18.</span>
+<b>Aturan PG:</b> TANYA, A, B, C, D, KUNCI wajib ada. <b>Aturan Esai:</b> TANYA + KUNCI ESAI wajib ada. UMPAN BALIK boleh kosong.
+</div>
+<label>Tempel Soal-Soal Di Sini:</label>
+<textarea id="somatis-teks" rows="12" placeholder="TANYA: ...&#10;A: ...&#10;B: ...&#10;C: ...&#10;D: ...&#10;KUNCI: B&#10;UMPAN BALIK: ...&#10;---&#10;TANYA: ..."></textarea>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+<button type="button" class="btn btn-green" onclick="pratinjauSomatis()">👀 Ubah Jadi Soal (Pratinjau)</button>
+<button type="button" class="btn btn-gray" onclick="contohSomatis()">📄 Lihat Contoh</button>
+<button type="button" class="btn btn-gray" onclick="bersihkanSomatis()">🧹 Bersihkan</button>
+</div>
+<p id="somatis-error" class="error" style="display:none"></p>
+<div id="somatis-preview" style="margin-top:12px"></div>
+<button type="button" class="btn btn-green hidden" id="btn-simpan-somatis" onclick="simpanSomatis()" style="margin-top:10px">💾 Simpan Semua Soal Ini (Online)</button>
+</div></div>
 <div class="card"><h2 style="font-size:18px">📝 Daftar Soal di Sub Bab Ini</h2><div id="list-soal-materi"></div></div>
 </div>
 <div id="bottom-nav" class="bottom-nav hidden"><button type="button" class="btn btn-gray" onclick="geser(-1)" id="b-prev">Sebelumnya</button><button type="button" class="btn" onclick="geser(1)" id="b-next">Selanjutnya</button></div>
@@ -908,7 +943,8 @@ function avatarSiswa(){ try{ return localStorage.getItem("avatar_"+kunciSiswa())
 function pilihAvatar(a){ try{ localStorage.setItem("avatar_"+kunciSiswa(), a); }catch(e){} tampilkanAvatarPicker(); segarkanAvatar(); segarkanKarakterPojok(); }
 function segarkanAvatar(){ var av=avatarSiswa(); var h1=el("siswa-halo"); if(h1&&siswaNama) h1.textContent=av+" Halo, "+siswaNama+"!"; var ra=el("res-avatar"); if(ra) ra.textContent=av; var ka=el("kb-avatar"); if(ka) ka.textContent=av; }
 function tampilkanAvatarPicker(){ var w=el("avatar-picker"); if(!w) return; while(w.firstChild) w.removeChild(w.firstChild); var av=avatarSiswa(); AVATAR_LIST.forEach(function(a){ var b=document.createElement("button"); b.type="button"; b.textContent=a; b.style.cssText="font-size:30px;border:"+(a===av?"3px solid #2563eb":"1px solid #e2e8f0")+";background:"+(a===av?"#dbeafe":"#fff")+";border-radius:14px;padding:8px 6px;cursor:pointer"; b.onclick=(function(x){ return function(){ pilihAvatar(x); }; })(a); w.appendChild(b); }); }
-function ubahKeBahasaLisan(teks, lang){ var t=String(teks||''); if((lang||'id-ID').indexOf('en')===0){ t=t.replace(/\u00d7/g,' times ').replace(/\*/g,' times '); t=t.replace(/\bx\b/gi,' times '); t=t.replace(/\+/g,' plus ').replace(/=/g,' equals ').replace(/\u00f7/g,' divided by '); t=t.replace(/\s:\s/g,' divided by '); t=t.replace(/%/g,' percent '); t=t.replace(/\.{2,}/g,' what'); t=t.replace(/\s-\s/g,' minus '); } else { t=t.replace(/\u00d7/g,' kali ').replace(/\*/g,' kali '); t=t.replace(/\bx\b/gi,' kali '); t=t.replace(/\+/g,' tambah ').replace(/=/g,' sama dengan ').replace(/\u00f7/g,' bagi '); t=t.replace(/\s:\s/g,' bagi '); t=t.replace(/%/g,' persen '); t=t.replace(/\.{2,}/g,' berapa'); t=t.replace(/\s-\s/g,' kurang '); } t=t.replace(/\s+/g,' ').replace(/^\s+|\s+$/g,''); return t; } function bacakanTeks(teks, lang){ try{ if(!("speechSynthesis" in window)){ alert("Maaf, HP/browser ini belum bisa membacakan suara. Coba pakai Chrome ya!"); return; } window.speechSynthesis.cancel(); var u=new SpeechSynthesisUtterance(ubahKeBahasaLisan(teks, lang||'id-ID')); u.lang=lang||"id-ID"; u.rate=0.9; window.speechSynthesis.speak(u); }catch(e){ alert("Maaf, suara belum bisa diputar di perangkat ini."); } }
+function ubahKeBahasaLisan(teks, lang){ var t=String(teks||''); if((lang||'id-ID').indexOf('en')===0){ t=t.replace(/\u00d7/g,' times ').replace(/\*/g,' times '); t=t.replace(/\bx\b/gi,' times '); t=t.replace(/\+/g,' plus ').replace(/=/g,' equals ').replace(/\u00f7/g,' divided by '); t=t.replace(/\s:\s/g,' divided by '); t=t.replace(/%/g,' percent '); t=t.replace(/\.{2,}/g,' what'); t=t.replace(/\s-\s/g,' minus '); } else { t=t.replace(/\u00d7/g,' kali ').replace(/\*/g,' kali '); t=t.replace(/\bx\b/gi,' kali '); t=t.replace(/\+/g,' tambah ').replace(/=/g,' sama dengan ').replace(/\u00f7/g,' bagi '); t=t.replace(/\s:\s/g,' bagi '); t=t.replace(/%/g,' persen '); t=t.replace(/\.{2,}/g,' berapa'); t=t.replace(/\s-\s/g,' kurang '); } t=t.replace(/\s+/g,' ').replace(/^\s+|\s+$/g,''); return t; } /* V.56q - PERBAIKAN Dengarkan Soal: (1) Utamakan suara Indonesia LOKAL (bukan Online) - suara Online Gadis/Ardi gagal dari file lokal (synthesis-failed), suara lokal Andika jalan. (2) Kalau suara Indonesia gagal, otomatis ulangi pakai suara default biar tetap bunyi, nggak diam. Daftar suara diambil FRESH tiap bicara, bukan disimpan */
+function bacakanTeks(teks, lang){ try{ if(!("speechSynthesis" in window)){ alert("Maaf, HP/browser ini belum bisa membacakan suara. Coba pakai Chrome ya!"); return; } var ss=window.speechSynthesis; var isi=ubahKeBahasaLisan(teks, lang||'id-ID'); var sudahFallback=false; var ucapkan=function(pakaiDefault){ try{ var u=new SpeechSynthesisUtterance(isi); if(!pakaiDefault){ u.lang=lang||"id-ID"; try{ var daftar=ss.getVoices()||[]; var awalan=String(lang||"id-ID").toLowerCase().split("-")[0]; var lokal=null; for(var i=0;i<daftar.length;i++){ var v=daftar[i]; if(String(v.lang||"").toLowerCase().indexOf(awalan)===0 && String(v.name||"").toLowerCase().indexOf("online")===-1){ lokal=v; break; } } if(lokal){ u.voice=lokal; u.lang=lokal.lang; } }catch(e){} } u.rate=0.9; u.onerror=function(ev){ if(ev && (ev.error==="canceled"||ev.error==="interrupted")) return; if(!sudahFallback){ sudahFallback=true; try{ ss.cancel(); }catch(e){} setTimeout(function(){ ucapkan(true); }, 150); return; } alert("Maaf, suara belum bisa diputar di perangkat ini. Pasang dulu suara Bahasa Indonesia ya! PC Windows: Settings -> Time & Language -> Language -> tambah Bahasa Indonesia (centang Text-to-Speech). HP: Pengaturan -> Text-to-Speech -> Suara Google -> Bahasa Indonesia."); }; try{ ss.resume(); }catch(e){} ss.speak(u); }catch(e){ if(!sudahFallback){ sudahFallback=true; try{ ss.cancel(); }catch(e2){} setTimeout(function(){ ucapkan(true); }, 150); return; } alert("Maaf, suara belum bisa diputar di perangkat ini."); } }; try{ if(ss.speaking||ss.pending){ ss.cancel(); setTimeout(function(){ ucapkan(false); }, 120); } else { ucapkan(false); } }catch(e){ ucapkan(false); } }catch(e){ alert("Maaf, suara belum bisa diputar di perangkat ini."); } }
 function bacakanSoal(){ if(!soalList||!soalList[idx]) return; var s=soalList[idx]; var teks="Soal nomor "+(idx+1)+". "+s.tanya; if(jenisSoal(s)==="pg"){ (s.opsi||[]).forEach(function(o,i){ teks+=" Pilihan "+["A","B","C","D"][i]+": "+o+". "; }); } bacakanTeks(teks, mapelKuis==="Bahasa Inggris" ? "en-US" : "id-ID"); }
 function tanggalHariIni(){ var t=new Date(); return t.getFullYear()+"-"+(t.getMonth()+1)+"-"+t.getDate(); }
 function muatTantangan(){ try{ var d=JSON.parse(localStorage.getItem("tantangan_"+kunciSiswa())||"null"); if(d) return d; }catch(e){} return {tanggal:"", streak:0, lencana:false}; }
@@ -1360,7 +1396,7 @@ function tambahBintang(n){ if(!n) return ambilBintang(); var d=ambilBintang(); d
 
 /* ================= V.55 - MODE DUOLINGO: Api Main, Permata, Kelinci ================= */
 /* V.55 - LABEL VERSI: 1 tempat aja! Tiap upgrade, cukup ganti angka di sini -> badge + tab browser ikut berubah */
-var VERSI_APLIKASI="V.56k";
+var VERSI_APLIKASI="V.56q";
 /* V.56i/V.56j - SAMAKAN SISWA tanpa peduli huruf besar/kecil + spasi.
    Dulu: nama dibandingkan harus PERSIS. Kalau nilai tersimpan atas nama "Chaca"
    tapi login ketik "chaca", Beranda + Profil + Nilai bilang "Belum ada tes" padahal udah tes.
@@ -2039,6 +2075,166 @@ function onJenisSoal(){ var j=el("soal-jenis")?el("soal-jenis").value:"pg"; if(j
 var gambarSoalBaru=null, gambarSoalDihapus=false;
 function tampilPreviewGambarSoal(src){ var w=el("preview-gambar-soal"); if(!w) return; while(w.firstChild) w.removeChild(w.firstChild); if(!src) return; var img=document.createElement("img"); img.src=src; img.style.cssText="max-width:220px;max-height:160px;object-fit:contain;border-radius:10px;border:1px solid #cbd5e1;display:block;margin:8px 0"; w.appendChild(img); var hb=document.createElement("button"); hb.type="button"; hb.className="btn btn-red btn-small"; hb.textContent="🗑 Hapus Gambar"; hb.onclick=function(){ gambarSoalBaru=null; gambarSoalDihapus=true; var fi=el("soal-gambar"); if(fi) fi.value=""; tampilPreviewGambarSoal(""); }; w.appendChild(hb); }
 function kompresGambarSoal(file){ var rd=new FileReader(); rd.onload=function(){ var img=new Image(); img.onload=function(){ var max=700; var w=img.width, hh=img.height; if(w>max){ hh=Math.round(hh*max/w); w=max; } var cv=document.createElement("canvas"); cv.width=w; cv.height=hh; cv.getContext("2d").drawImage(img,0,0,w,hh); var q=0.75, out=cv.toDataURL("image/jpeg", q); while(out.length>150000 && q>0.4){ q-=0.1; out=cv.toDataURL("image/jpeg", q); } gambarSoalBaru=out; gambarSoalDihapus=false; tampilPreviewGambarSoal(out); }; img.src=rd.result; }; rd.readAsDataURL(file); }
+/* V.56l - 2 mode pembuat soal: Manual (tetap) + Somatis (tempel, langsung jadi soal) */
+var modeBuatSoal="manual";
+var somatisHasil=[];
+function setModeBuatSoal(mode){
+  modeBuatSoal=mode;
+  var bm=el("btn-mode-manual"), bs=el("btn-mode-somatis");
+  if(bm) bm.className="btn"+(mode==="manual"?" btn-green":"");
+  if(bs) bs.className="btn"+(mode==="somatis"?" btn-green":"");
+  if(mode==="somatis"){
+    if(typeof editSoalIndex!=="undefined" && editSoalIndex!==null){ batalEditSoal(); }
+    hide("wrap-form-manual"); show("wrap-form-somatis");
+  } else {
+    show("wrap-form-manual"); hide("wrap-form-somatis");
+  }
+}
+function parseSomatis(teks){
+  var hasil=[], galat=[], nomorBlok=0;
+  var baris=String(teks||"").split(/\r?\n/);
+  var blok=[];
+  function prosesBlok(arr){
+    var teksBlok=arr.join("\n").trim();
+    if(!teksBlok) return;
+    nomorBlok++;
+    var field={}, kunciTerakhir=null;
+    arr.forEach(function(l){
+      var m=l.match(/^\s*(TANYA|SOAL|A|B|C|D|KUNCI ESAI|KUNCI|JAWABAN|CARA NILAI|UMPAN BALIK|PEMBAHASAN)\s*:\s*(.*)$/i);
+      if(m){
+        var label=m[1].toUpperCase();
+        if(label==="SOAL") label="TANYA";
+        if(label==="JAWABAN") label="KUNCI";
+        if(label==="PEMBAHASAN") label="UMPAN BALIK";
+        field[label]=m[2].trim();
+        kunciTerakhir=label;
+      } else if(kunciTerakhir && l.trim()){
+        field[kunciTerakhir]=(field[kunciTerakhir]?field[kunciTerakhir]+" ":"")+l.trim();
+      }
+    });
+    if(!field.TANYA){ galat.push({no:nomorBlok, alasan:"TANYA-nya kosong / tidak ketemu"}); return; }
+    var adaOpsi=field.A || field.B || field.C || field.D;
+    if(adaOpsi){
+      /* V.56m - Blok PG: ada A-D */
+      if(!field.A || !field.B || !field.C || !field.D){ galat.push({no:nomorBlok, alasan:"Pilihan A, B, C, D harus lengkap"}); return; }
+      if(!field.KUNCI && field["KUNCI ESAI"]){ galat.push({no:nomorBlok, alasan:"Soal PG pakai KUNCI (huruf A/B/C/D), bukan KUNCI ESAI"}); return; }
+      var k=String(field.KUNCI||"").trim();
+      var idx=-1;
+      if(/^[A-Da-d]$/.test(k)){ idx="ABCD".indexOf(k.toUpperCase()); }
+      else if(/^[1-4]$/.test(k)){ idx=parseInt(k,10)-1; }
+      else {
+        var opsi=[field.A, field.B, field.C, field.D];
+        for(var i=0;i<4;i++){ if(opsi[i].toLowerCase()===k.toLowerCase()){ idx=i; break; } }
+      }
+      if(idx<0){ galat.push({no:nomorBlok, alasan:"KUNCI tidak dikenali — isi huruf A / B / C / D"}); return; }
+      hasil.push({jenis:"pg", tanya:field.TANYA, opsi:[field.A, field.B, field.C, field.D], kunci:idx, pembahasan:field["UMPAN BALIK"]||""});
+    } else {
+      /* V.56m - Blok ESAI: nggak ada A-D, tapi ada KUNCI ESAI */
+      if(!field["KUNCI ESAI"]){ galat.push({no:nomorBlok, alasan:"KUNCI ESAI-nya kosong / tidak ketemu — soal Esai butuh KUNCI ESAI"}); return; }
+      var cara=String(field["CARA NILAI"]||"").toLowerCase();
+      var caraNilai=cara.indexOf("urut")>=0?"urutan":"kunci";
+      hasil.push({jenis:"esai", tanya:field.TANYA, kunciEsai:field["KUNCI ESAI"], caraNilai:caraNilai, pembahasan:field["UMPAN BALIK"]||""});
+    }
+  }
+  /* V.56m - Pengaman: TANYA: baru = soal baru (biar tetap kebaca walau tanpa garis ---) */
+  var labelTanya=/^\s*(TANYA|SOAL)\s*:/i;
+  var blokPunyaTanya=false;
+  baris.forEach(function(l){
+    if(/^\s*-{3,}\s*$/.test(l)){ prosesBlok(blok); blok=[]; blokPunyaTanya=false; }
+    else {
+      if(labelTanya.test(l) && blokPunyaTanya){ prosesBlok(blok); blok=[]; blokPunyaTanya=false; }
+      if(labelTanya.test(l)) blokPunyaTanya=true;
+      blok.push(l);
+    }
+  });
+  prosesBlok(blok);
+  return {soal:hasil, galat:galat};
+}
+function pratinjauSomatis(){
+  var teks=el("somatis-teks")?el("somatis-teks").value:"";
+  var r=parseSomatis(teks);
+  somatisHasil=r.soal;
+  var wadah=el("somatis-preview"); if(wadah){ while(wadah.firstChild) wadah.removeChild(wadah.firstChild); }
+  var err=el("somatis-error"); if(err){ err.style.display="none"; err.textContent=""; }
+  if(!wadah) return;
+  r.galat.forEach(function(g){
+    var d=document.createElement("div");
+    d.style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:10px;margin-bottom:8px;font-size:13px;line-height:1.6";
+    d.textContent="❌ Blok soal ke-"+g.no+": "+g.alasan;
+    wadah.appendChild(d);
+  });
+  somatisHasil.forEach(function(s, i){
+    var d=document.createElement("div");
+    if(s.jenis==="esai"){
+      d.style="background:#fff7ed;border:1px solid #fdba74;border-radius:10px;padding:10px;margin-bottom:8px;font-size:13px;line-height:1.6";
+      var htmlE="<b>"+(i+1)+". "+escapeHtml(s.tanya)+"</b><br>";
+      htmlE+="<span style='color:#9a3412'>✏️ ESAI • Kunci: "+escapeHtml(s.kunciEsai)+" • Cara nilai: "+(s.caraNilai==="urutan"?"urutan":"kunci")+"</span><br>";
+      if(s.pembahasan) htmlE+="<span style='color:#475569'>💬 Umpan balik: "+escapeHtml(s.pembahasan)+"</span>";
+      d.innerHTML=htmlE;
+    } else {
+      d.style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:10px;margin-bottom:8px;font-size:13px;line-height:1.6";
+      var html="<b>"+(i+1)+". "+escapeHtml(s.tanya)+"</b><br>";
+      ["A","B","C","D"].forEach(function(huruf, j){
+        html+=(j===s.kunci?"✅ <b>":"&nbsp;&nbsp;&nbsp; ")+huruf+". "+escapeHtml(s.opsi[j])+(j===s.kunci?"</b>":"")+"<br>";
+      });
+      if(s.pembahasan) html+="<span style='color:#475569'>💬 Umpan balik: "+escapeHtml(s.pembahasan)+"</span>";
+      d.innerHTML=html;
+    }
+    wadah.appendChild(d);
+  });
+  if(somatisHasil.length===0 && r.galat.length===0){
+    var p=document.createElement("p"); p.className="sub"; p.textContent="Kotaknya masih kosong. Tempel soal dulu pakai format di atas, atau klik \"Lihat Contoh\"."; wadah.appendChild(p);
+  }
+  if(err && r.galat.length>0){ err.textContent=r.galat.length+" blok formatnya belum pas (yang bener tetap bisa disimpan). Cek yang merah di bawah ya."; err.style.display="block"; }
+  var btn=el("btn-simpan-somatis");
+  if(btn){
+    if(somatisHasil.length>0){ var nPG=somatisHasil.filter(function(x){return x.jenis!=="esai";}).length; var nEs=somatisHasil.filter(function(x){return x.jenis==="esai";}).length; var teksSimpan="💾 Simpan "; if(nPG>0 && nEs>0) teksSimpan+=nPG+" PG + "+nEs+" Esai"; else if(nPG>0) teksSimpan+=nPG+" Soal PG"; else teksSimpan+=nEs+" Soal Esai"; teksSimpan+=" Ini (Online)"; btn.classList.remove("hidden"); btn.textContent=teksSimpan; }
+    else { btn.classList.add("hidden"); }
+  }
+}
+function contohSomatis(){
+  var t=el("somatis-teks"); if(!t) return;
+  t.value="TANYA: Berapa 2 + 3?\nA: 4\nB: 5\nC: 6\nD: 7\nKUNCI: B\nUMPAN BALIK: 2 + 3 = 5, jadi jawabannya B.\n---\nTANYA: Tuliskan semua faktor dari 18.\nKUNCI ESAI: 1, 2, 3, 6, 9, 18\nUMPAN BALIK: Faktor 18 adalah bilangan yang habis membagi 18.\n---\nTANYA: I ___ up at 6 o'clock.\nA: get\nB: gets\nC: getting\nD: got\nKUNCI: A\n---\nTANYA: Tuliskan 5 kelipatan pertama dari 8.\nKUNCI ESAI: 8, 16, 24, 32, 40\nUMPAN BALIK: Kelipatan 8 = 8 x 1 sampai 8 x 5.\n";
+  pratinjauSomatis();
+  if(t) t.focus();
+}
+function bersihkanSomatis(){
+  var t=el("somatis-teks"); if(t) t.value="";
+  somatisHasil=[];
+  var w=el("somatis-preview"); if(w){ while(w.firstChild) w.removeChild(w.firstChild); }
+  var e=el("somatis-error"); if(e){ e.style.display="none"; e.textContent=""; }
+  var b=el("btn-simpan-somatis"); if(b) b.classList.add("hidden");
+}
+async function simpanSomatis(){
+  if(!somatisHasil || somatisHasil.length===0){ var e=el("somatis-error"); if(e){ e.textContent="Belum ada soal yang valid. Klik \"Ubah Jadi Soal (Pratinjau)\" dulu ya."; e.style.display="block"; } return; }
+  var m=materiCache.find(function(x){return x.id===materiAktifId}); if(!m) return;
+  var tesPilihId=el("soal-tes")?el("soal-tes").value:(tesAktifId||"");
+  var tesPilih=getTes(m,tesPilihId)||(m.tests||[])[0];
+  var sbPilihId=tesPilih?tesPilih.subbabId:(el("soal-subbab")?el("soal-subbab").value:"");
+  if(!tesPilih){ var e2=el("somatis-error"); if(e2){ e2.textContent="Sub Bab ini belum siap. Buka lagi dari tab Soal."; e2.style.display="block"; } return; }
+  var jmlBaru=somatisHasil.length;
+  var nPGBaru=somatisHasil.filter(function(x){return x.jenis!=="esai";}).length; var nEsBaru=somatisHasil.filter(function(x){return x.jenis==="esai";}).length; var teksBerhasil=""; if(nPGBaru>0 && nEsBaru>0) teksBerhasil=nPGBaru+" PG + "+nEsBaru+" Esai"; else if(nPGBaru>0) teksBerhasil=nPGBaru+" soal PG"; else teksBerhasil=nEsBaru+" soal Esai";
+  var soalBaru=(m.soal||[]).slice();
+  somatisHasil.forEach(function(s){
+    if(s.jenis==="esai"){ soalBaru.push({tanya:s.tanya, jenis:"esai", opsi:[], kunci:0, kunciEsai:s.kunciEsai, caraNilai:s.caraNilai, pembahasan:s.pembahasan, gambar:"", subbabId:sbPilihId, testId:tesPilih.id}); }
+    else { soalBaru.push({tanya:s.tanya, jenis:"pg", opsi:s.opsi, kunci:s.kunci, kunciEsai:"", pembahasan:s.pembahasan, gambar:"", subbabId:sbPilihId, testId:tesPilih.id}); }
+  });
+  if(JSON.stringify(soalBaru).length>900000){ var e3=el("somatis-error"); if(e3){ e3.textContent="Soal di materi ini sudah terlalu banyak / besar. Hapus beberapa soal dulu, lalu simpan lagi."; e3.style.display="block"; } return; }
+  /* V.56l - LAYAR DULU: tampilin dulu di Daftar Soal, baru kirim ke base (kayak V.56k) */
+  var soalLama=m.soal;
+  m.soal=soalBaru;
+  try{ tampilkanSoalMateri(); }catch(e4){}
+  try{
+    await db.collection("materi").doc(materiAktifId).update({soal: soalBaru});
+    bersihkanSomatis();
+    alert(teksBerhasil+" berhasil disimpan ONLINE! Total soal: "+soalBaru.length);
+  }catch(e){
+    /* simpan gagal: balikin lagi daftar lokalnya biar layar sama dengan base */
+    m.soal=soalLama;
+    try{ tampilkanSoalMateri(); }catch(e5){}
+    alert("Gagal simpan soal: "+e.message);
+  }
+}
 async function tambahSoal(){
   var tanya=el("soal-tanya").value.trim(); var jenis=el("soal-jenis")?el("soal-jenis").value:"pg";
   var a="", b="", c="", d="", kunci=0, kunciEsai="", caraNilai="kunci", pembahasan="";
