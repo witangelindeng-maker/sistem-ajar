@@ -1,10 +1,12 @@
-/* V.56j - Service Worker Sistem Ajar: NETWORK-FIRST untuk Index.html.
-   Dulu (V.53/V.47c): cache-first -> halaman lama yang kesimpen disajiin terus,
-   makanya klik link nyangkut di V.43 & harus Ctrl+Shift+R.
-   Sekarang: tiap buka link, SW ngecek internet DULU (cache:'reload' = lewatin cache browser).
-   Kalau ada versi baru -> langsung dipakai. Kalau offline -> baru pakai yang kesimpen.
-   Jadi klik link = selalu versi terbaru, tanpa pencet 3 tombol lagi. */
-var CACHE = 'sistem-ajar-v56j';
+/* V.56r - Service Worker Sistem Ajar (network-first).
+   Dulu (V.47c): cache-first + skipWaiting + clients.claim.
+   Masalah: SW baru langsung ngambil alih halaman di tengah Tes, dan
+   Index.html listener controllerchange langsung location.reload() -> Tes hilang.
+   Sekarang: network-first (selalu ambil Index.html terbaru kalau online,
+   cache cuma cadangan kalau offline). CACHE diganti namanya biar cache lama dibuang.
+   Catatan: controllerchange di Index.html sudah ditahan kalau Tes lagi jalan (V.56r),
+   jadi reload cuma terjadi kalau Tes tidak jalan / setelah Tes selesai. */
+var CACHE = 'sistem-ajar-v56r';
 var FILE = ['Index.html', 'manifest.json', 'icon-192.png', 'icon-512.png', 'ikon-sistem-ajar.png'];
 self.addEventListener('install', function(e) {
   e.waitUntil(caches.open(CACHE).then(function(c) {
@@ -18,26 +20,12 @@ self.addEventListener('activate', function(e) {
 });
 self.addEventListener('fetch', function(e) {
   if (e.request.method !== 'GET') return;
-  var url = new URL(e.request.url);
-  var isHTML = e.request.mode === 'navigate' || url.pathname.endsWith('Index.html') || url.pathname.endsWith('/') || url.pathname.endsWith('.html');
-  if (isHTML) {
-    /* HALAMAN: NETWORK-FIRST - selalu coba internet dulu, baru simpanan */
-    e.respondWith(fetch(e.request, {cache: 'reload'}).then(function(res) {
-      var salin = res.clone();
-      caches.open(CACHE).then(function(c) { c.put(e.request, salin); });
-      return res;
-    }).catch(function() {
-      return caches.match(e.request).then(function(r){ return r || caches.match('Index.html'); });
-    }));
-    return;
-  }
-  /* ASET (ikon/manifest/dll): CACHE-FIRST + update di belakang - cepat & hemat kuota */
-  e.respondWith(caches.match(e.request).then(function(r) {
-    var ambil = fetch(e.request).then(function(res) {
-      var salin = res.clone();
-      caches.open(CACHE).then(function(c) { c.put(e.request, salin); });
-      return res;
-    }).catch(function(){ return r; });
-    return r || ambil;
+  /* Network-first: utamakan versi terbaru dari server. Kalau offline/gagal, pakai cache. */
+  e.respondWith(fetch(e.request).then(function(res) {
+    var salin = res.clone();
+    caches.open(CACHE).then(function(c) { c.put(e.request, salin); });
+    return res;
+  }).catch(function() {
+    return caches.match(e.request).then(function(r) { return r || caches.match('Index.html'); });
   }));
 });
