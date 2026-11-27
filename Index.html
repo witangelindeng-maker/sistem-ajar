@@ -24,10 +24,17 @@
 <meta property="og:image" content="https://witangelindeng-maker.github.io/sistem-ajar/ikon-sistem-ajar.png">
 <meta property="og:url" content="https://witangelindeng-maker.github.io/sistem-ajar/Index.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://witangelindeng-maker.github.io/sistem-ajar/ikon-sistem-ajar.png"><title>Sistem ajar By Wita Gemini — V.9</title><!-- V.9 - Dikunci: V.8 + PREVIEW SOAL GURU: di Daftar Soal, tiap nomor soal ada tombol Preview (mata) untuk melihat persis seperti yang siswa lihat saat tes (tampilan siswa + kotak guru untuk kunci/pembahasan). Bisa geser Sebelumnya/Selanjutnya. Juga ada tombol Preview di form Buat Soal untuk melihat draf yang sedang diketik sebelum disimpan. Preview tidak mengubah nilai / tidak tersimpan. --><!-- V.8 - Dikunci: V.7 + PERBAIKAN KODE ULANG LINTAS HP: V.7 menyimpan kode cuma di localStorage HP yang buat, jadi kalau guru buat di iPhone, siswa di tablet Chaca tidak ketemu kodenya dan dibilang salah. V.8 menyimpan kode juga ke Supabase (baris khusus di tabel nilai, jenis KODE_ULANG, DISEMBUNYIKAN dari Papan Nilai / Beranda / rata-rata, jadi Papan Nilai tidak berubah). Guru di iPhone, siswa di tablet bisa pakai kode yang sama. Kalau kode tidak ketemu, siswa otomatis tarik fresh dari server sekali sebelum dibilang salah. LocalStorage tetap dipakai sebagai cadangan offline / HP yang sama. --><!-- V.7 - Dikunci: V.6 + KODE ULANG TES (guru pegang kendali, per siswa beda): Aturan dasar tetap 1x per hari. Kalau siswa mau ulang, minta Kode Ulang 4 angka ke Ibu Guru. Guru buat kode dari tombol Kode Ulang di tiap baris Papan Nilai, atau lihat daftar di kartu Kode Ulang Aktif. 1 kode = 1x ulang, hari ini saja, untuk anak + tes itu saja, tidak bisa dipakai anak lain / tes lain, hangus setelah dipakai. Siswa masukkan kode di popup Sudah Tes Hari Ini. Kode disimpan di HP ini (localStorage), jadi dibuat dan dipakai di HP yang sama. Latihan tetap bebas. --><!-- V.6 - Dikunci: V.4 + PINDAH filter Daftar Materi keluar dari kartu Tambah Materi jadi kartu baru sendiri di bawahnya (kartu Filter Daftar Materi, di antara kartu Tambah Materi dan kartu Daftar Materi Tersimpan). Isi filter SAMA persis (Kelas + Mapel), ID + fungsi tidak diubah, jadi cara kerja filter tidak berubah. V.5 (Cari + Chip) dibatalkan dan TIDAK dipakai di sini. --><!-- V.4 - Dikunci: V.3 + BATAS 1x TES PER HARI PER TES (anti ngulang tes yang sama): 1 tes yang sama (Materi + Subbab yang sama) cuma bisa 1x sehari per anak. Kalau coba lagi di hari yang sama, muncul popup ramah "Yeay, sudah tes ini hari ini!" + nilai tadi + ajakan pilih tes materi lain, dan tes tidak dimulai. Latihan TETAP bebas (tidak masuk nilai/bintang/kartu). Pintu utama di mulaiKuisDenganCampuran + mulaiKuisDenganJumlah, jadi semua jalur (tab Tes, Beranda, Peta, Ulangi Kuis Lagi) kena aturan yang sama. Kotak info tes juga menampilkan pengingat "Hari ini sudah tes ini" kalau sudah pernah. --><!-- V.47 - Dikunci: V.46 + BISA DI-INSTALL: tambah file manifest.json + sw.js (seperti aplikasi keuangan dulu) + ikon 192 & 512. Tombol Install aplikasi di Chrome kini bisa dipakai, ikon buku nempel. <!-- V.46 - Dikunci: V.45 + IKON BUKU NEMPEL: ikon aplikasi resmi diganti jadi buku tersenyum (file ikon-sistem-ajar.png). Dipakai untuk Install/PWA, Tambah ke Layar Utama, tab browser, dan preview WhatsApp (og:image). <!-- V.45 - Dikunci: V.43 + (1) NAVIGASI GURU TIDAK HILANG: Buat Soal, Kembali ke Soal, Buka Materi tetap menampilkan navigasi bawah - tidak perlu logout. (2) INGAT LOGIN: login guru & siswa tersimpan di HP/browser, refresh tidak perlu login lagi. Logout menghapus simpanan. <!-- V.43 - Dikunci: V.42 + SUARA MATEMATIKA: tombol Dengarkan Soal kini membaca simbol dengan kata (x = kali, + = tambah, - = kurang, : = bagi, = = sama dengan, ... = berapa) agar tidak lagi terbaca ex / samadengan. Bahasa Inggris: x = times, = = equals. <!-- V.42 - Dikunci: V.41 + PINDAH TOTAL KE SUPABASE. Firebase DIHAPUS TOTAL dari aplikasi: SDK Firebase dicabut, config kuis-kelas4 dibuang, db + storage kini mesin Supabase (REST) dengan API mirip Firestore sehingga 20 titik kode lama tidak berubah. Tabel: materi, siswa, nilai (diperluas), kartu. File besar (800KB-10MB) kini ke Supabase Storage bucket "materi". Jembatan V.41 (sbKirimNilai) dihapus karena nilai kini LANGSUNG ke Supabase lewat mesin baru - tidak ada dobel. Kartu tetap localStorage + upsert Supabase. <!-- V.41 - Dikunci: V.40 + JEMBATAN SUPABASE: setiap nilai tes baru + kartu baru/naik juga dikirim ke Supabase (tabel nilai + kartu, proyek sistem-ajar). Firebase lama (kuis-kelas4) TETAP jalan, tidak disentuh - Supabase adalah gudang kedua + cadangan. Pengiriman fire-and-forget: kalau Supabase/internet bermasalah, tes tetap jalan normal. Status sinkron tampil di panel Nilai guru (#supabase-status). <!-- V.40 - Dikunci: V.39 + PWA (Progressive Web App): aplikasi bisa DIPASANG di HP siswa (ikon di layar utama, dibuka layar penuh kayak aplikasi beneran). Kartu "Pasang Aplikasinya" di Beranda siswa + tombol Pasang (pakai prompt browser kalau ada, kalau tidak tampil petunjuk iPhone Bagikan > Tambah ke Layar Utama / Android titik tiga > Tambahkan ke Layar Utama). Manifest + ikon aplikasi (navy+emas+rubah) dibuat otomatis di dalam file, tetap 1 file, tanpa server tambahan. <!-- V.39 - Dikunci: V.38 + KARTU PAKAI BINGKAI GAMBAR ASLI: latar kartu koleksi (depan, belakang, terkunci) + gambar unduh/bagi kini memakai bingkai filigree navy+Emas/Perak/Perunggu hasil desain (ditanam base64 di dalam file, jadi tetap 1 file & bisa diunduh offline). Teks/nilai/avatar tetap dinamis ditempel di atas bingkai. Ornamen CSS emoji dihapus supaya tidak menumpuk dengan bingkai gambar. <!-- V.38 - Dikunci: V.37 + KARTU TIDAK POLOS LAGI: DEPAN kartu koleksi yang tadinya gradient polos kini navy elegan full ornamen (bingkai ganda, sudut ❦, avatar dalam lingkaran cahaya tier, pembatas ◆, pita tier berlaurel ❧, kilau radial, bintik bintang). Belakang kartu + gambar unduh/bagi diperkaya ornamen yang sama. Kartu terkunci juga navy elegan. <!-- V.37 - Dikunci: V.36 + DESAIN KARTU ELEGAN: belakang kartu koleksi + gambar unduh/bagi jadi navy elegan + aksen Emas/Perak/Perunggu (bingkai laurel, plakat judul, avatar siswa besar bercahaya, nilai besar warna tier, pita footer hanya "Belajar sambil bermain") + hapus teks "Matematika & Bahasa Inggris" dari kartu bagi. Avatar kartu sudah ikut pilihan Profil (12 emoji) sejak V.33/V.36, jadi tiap siswa kartunya pakai avatarnya sendiri. <!-- V.36 - Dikunci: V.35 + KARTU FLIP: kartu koleksi bisa diketuk untuk membalik (depan = ringkasan tier, belakang = desain kartu full warna Emas/Perak/Perunggu + pita "Belajar sambil bermain") + tombol ⬇️ Unduh & 📤 Bagikan di belakang kartu (gambar PNG via html2canvas, iOS Share Sheet) + kartu unduh tersembunyi tanpa efek flip. <!-- V.35 - Dikunci: V.34 + KOLEKSI KARTU (80+ Perunggu, 90+ Perak, 100 Emas; 1 materi = 1 kartu, bisa naik tingkat; popup kartu baru/naik tingkat/tetap + popup penyemangat A di bawah 80; hanya mode Tes, Latihan tidak dapat kartu) + TAB Bintangku | Koleksi Kartu di halaman Bintangku + jalan pintas Koleksi di Beranda + kartu Emas berkilau. <!-- V.34 - Dikunci: V.33 + PETA PETUALANGAN (jalur pos materi, pos lulus jadi bintang, tombol Baca/Tes) + AVATAR BEREAKSI (pesan Yeay/coba lagi + lompat saat benar, di kuis & tantangan) + HUJAN BINTANG (jawab benar) + CONFETTI (nilai >=80 & lencana 7 hari). <!-- V.33 - Dikunci: V.32 + TANTANGAN HARIAN (1 soal/hari, streak, lencana Semangat 7 Hari) + AVATAR (12 pilihan, muncul di Beranda/Hasil/Kartu Bagi) + LISTENING (tombol Dengarkan Soal di kuis & tantangan, en-US untuk Bahasa Inggris, id-ID untuk lainnya). <!-- V.32 - Dikunci: V.31 + PERBAIKAN: Tombol kembali (dan semua tombol outline) tulisannya hilang saat tema warna aktif, karena aturan tema menimpa latar jadi warna tema sementara warna tulisan juga warna tema (biru di atas biru). Aturan tema untuk .btn-outline kini mengembalikan background:#fff sehingga tulisan kembali terlihat. <!-- V.31 - Dikunci: V.30 + PERBAIKAN: Daftar Materi kosong karena di tampilkanMateriGuru tertulis if(s.gambar) padahal variabel perulangan-nya m (s tidak ada -> error, daftar berhenti tergambar). Diperbaiki jadi if(m.gambar) / _th.src=m.gambar. Data tidak hilang. <!-- V.30 - Dikunci: V.29 + PERBAIKAN PENTING: tutup tag <div> Beranda guru yang tertinggal di V.29 (panel Materi/Soal/Nilai/Siswa tertelan di dalam Beranda sehingga layar blank saat pindah tab). Data tidak hilang, hanya tersembunyi. <!-- V.29 - Dikunci: V.28 + Bottom Navigation Guru 5 tombol (Beranda, Materi, Soal, Nilai, Siswa) + Beranda guru ringkasan (jumlah materi/soal/siswa/nilai + nilai terbaru) + Badge titik merah di Nilai kalau ada nilai baru belum dilihat (hilang begitu menu Nilai dibuka). Menu 4 tombol lama di halaman guru dihapus, diganti nav bawah. <!-- V.28 - Dikunci: V.27 + Perbaiki iPhone hitam blank: download materi & kartu di iPhone pakai Share Sheet (navigator.share + file, iOS 15+), bukan tab baru blob URL. Kalau Share Sheet tidak tersedia, tampil panel dengan link asli yang diketuk sendiri. Android/laptop tidak berubah. <!-- V.27 - Dikunci: V.26 + Download materi ramah iPhone (file data: dibuka di tab baru + petunjuk Simpan ke File, file Storage tetap tab baru) + Unduh Kartu ramah iPhone (buka tab baru + petunjuk Simpan ke Foto). Android/laptop tidak berubah. <!-- V.26 - Dikunci: V.25 + Bagikan Kartu ke WhatsApp lewat Share Sheet HP (gambar PNG langsung, teks ikut) + cadangan link teks WhatsApp di laptop + batal share tidak membuka WhatsApp. <!-- V.25 - Dikunci: V.24 + Beranda baru (sapaan + Lanjutkan Belajar + ringkasan + Materi Terbaru + Tes Terakhirmu + kata penyemangat, tombol Ulangi/Baca mengatur dropdown otomatis) + menu Latihan di bar bawah (6 tombol) + kartu atas 3 tombol dihapus. <!-- V.24 - Dikunci: V.23 + Bar Aplikasi bawah (Beranda/Tes/Materi/Bintangku/Profil) + Halaman Bintang & Profil + Tema Warna (Biru/Pink/Hijau/Ungu) + Kartu Hasil Bagi (WhatsApp + Unduh gambar buat IG Story). <!-- V.23 - Dikunci: V.22 + Mode Latihan (tanpa nilai) + Ulangi Soal yang Salah (selalu latihan, nilai asli tidak ditimpa) + Bintang & Lencana (100=3⭐, 80+=2⭐, 60+=1⭐, hanya dari tes asli). <!-- V.22 - Dikunci: V.21 + Anti-nyontek: acak opsi A-D tiap siswa (kunci ikut pindah) + Soal Bergambar (gambar di dalam soal, dikecilkan maks ~150KB, tampil di atas pilihan). <!-- V.21 - Dikunci: V.20 + Pembahasan hormati Enter (white-space: pre-line), label "Pembahasan:" di baris sendiri, spasi antarbaris 1.6. <!-- V.20 - Dikunci: V.19 + Pembahasan hanya tampil kalau jawaban siswa SALAH. Kalau benar, hanya tampil "Betul! Kamu hebat!" tanpa Pembahasan. <!-- V.19 - Dikunci: V.18 - kolom Umpan Balik dihapus, hanya Pembahasan saja (teks lama yang sempat salah isi otomatis pindah ke Pembahasan saat soal diedit). <!-- V.18 - Dikunci: V.17 + Perbaikan timer: semua jalur mulai tes (baru & lanjut) menjalankan timer; kolom baru Umpan Balik Salah per soal, tampil hanya kalau jawaban siswa salah, di atas Pembahasan. <!-- V.17 - Dikunci: V.16 + Mode Tes Interaktif: timer naik (tanpa batas waktu), jawaban PG langsung dinilai + terkunci begitu diklik (benar = hijau ✓, salah = merah ✗ + kunci benar ditampilkan), esai dinilai lewat tombol Cek Jawaban, Pembahasan tampil setelah menjawab (field baru per soal), Daftar Nomor Soal (grid 1-N, warna hijau/merah/biru), skor benar live, waktu tampil di hasil, progress tersimpan termasuk jawaban terkunci. <!-- V.16 - Dikunci: V.15 + cara penilaian esai ke-2: URUTAN KATA (untuk Susun Kata / Perbaiki Kalimat) — BENAR hanya kalau urutan kata jawaban siswa sama persis dengan kunci. Soal esai kini punya field caraNilai (kunci/urutan), dipilih di form Buat Soal. Soal lama tanpa caraNilai tetap dinilai pakai Kata Kunci. -->
+<meta name="twitter:image" content="https://witangelindeng-maker.github.io/sistem-ajar/ikon-sistem-ajar.png"><title>Sistem ajar By Wita Gemini — V.13</title><!-- V.13 - Dikunci: V.12 + PEMBAHASAN INLINE EQUATION (sama seperti soal & opsi, bisa paste pecahan Word di tengah kalimat) + CEK ACAK OPSI: acak terbukti jalan, kunci ikut pindah bersama opsiHtml. --><!-- V.12 - Dikunci: V.11 + INLINE EQUATION: soal & opsi jadi 1 kalimat utuh, paste equation dari Word langsung nyambung di tengah kalimat (1/2 adalah senilai dengan 2/4), tidak lagi kotak terpisah, tidak tumpang tindih, tombol simbol jadi chip kecil. --><!-- V.11 - Dikunci: V.10 + EQUATION DI PILIHAN GANDA: tiap opsi A-D punya kotak Tempel Equation sendiri, paste MathML jenis apapun (pecahan, pangkat, akar, integral, matriks, dll) tampil cantik di siswa, diacak ikut teksnya, tampil di Preview & Worksheet. --><!-- V.10 - Dikunci: V.9 + COPY-PASTE EQUATION DARI WORD: kotak Tempel Equation di form Buat Soal (Ctrl+V dari Word -> MathML dibersihkan & tampil cantik di siswa, gambar jadi gambar soal), paste equation ke kolom Soal juga ditangkap, tombol simbol cepat 1/2 1/4 3/4 dll. Equation tampil di tes siswa, Preview, Daftar Soal, dan Worksheet. --><!-- V.9 - Dikunci: V.8 + PREVIEW SOAL GURU: di Daftar Soal, tiap nomor soal ada tombol Preview (mata) untuk melihat persis seperti yang siswa lihat saat tes (tampilan siswa + kotak guru untuk kunci/pembahasan). Bisa geser Sebelumnya/Selanjutnya. Juga ada tombol Preview di form Buat Soal untuk melihat draf yang sedang diketik sebelum disimpan. Preview tidak mengubah nilai / tidak tersimpan. --><!-- V.8 - Dikunci: V.7 + PERBAIKAN KODE ULANG LINTAS HP: V.7 menyimpan kode cuma di localStorage HP yang buat, jadi kalau guru buat di iPhone, siswa di tablet Chaca tidak ketemu kodenya dan dibilang salah. V.8 menyimpan kode juga ke Supabase (baris khusus di tabel nilai, jenis KODE_ULANG, DISEMBUNYIKAN dari Papan Nilai / Beranda / rata-rata, jadi Papan Nilai tidak berubah). Guru di iPhone, siswa di tablet bisa pakai kode yang sama. Kalau kode tidak ketemu, siswa otomatis tarik fresh dari server sekali sebelum dibilang salah. LocalStorage tetap dipakai sebagai cadangan offline / HP yang sama. --><!-- V.7 - Dikunci: V.6 + KODE ULANG TES (guru pegang kendali, per siswa beda): Aturan dasar tetap 1x per hari. Kalau siswa mau ulang, minta Kode Ulang 4 angka ke Ibu Guru. Guru buat kode dari tombol Kode Ulang di tiap baris Papan Nilai, atau lihat daftar di kartu Kode Ulang Aktif. 1 kode = 1x ulang, hari ini saja, untuk anak + tes itu saja, tidak bisa dipakai anak lain / tes lain, hangus setelah dipakai. Siswa masukkan kode di popup Sudah Tes Hari Ini. Kode disimpan di HP ini (localStorage), jadi dibuat dan dipakai di HP yang sama. Latihan tetap bebas. --><!-- V.6 - Dikunci: V.4 + PINDAH filter Daftar Materi keluar dari kartu Tambah Materi jadi kartu baru sendiri di bawahnya (kartu Filter Daftar Materi, di antara kartu Tambah Materi dan kartu Daftar Materi Tersimpan). Isi filter SAMA persis (Kelas + Mapel), ID + fungsi tidak diubah, jadi cara kerja filter tidak berubah. V.5 (Cari + Chip) dibatalkan dan TIDAK dipakai di sini. --><!-- V.4 - Dikunci: V.3 + BATAS 1x TES PER HARI PER TES (anti ngulang tes yang sama): 1 tes yang sama (Materi + Subbab yang sama) cuma bisa 1x sehari per anak. Kalau coba lagi di hari yang sama, muncul popup ramah "Yeay, sudah tes ini hari ini!" + nilai tadi + ajakan pilih tes materi lain, dan tes tidak dimulai. Latihan TETAP bebas (tidak masuk nilai/bintang/kartu). Pintu utama di mulaiKuisDenganCampuran + mulaiKuisDenganJumlah, jadi semua jalur (tab Tes, Beranda, Peta, Ulangi Kuis Lagi) kena aturan yang sama. Kotak info tes juga menampilkan pengingat "Hari ini sudah tes ini" kalau sudah pernah. --><!-- V.47 - Dikunci: V.46 + BISA DI-INSTALL: tambah file manifest.json + sw.js (seperti aplikasi keuangan dulu) + ikon 192 & 512. Tombol Install aplikasi di Chrome kini bisa dipakai, ikon buku nempel. <!-- V.46 - Dikunci: V.45 + IKON BUKU NEMPEL: ikon aplikasi resmi diganti jadi buku tersenyum (file ikon-sistem-ajar.png). Dipakai untuk Install/PWA, Tambah ke Layar Utama, tab browser, dan preview WhatsApp (og:image). <!-- V.45 - Dikunci: V.43 + (1) NAVIGASI GURU TIDAK HILANG: Buat Soal, Kembali ke Soal, Buka Materi tetap menampilkan navigasi bawah - tidak perlu logout. (2) INGAT LOGIN: login guru & siswa tersimpan di HP/browser, refresh tidak perlu login lagi. Logout menghapus simpanan. <!-- V.43 - Dikunci: V.42 + SUARA MATEMATIKA: tombol Dengarkan Soal kini membaca simbol dengan kata (x = kali, + = tambah, - = kurang, : = bagi, = = sama dengan, ... = berapa) agar tidak lagi terbaca ex / samadengan. Bahasa Inggris: x = times, = = equals. <!-- V.42 - Dikunci: V.41 + PINDAH TOTAL KE SUPABASE. Firebase DIHAPUS TOTAL dari aplikasi: SDK Firebase dicabut, config kuis-kelas4 dibuang, db + storage kini mesin Supabase (REST) dengan API mirip Firestore sehingga 20 titik kode lama tidak berubah. Tabel: materi, siswa, nilai (diperluas), kartu. File besar (800KB-10MB) kini ke Supabase Storage bucket "materi". Jembatan V.41 (sbKirimNilai) dihapus karena nilai kini LANGSUNG ke Supabase lewat mesin baru - tidak ada dobel. Kartu tetap localStorage + upsert Supabase. <!-- V.41 - Dikunci: V.40 + JEMBATAN SUPABASE: setiap nilai tes baru + kartu baru/naik juga dikirim ke Supabase (tabel nilai + kartu, proyek sistem-ajar). Firebase lama (kuis-kelas4) TETAP jalan, tidak disentuh - Supabase adalah gudang kedua + cadangan. Pengiriman fire-and-forget: kalau Supabase/internet bermasalah, tes tetap jalan normal. Status sinkron tampil di panel Nilai guru (#supabase-status). <!-- V.40 - Dikunci: V.39 + PWA (Progressive Web App): aplikasi bisa DIPASANG di HP siswa (ikon di layar utama, dibuka layar penuh kayak aplikasi beneran). Kartu "Pasang Aplikasinya" di Beranda siswa + tombol Pasang (pakai prompt browser kalau ada, kalau tidak tampil petunjuk iPhone Bagikan > Tambah ke Layar Utama / Android titik tiga > Tambahkan ke Layar Utama). Manifest + ikon aplikasi (navy+emas+rubah) dibuat otomatis di dalam file, tetap 1 file, tanpa server tambahan. <!-- V.39 - Dikunci: V.38 + KARTU PAKAI BINGKAI GAMBAR ASLI: latar kartu koleksi (depan, belakang, terkunci) + gambar unduh/bagi kini memakai bingkai filigree navy+Emas/Perak/Perunggu hasil desain (ditanam base64 di dalam file, jadi tetap 1 file & bisa diunduh offline). Teks/nilai/avatar tetap dinamis ditempel di atas bingkai. Ornamen CSS emoji dihapus supaya tidak menumpuk dengan bingkai gambar. <!-- V.38 - Dikunci: V.37 + KARTU TIDAK POLOS LAGI: DEPAN kartu koleksi yang tadinya gradient polos kini navy elegan full ornamen (bingkai ganda, sudut ❦, avatar dalam lingkaran cahaya tier, pembatas ◆, pita tier berlaurel ❧, kilau radial, bintik bintang). Belakang kartu + gambar unduh/bagi diperkaya ornamen yang sama. Kartu terkunci juga navy elegan. <!-- V.37 - Dikunci: V.36 + DESAIN KARTU ELEGAN: belakang kartu koleksi + gambar unduh/bagi jadi navy elegan + aksen Emas/Perak/Perunggu (bingkai laurel, plakat judul, avatar siswa besar bercahaya, nilai besar warna tier, pita footer hanya "Belajar sambil bermain") + hapus teks "Matematika & Bahasa Inggris" dari kartu bagi. Avatar kartu sudah ikut pilihan Profil (12 emoji) sejak V.33/V.36, jadi tiap siswa kartunya pakai avatarnya sendiri. <!-- V.36 - Dikunci: V.35 + KARTU FLIP: kartu koleksi bisa diketuk untuk membalik (depan = ringkasan tier, belakang = desain kartu full warna Emas/Perak/Perunggu + pita "Belajar sambil bermain") + tombol ⬇️ Unduh & 📤 Bagikan di belakang kartu (gambar PNG via html2canvas, iOS Share Sheet) + kartu unduh tersembunyi tanpa efek flip. <!-- V.35 - Dikunci: V.34 + KOLEKSI KARTU (80+ Perunggu, 90+ Perak, 100 Emas; 1 materi = 1 kartu, bisa naik tingkat; popup kartu baru/naik tingkat/tetap + popup penyemangat A di bawah 80; hanya mode Tes, Latihan tidak dapat kartu) + TAB Bintangku | Koleksi Kartu di halaman Bintangku + jalan pintas Koleksi di Beranda + kartu Emas berkilau. <!-- V.34 - Dikunci: V.33 + PETA PETUALANGAN (jalur pos materi, pos lulus jadi bintang, tombol Baca/Tes) + AVATAR BEREAKSI (pesan Yeay/coba lagi + lompat saat benar, di kuis & tantangan) + HUJAN BINTANG (jawab benar) + CONFETTI (nilai >=80 & lencana 7 hari). <!-- V.33 - Dikunci: V.32 + TANTANGAN HARIAN (1 soal/hari, streak, lencana Semangat 7 Hari) + AVATAR (12 pilihan, muncul di Beranda/Hasil/Kartu Bagi) + LISTENING (tombol Dengarkan Soal di kuis & tantangan, en-US untuk Bahasa Inggris, id-ID untuk lainnya). <!-- V.32 - Dikunci: V.31 + PERBAIKAN: Tombol kembali (dan semua tombol outline) tulisannya hilang saat tema warna aktif, karena aturan tema menimpa latar jadi warna tema sementara warna tulisan juga warna tema (biru di atas biru). Aturan tema untuk .btn-outline kini mengembalikan background:#fff sehingga tulisan kembali terlihat. <!-- V.31 - Dikunci: V.30 + PERBAIKAN: Daftar Materi kosong karena di tampilkanMateriGuru tertulis if(s.gambar) padahal variabel perulangan-nya m (s tidak ada -> error, daftar berhenti tergambar). Diperbaiki jadi if(m.gambar) / _th.src=m.gambar. Data tidak hilang. <!-- V.30 - Dikunci: V.29 + PERBAIKAN PENTING: tutup tag <div> Beranda guru yang tertinggal di V.29 (panel Materi/Soal/Nilai/Siswa tertelan di dalam Beranda sehingga layar blank saat pindah tab). Data tidak hilang, hanya tersembunyi. <!-- V.29 - Dikunci: V.28 + Bottom Navigation Guru 5 tombol (Beranda, Materi, Soal, Nilai, Siswa) + Beranda guru ringkasan (jumlah materi/soal/siswa/nilai + nilai terbaru) + Badge titik merah di Nilai kalau ada nilai baru belum dilihat (hilang begitu menu Nilai dibuka). Menu 4 tombol lama di halaman guru dihapus, diganti nav bawah. <!-- V.28 - Dikunci: V.27 + Perbaiki iPhone hitam blank: download materi & kartu di iPhone pakai Share Sheet (navigator.share + file, iOS 15+), bukan tab baru blob URL. Kalau Share Sheet tidak tersedia, tampil panel dengan link asli yang diketuk sendiri. Android/laptop tidak berubah. <!-- V.27 - Dikunci: V.26 + Download materi ramah iPhone (file data: dibuka di tab baru + petunjuk Simpan ke File, file Storage tetap tab baru) + Unduh Kartu ramah iPhone (buka tab baru + petunjuk Simpan ke Foto). Android/laptop tidak berubah. <!-- V.26 - Dikunci: V.25 + Bagikan Kartu ke WhatsApp lewat Share Sheet HP (gambar PNG langsung, teks ikut) + cadangan link teks WhatsApp di laptop + batal share tidak membuka WhatsApp. <!-- V.25 - Dikunci: V.24 + Beranda baru (sapaan + Lanjutkan Belajar + ringkasan + Materi Terbaru + Tes Terakhirmu + kata penyemangat, tombol Ulangi/Baca mengatur dropdown otomatis) + menu Latihan di bar bawah (6 tombol) + kartu atas 3 tombol dihapus. <!-- V.24 - Dikunci: V.23 + Bar Aplikasi bawah (Beranda/Tes/Materi/Bintangku/Profil) + Halaman Bintang & Profil + Tema Warna (Biru/Pink/Hijau/Ungu) + Kartu Hasil Bagi (WhatsApp + Unduh gambar buat IG Story). <!-- V.23 - Dikunci: V.22 + Mode Latihan (tanpa nilai) + Ulangi Soal yang Salah (selalu latihan, nilai asli tidak ditimpa) + Bintang & Lencana (100=3⭐, 80+=2⭐, 60+=1⭐, hanya dari tes asli). <!-- V.22 - Dikunci: V.21 + Anti-nyontek: acak opsi A-D tiap siswa (kunci ikut pindah) + Soal Bergambar (gambar di dalam soal, dikecilkan maks ~150KB, tampil di atas pilihan). <!-- V.21 - Dikunci: V.20 + Pembahasan hormati Enter (white-space: pre-line), label "Pembahasan:" di baris sendiri, spasi antarbaris 1.6. <!-- V.20 - Dikunci: V.19 + Pembahasan hanya tampil kalau jawaban siswa SALAH. Kalau benar, hanya tampil "Betul! Kamu hebat!" tanpa Pembahasan. <!-- V.19 - Dikunci: V.18 - kolom Umpan Balik dihapus, hanya Pembahasan saja (teks lama yang sempat salah isi otomatis pindah ke Pembahasan saat soal diedit). <!-- V.18 - Dikunci: V.17 + Perbaikan timer: semua jalur mulai tes (baru & lanjut) menjalankan timer; kolom baru Umpan Balik Salah per soal, tampil hanya kalau jawaban siswa salah, di atas Pembahasan. <!-- V.17 - Dikunci: V.16 + Mode Tes Interaktif: timer naik (tanpa batas waktu), jawaban PG langsung dinilai + terkunci begitu diklik (benar = hijau ✓, salah = merah ✗ + kunci benar ditampilkan), esai dinilai lewat tombol Cek Jawaban, Pembahasan tampil setelah menjawab (field baru per soal), Daftar Nomor Soal (grid 1-N, warna hijau/merah/biru), skor benar live, waktu tampil di hasil, progress tersimpan termasuk jawaban terkunci. <!-- V.16 - Dikunci: V.15 + cara penilaian esai ke-2: URUTAN KATA (untuk Susun Kata / Perbaiki Kalimat) — BENAR hanya kalau urutan kata jawaban siswa sama persis dengan kunci. Soal esai kini punya field caraNilai (kunci/urutan), dipilih di form Buat Soal. Soal lama tanpa caraNilai tetap dinilai pakai Kata Kunci. -->
 
 
 <style>
+/* V.12 - Inline MathML: jangan tumpang tindih, pecahan nempel di tengah kalimat */
+math{ display:inline-block !important; vertical-align:middle !important; font-size:1em !important; line-height:1 !important; max-width:100%; }
+.q-text math, .opt math, .materi-item h3 math, #lbl-soal math{ font-size:1em !important; vertical-align:middle !important; }
+.q-text img, .opt img, #lbl-soal img{ max-height:32px !important; vertical-align:middle !important; display:inline-block !important; }
+.opt{ overflow:visible !important; height:auto !important; }
+[contenteditable][data-placeholder]:empty:before{ content:attr(data-placeholder); color:#94a3b8; font-style:italic; }
+
 .opt.benar{background:#dcfce7!important;border-color:#16a34a!important;color:#14532d}
 .opt.salah{background:#fee2e2!important;border-color:#dc2626!important;color:#7f1d1d}
 .opt.dim{opacity:.55}
@@ -383,14 +390,14 @@ body.punya-nav .wrap{ padding-bottom:96px; }
 <p class="hint" style="text-align:left">Soal tersimpan ke Sub Bab ini. Semua soal di Sub Bab ini jadi satu bank soal untuk worksheet + tes siswa.</p>
 <div id="wrap-form-manual">
 <label style="color:#1d4ed8">Jenis Soal — Pilih dulu, Esai atau Pilihan Ganda:</label><select id="soal-jenis" onchange="onJenisSoal()" style="border:2px solid #2563eb;font-weight:800"><option value="pg">1. Pilihan Ganda (A-D, langsung dinilai otomatis)</option><option value="esai">2. Esai / Uraian (siswa ketik jawaban, dikoreksi guru)</option></select><p class="hint" id="hint-jenis-soal">1 materi bisa campur: ada soal Pilihan Ganda + ada soal Esai = jadi Tes Kombinasi. Kalau semua soalnya PG = Tes Pilihan Ganda. Kalau semua Esai = Tes Esai.</p>
-<label>Soal / Pertanyaan:</label><textarea id="soal-tanya" placeholder="Tulis soal di sini..."></textarea>
+<label>Soal / Pertanyaan — ketik kalimatnya, paste equation dari Word langsung di tengah kalimat:</label><div id="soal-tanya" contenteditable="true" data-placeholder="Contoh: Pecahan 1/2 adalah senilai dengan 2/4. Paste pecahan dari Word langsung di sini..." style="min-height:88px;background:#fff;border:2px solid #2563eb;border-radius:10px;padding:10px 12px;font-size:16px;line-height:1.9;outline:none;white-space:pre-wrap;word-break:break-word" onpaste="onPasteRich(event, 'soal-tanya')" onfocus="catatEditorAktif('soal-tanya')" onclick="catatEditorAktif('soal-tanya')"></div><p class="hint" style="text-align:left">Cara pakai: Ketik kalimat seperti biasa. Untuk equation, blok equation di Word → Copy → klik di tengah kalimat di kotak ini (di posisi yang Wita mau) → Paste. Pecahan langsung nyambung jadi 1 kalimat, tidak jadi kotak terpisah. Contoh: “<b>Pecahan [paste 1/2 di sini] adalah senilai dengan [paste 2/4 di sini].</b>”</p><div style="display:flex;gap:4px;flex-wrap:wrap;margin:6px 0;align-items:center"><span style="font-size:12px;color:#475569">Sisip cepat:</span><button type="button" onclick="sisipSimbolInline('½')" style="flex:0 0 auto;width:auto;min-width:0;padding:4px 8px;font-size:14px;background:#f1f5f9;color:#1e293b;border:1px solid #cbd5e1;border-radius:6px;min-height:0;line-height:1">½</button><button type="button" onclick="sisipSimbolInline('¼')" style="flex:0 0 auto;width:auto;min-width:0;padding:4px 8px;font-size:14px;background:#f1f5f9;color:#1e293b;border:1px solid #cbd5e1;border-radius:6px;min-height:0;line-height:1">¼</button><button type="button" onclick="sisipSimbolInline('¾')" style="flex:0 0 auto;width:auto;min-width:0;padding:4px 8px;font-size:14px;background:#f1f5f9;color:#1e293b;border:1px solid #cbd5e1;border-radius:6px;min-height:0;line-height:1">¾</button><button type="button" onclick="sisipSimbolInline('²')" style="flex:0 0 auto;width:auto;min-width:0;padding:4px 8px;font-size:14px;background:#f1f5f9;color:#1e293b;border:1px solid #cbd5e1;border-radius:6px;min-height:0;line-height:1">²</button><button type="button" onclick="sisipSimbolInline('³')" style="flex:0 0 auto;width:auto;min-width:0;padding:4px 8px;font-size:14px;background:#f1f5f9;color:#1e293b;border:1px solid #cbd5e1;border-radius:6px;min-height:0;line-height:1">³</button><button type="button" onclick="sisipSimbolInline('√')" style="flex:0 0 auto;width:auto;min-width:0;padding:4px 8px;font-size:14px;background:#f1f5f9;color:#1e293b;border:1px solid #cbd5e1;border-radius:6px;min-height:0;line-height:1">√</button><button type="button" onclick="sisipSimbolInline('×')" style="flex:0 0 auto;width:auto;min-width:0;padding:4px 8px;font-size:14px;background:#f1f5f9;color:#1e293b;border:1px solid #cbd5e1;border-radius:6px;min-height:0;line-height:1">×</button><button type="button" onclick="sisipSimbolInline('÷')" style="flex:0 0 auto;width:auto;min-width:0;padding:4px 8px;font-size:14px;background:#f1f5f9;color:#1e293b;border:1px solid #cbd5e1;border-radius:6px;min-height:0;line-height:1">÷</button><button type="button" onclick="sisipSimbolInline('=')" style="flex:0 0 auto;width:auto;min-width:0;padding:4px 8px;font-size:14px;background:#f1f5f9;color:#1e293b;border:1px solid #cbd5e1;border-radius:6px;min-height:0;line-height:1">=</button><button type="button" onclick="sisipSimbolInline('π')" style="flex:0 0 auto;width:auto;min-width:0;padding:4px 8px;font-size:14px;background:#f1f5f9;color:#1e293b;border:1px solid #cbd5e1;border-radius:6px;min-height:0;line-height:1">π</button></div>
 <label>Gambar Soal (opsional):</label><input type="file" id="soal-gambar" accept="image/*" onchange="if(this.files[0]) kompresGambarSoal(this.files[0])"><div id="preview-gambar-soal"></div><p class="hint">Gambar tampil di atas pilihan jawaban. Otomatis dikecilkan (maks ~150KB) supaya tidak berat. Kosongkan kalau soal tidak pakai gambar.</p>
-<div id="box-pg"><label>Pilihan A:</label><input id="soal-a" placeholder="Pilihan A">
-<label>Pilihan B:</label><input id="soal-b" placeholder="Pilihan B">
-<label>Pilihan C:</label><input id="soal-c" placeholder="Pilihan C">
-<label>Pilihan D:</label><input id="soal-d" placeholder="Pilihan D">
+<div id="box-pg"><label>Pilihan A — ketik / paste equation di tengah kalimat:</label><div id="soal-a" contenteditable="true" style="min-height:48px;background:#fff;border:2px solid #cbd5e1;border-radius:10px;padding:8px 10px;font-size:16px;line-height:1.9;outline:none;white-space:pre-wrap;word-break:break-word" onpaste="onPasteRich(event, 'soal-a')" onfocus="catatEditorAktif('soal-a')" onclick="catatEditorAktif('soal-a')"></div>
+<label>Pilihan B — ketik / paste equation di tengah kalimat:</label><div id="soal-b" contenteditable="true" style="min-height:48px;background:#fff;border:2px solid #cbd5e1;border-radius:10px;padding:8px 10px;font-size:16px;line-height:1.9;outline:none;white-space:pre-wrap;word-break:break-word" onpaste="onPasteRich(event, 'soal-b')" onfocus="catatEditorAktif('soal-b')" onclick="catatEditorAktif('soal-b')"></div>
+<label>Pilihan C — ketik / paste equation di tengah kalimat:</label><div id="soal-c" contenteditable="true" style="min-height:48px;background:#fff;border:2px solid #cbd5e1;border-radius:10px;padding:8px 10px;font-size:16px;line-height:1.9;outline:none;white-space:pre-wrap;word-break:break-word" onpaste="onPasteRich(event, 'soal-c')" onfocus="catatEditorAktif('soal-c')" onclick="catatEditorAktif('soal-c')"></div>
+<label>Pilihan D — ketik / paste equation di tengah kalimat:</label><div id="soal-d" contenteditable="true" style="min-height:48px;background:#fff;border:2px solid #cbd5e1;border-radius:10px;padding:8px 10px;font-size:16px;line-height:1.9;outline:none;white-space:pre-wrap;word-break:break-word" onpaste="onPasteRich(event, 'soal-d')" onfocus="catatEditorAktif('soal-d')" onclick="catatEditorAktif('soal-d')"></div>
 <label>Kunci Jawaban:</label><div class="kunci-box"><select id="soal-kunci"><option value="0">A - (isi di atas)</option><option value="1">B - (isi di atas)</option><option value="2">C - (isi di atas)</option><option value="3">D - (isi di atas)</option></select><p class="hint" style="margin:8px 0 0">Pilih huruf yang jawabannya benar.</p></div>
-</div><div id="box-esai" class="hidden"><label>Kunci Jawaban Esai — dinilai dari kata kunci (tidak harus persis):</label><textarea id="soal-kunci-esai" placeholder="Contoh: My mother is a teacher. Tulis jawaban yang diharapkan — sesingkat mungkin, hanya kata yang wajib ada."></textarea><label style="margin-top:10px">Cara Penilaian Esai:</label><select id="soal-cara-nilai"><option value="kunci">1. Kata Kunci — BENAR kalau minimal 60% kata kunci muncul (untuk Terjemahkan / Lengkapi / Jawab Pertanyaan)</option><option value="urutan">2. Urutan Kata — BENAR kalau urutan katanya persis sama dengan kunci (untuk Susun Kata / Perbaiki Kalimat)</option></select><p class="hint">Untuk Susun Kata / Perbaiki Kalimat, pilih "Urutan Kata". Soal ditulis seperti biasa di atas (misal: "Susun kata-kata ini menjadi 1 kalimat yang benar: usually / I / at 6 o'clock / get up / ."), kunci = kalimat yang benar.</p><p class="hint">Esai dinilai OTOMATIS dari kata kunci: BENAR kalau minimal 60% kata kunci muncul di jawaban siswa. Huruf besar/kecil, tanda baca, dan kata a/an/the tidak dihitung. I'm = I am, don't = do not. Sinonim: tulis mom/mother (salah satu diterima). Kata opsional: tulis dalam kurung, contoh: I (am) happy. Contoh: kunci = My mother is a teacher → siswa jawab "My mother is teacher" / "mother is a teacher" = BENAR. Kalau ragu, guru bisa ubah di tab Nilai Siswa.</p></div><label>Pembahasan (opsional) — hanya tampil kalau jawaban siswa SALAH:</label><textarea id="soal-pembahasan" placeholder="Contoh: Angka 2 di ribuan, 3 di ratusan, 4 di puluhan, dan 5 di satuan. Tulis kenapa jawabannya benar. Kalau kosong, siswa hanya melihat Betul / Belum tepat."></textarea><p class="hint">Pembahasan hanya muncul kalau jawaban siswa SALAH, dan baru muncul SETELAH siswa menjawab — jadi tidak bisa dicontek sebelum menjawab. Kalau jawabannya BENAR, siswa hanya melihat "Betul! Kamu hebat!". Tekan Enter di kolom ini untuk membuat baris baru — baris baru tampil persis seperti itu ke siswa.</p><button type="button" class="btn btn-green" id="btn-simpan-soal" onclick="tambahSoal()" style="margin-top:14px">💾 Simpan Soal Ini (Online)</button>
+</div><div id="box-esai" class="hidden"><label>Kunci Jawaban Esai — dinilai dari kata kunci (tidak harus persis):</label><textarea id="soal-kunci-esai" placeholder="Contoh: My mother is a teacher. Tulis jawaban yang diharapkan — sesingkat mungkin, hanya kata yang wajib ada."></textarea><label style="margin-top:10px">Cara Penilaian Esai:</label><select id="soal-cara-nilai"><option value="kunci">1. Kata Kunci — BENAR kalau minimal 60% kata kunci muncul (untuk Terjemahkan / Lengkapi / Jawab Pertanyaan)</option><option value="urutan">2. Urutan Kata — BENAR kalau urutan katanya persis sama dengan kunci (untuk Susun Kata / Perbaiki Kalimat)</option></select><p class="hint">Untuk Susun Kata / Perbaiki Kalimat, pilih "Urutan Kata". Soal ditulis seperti biasa di atas (misal: "Susun kata-kata ini menjadi 1 kalimat yang benar: usually / I / at 6 o'clock / get up / ."), kunci = kalimat yang benar.</p><p class="hint">Esai dinilai OTOMATIS dari kata kunci: BENAR kalau minimal 60% kata kunci muncul di jawaban siswa. Huruf besar/kecil, tanda baca, dan kata a/an/the tidak dihitung. I'm = I am, don't = do not. Sinonim: tulis mom/mother (salah satu diterima). Kata opsional: tulis dalam kurung, contoh: I (am) happy. Contoh: kunci = My mother is a teacher → siswa jawab "My mother is teacher" / "mother is a teacher" = BENAR. Kalau ragu, guru bisa ubah di tab Nilai Siswa.</p></div><label>Pembahasan (opsional) — hanya tampil kalau jawaban siswa SALAH — bisa paste equation di tengah kalimat, sama seperti soal:</label><div id="soal-pembahasan" contenteditable="true" data-placeholder="Contoh: Karena pecahan 1/2 sama dengan 2/4. Paste pecahan dari Word langsung di tengah kalimat ini..." style="min-height:88px;background:#fff;border:2px solid #cbd5e1;border-radius:10px;padding:10px 12px;font-size:15px;line-height:1.9;outline:none;white-space:pre-wrap;word-break:break-word" onpaste="onPasteRich(event, 'soal-pembahasan')" onfocus="catatEditorAktif('soal-pembahasan')" onclick="catatEditorAktif('soal-pembahasan')"></div><p class="hint">Pembahasan hanya muncul kalau jawaban siswa SALAH, dan baru muncul SETELAH siswa menjawab — jadi tidak bisa dicontek sebelum menjawab. Kalau jawabannya BENAR, siswa hanya melihat "Betul! Kamu hebat!". Bisa paste equation Word di tengah kalimat, sama seperti soal — contoh: "Karena pecahan 1/2 sama dengan 2/4, jadi..."</p><button type="button" class="btn btn-green" id="btn-simpan-soal" onclick="tambahSoal()" style="margin-top:14px">💾 Simpan Soal Ini (Online)</button>
 <button type="button" class="btn btn-gray" id="btn-preview-draft" onclick="bukaPreviewDraftSoal()" style="margin-top:10px">👁 Preview — Lihat Seperti Siswa (Draf Ini)</button>
 <button type="button" class="btn btn-gray hidden" id="btn-batal-edit" onclick="batalEditSoal()" style="margin-top:10px">❌ Batal Edit - Kembali ke Buat Soal Baru</button><p id="soal-error" class="error"></p>
 <p id="label-edit-soal" class="hidden" style="text-align:center;font-weight:800;color:#ea580c;background:#fff7ed;border:1px solid #fed7aa;padding:10px;border-radius:10px;margin-top:10px">✏️ MODE EDIT: Kamu sedang mengedit soal lama. Klik "Update Soal" untuk menyimpan perubahan.</p></div>
@@ -1148,7 +1155,7 @@ function tampilkanInfoMateriTest(){ var id=el("siswa-materi-test").value; var m=
 function mulaiKuisDariTabTest(){ try{ var id=el("siswa-materi-test").value; subbabKuisId=el("siswa-subbab-test")?el("siswa-subbab-test").value:""; tesKuisId=null; var m=materiCache.find(function(x){return x.id===id}); if(!m||!subbabKuisId||soalDiSubbab(m,subbabKuisId).length===0){ el("siswa-error").textContent="Sub Bab ini belum ada soalnya."; el("siswa-error").style.display="block"; return; } var jPG=el("siswa-jumlah-pg")?parseInt(el("siswa-jumlah-pg").value,10):10; var jEs=el("siswa-jumlah-esai")?parseInt(el("siswa-jumlah-esai").value,10):0; if(isNaN(jPG)) jPG=0; if(isNaN(jEs)) jEs=0; if(jPG<0) jPG=0; if(jEs<0) jEs=0; if(jPG===0 && jEs===0){ el("siswa-error").textContent="Isi dulu: Jumlah PG atau Jumlah Esai minimal 1. Contoh: PG 10 + Esai 0."; el("siswa-error").style.display="block"; return; } el("siswa-error").style.display="none"; if(el("siswa-materi")) el("siswa-materi").value=id; mulaiKuisDenganCampuran(jPG, jEs); }catch(e){ alert("Gagal mulai tes: "+e.message+"\nCoba refresh halaman, lalu pilih materi lagi."); } }
 function acakArray(arr){ var a=arr.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
 /* V.22 - Anti-nyontek: acak urutan opsi A-D tiap siswa. Kunci ikut pindah bersama teksnya, jadi "nomor 3 = B" tidak berlaku lagi. Bank soal asli TIDAK diubah (disalin dulu). */
-function acakOpsiSoal(s){ if(jenisSoal(s)!=="pg"||!s.opsi||s.opsi.length<2) return s; var pas=s.opsi.map(function(t,i){return {t:t, benar:(i===s.kunci)};}); var ac=acakArray(pas); var baru={}; for(var k in s) baru[k]=s[k]; baru.opsi=ac.map(function(x){return x.t;}); baru.kunci=ac.findIndex(function(x){return x.benar;}); return baru; }
+function acakOpsiSoal(s){ if(jenisSoal(s)!=="pg"||!s.opsi||s.opsi.length<2) return s; var pas=s.opsi.map(function(t,i){return {t:t, rumus:((s.opsiRumus||[])[i]||""), html:((s.opsiHtml||[])[i]||""), benar:(i===s.kunci)};}); var ac=acakArray(pas); var baru={}; for(var k in s) baru[k]=s[k]; baru.opsi=ac.map(function(x){return x.t;}); baru.opsiRumus=ac.map(function(x){return x.rumus;}); baru.opsiHtml=ac.map(function(x){return x.html;}); baru.kunci=ac.findIndex(function(x){return x.benar;}); return baru; }
 function mulaiKuisDenganCampuran(jPG, jEs){ /* V.56d - JANGAN hapus kode siswa kalau kolom login kosong! Dulu kode kehapus di sini, bintang jadi nyangkut di perangkat aja & nggak kekirim ke Supabase. */ var kodeForm=(el("login-kode-siswa")?el("login-kode-siswa").value.trim().toUpperCase():""); if(kodeForm) kodeSiswaAktif=kodeForm; /* Tes selalu dimulai dari tab "Ikuti Test", jadi materi diambil dari dropdown tab Test (siswa-materi-test) dulu. Dropdown tab Materi (siswa-materi) difilter oleh Kelas/Mapel tab Materi sendiri — kalau siswa belum pernah pilih Bahasa Inggris di sana, nilainya kosong/materi lain, dan tes gagal dengan "Materi ini belum ada soalnya" padahal soalnya ada. */ var id=(el("siswa-materi-test")&&el("siswa-materi-test").value)||(el("siswa-materi")&&el("siswa-materi").value); var mat=materiCache.find(function(x){return x.id===id}); mapelKuis=mat?mat.mapel||"":""; if(!mat||!subbabKuisId||soalDiSubbab(mat,subbabKuisId).length===0){ el("siswa-error").textContent="Sub Bab ini belum ada soalnya."; el("siswa-error").style.display="block"; return; } el("siswa-error").style.display="none"; var bankSoal=subbabKuisId?soalDiSubbab(mat,subbabKuisId):mat.soal; if(bankSoal.length===0){ el("siswa-error").textContent="Sub Bab ini belum ada soalnya."; el("siswa-error").style.display="block"; return; } var sbK=getSubbab(mat, subbabKuisId); subbabKuisNama=sbK?sbK.judul:""; tesKuisNama=subbabKuisNama; if(cekTesSudahHariIni(mat.judul, subbabKuisNama, subbabKuisId)) return; /* V.4 - sudah tes ini hari ini, jangan mulai lagi */ var listPG=bankSoal.filter(function(x){return jenisSoal(x)==="pg";}); var listEs=bankSoal.filter(function(x){return jenisSoal(x)==="esai";}); if(jPG>listPG.length){ alert("PG yang diminta "+jPG+", tapi bank soal PG hanya ada "+listPG.length+". Dipakai semuanya saja ya."); jPG=listPG.length; } if(jEs>listEs.length){ alert("Esai yang diminta "+jEs+", tapi bank soal Esai hanya ada "+listEs.length+". Dipakai semuanya saja ya."); jEs=listEs.length; } jumlahTerakhir=jPG+jEs; jumlahTerakhirPG=jPG; jumlahTerakhirEsai=jEs; materiKuis=mat.judul; soalList=acakArray(listPG).slice(0,jPG).map(acakOpsiSoal).concat(acakArray(listEs).slice(0,jEs)); materiKuis=mat.judul+" • "+subbabKuisNama;
   /* URUTAN WAJIB: PG dulu sampai habis, baru Esai. */ jwbList=[]; for(var k=0;k<soalList.length;k++) jwbList.push(null); idx=0; terkunciList=[]; hasilTerkunciList=[]; for(var k2=0;k2<soalList.length;k2++){ terkunciList.push(false); hasilTerkunciList.push(null); } waktuTesDetik=0; if(el("lbl-siswa")) el("lbl-siswa").textContent="Nama: "+siswaNama+" • Kelas: "+siswaKelas+" • "+materiKuis+" • "+soalList.length+" Soal ("+jPG+" PG + "+jEs+" Esai)"; sembunyikanSemua(); show("page-kuis"); show("bottom-nav"); masukModeTes(); renderSoal(); mulaiTimerTes(); aktifkanAntiCheat(false); simpanProgress(); }
 function isiDropdownMateriSiswa(){ isiKelasSiswa(); isiKelasTestSiswa(); }
@@ -1184,7 +1191,7 @@ function toggleSuara(){ suaraAktif=!suaraAktif; try{ localStorage.setItem('siste
 function segarkanTombolSuara(){ try{ var btns=document.querySelectorAll('.btn-suara'); btns.forEach(function(b){ b.textContent=suaraAktif?'🔊':'🔇'; b.title=suaraAktif?'Matikan suara':'Nyalakan suara'; }); }catch(e){} }
 function jawabPG(teks){ if(terkunciList[idx]) return; jwbList[idx]=teks; var s=soalList[idx]; hasilTerkunciList[idx]=nilaiSatuSoal(s, teks); terkunciList[idx]=true; reaksiAvatar(hasilTerkunciList[idx].benar); mainkanSuaraJawaban(hasilTerkunciList[idx].benar); if(hasilTerkunciList[idx].benar) hujanBintang(); renderSoal(); }
 function cekJawabanEsai(){ var s=soalList[idx]; var jwb=jwbList[idx]; if(!jwb||!String(jwb).trim()){ alert("Ketik jawaban esaimu dulu ya!"); return; } hasilTerkunciList[idx]=nilaiSatuSoal(s, jwb); terkunciList[idx]=true; reaksiAvatar(hasilTerkunciList[idx].benar); mainkanSuaraJawaban(hasilTerkunciList[idx].benar); if(hasilTerkunciList[idx].benar) hujanBintang(); renderSoal(); }
-function kotakPembahasan(s, hasil){ var d=document.createElement("div"); d.className="box-pembahasan"+(hasil.benar?" ok":""); var hd=document.createElement("div"); hd.style.fontWeight="800"; hd.style.fontSize="15px"; hd.textContent=hasil.benar?"✅ Betul! Kamu hebat!":"💡 Belum tepat, tidak apa-apa!"; d.appendChild(hd); if(!hasil.benar && s.pembahasan){ var p=document.createElement("div"); p.style.marginTop="6px"; var lb=document.createElement("div"); lb.style.fontWeight="800"; lb.textContent="Pembahasan:"; p.appendChild(lb); var isi=document.createElement("div"); isi.style.whiteSpace="pre-line"; isi.style.lineHeight="1.6"; isi.textContent=s.pembahasan; p.appendChild(isi); d.appendChild(p); } return d; }
+function kotakPembahasan(s, hasil){ var d=document.createElement("div"); d.className="box-pembahasan"+(hasil.benar?" ok":""); var hd=document.createElement("div"); hd.style.fontWeight="800"; hd.style.fontSize="15px"; hd.textContent=hasil.benar?"✅ Betul! Kamu hebat!":"💡 Belum tepat, tidak apa-apa!"; d.appendChild(hd); var _pbTampil=(s.pembahasanHtml||""); var _pbTeks=(s.pembahasan||""); if(!hasil.benar && (_pbTampil || _pbTeks)){ var p=document.createElement("div"); p.style.marginTop="6px"; var lb=document.createElement("div"); lb.style.fontWeight="800"; lb.textContent="Pembahasan:"; p.appendChild(lb); var isi=document.createElement("div"); isi.style.whiteSpace="pre-wrap"; isi.style.lineHeight="1.9"; isi.style.wordBreak="break-word"; if(_pbTampil){ isi.innerHTML=_pbTampil; } else { isi.textContent=_pbTeks; } p.appendChild(isi); d.appendChild(p); } return d; }
 function renderGridNomor(){ var grid=el("grid-nomor-soal"); if(!grid) return; while(grid.firstChild) grid.removeChild(grid.firstChild); for(var i=0;i<soalList.length;i++){ (function(n){ var b=document.createElement("button"); b.type="button"; b.className="nomor-btn"; b.textContent=String(n+1); if(terkunciList[n]){ b.classList.add(hasilTerkunciList[n]&&hasilTerkunciList[n].benar?"benar":"salah"); } else if(jwbList[n]!==null&&jwbList[n]!==undefined&&String(jwbList[n]).trim()!==""){ b.classList.add("dijawab"); } if(n===idx) b.classList.add("saatini"); b.onclick=function(){ idx=n; renderSoal(); }; grid.appendChild(b); })(i); } }
 function toggleNomorSoal(){ nomorSoalTerbuka=!nomorSoalTerbuka; var grid=el("grid-nomor-soal"); if(grid) grid.style.display=nomorSoalTerbuka?"grid":"none"; }
 function renderSoal(){
@@ -1192,17 +1199,18 @@ function renderSoal(){
   if(jenisSoal(s)==="esai"){ var _noEsai=idx - _jmlPGsoal + 1; el("lbl-no").textContent="Bagian 2 — Esai • "+_noEsai+" dari "+_jmlEsaisoal; }
   else { el("lbl-no").textContent="Bagian 1 — PG • "+(idx+1)+" dari "+_jmlPGsoal; }
   var _bannerLama=document.getElementById("banner-bagian-soal"); if(_bannerLama) _bannerLama.remove();
-  el("lbl-soal").textContent=(idx+1)+". "+s.tanya; el("progress-fill").style.width=Math.round(((idx+1)/soalList.length)*100)+"%";
+  var _lbl=el("lbl-soal"); if(_lbl){ while(_lbl.firstChild) _lbl.removeChild(_lbl.firstChild); var _num=document.createElement("span"); _num.textContent=(idx+1)+". "; _lbl.appendChild(_num); if(s.tanyaHtml){ var _th=document.createElement("span"); _th.style.cssText="display:inline;line-height:1.9"; _th.innerHTML=s.tanyaHtml; _lbl.appendChild(_th); } else if(s.rumusHtml){ var _t0=document.createElement("span"); _t0.textContent=(s.tanya||"").replace(/\[equation\]/g," ").trim()+" "; _lbl.appendChild(_t0); var _r0=document.createElement("span"); _r0.style.cssText="display:inline-block;vertical-align:middle;font-size:1em;line-height:1"; _r0.innerHTML=s.rumusHtml.replace(/displaystyle="true"/g,'displaystyle="false"'); _lbl.appendChild(_r0); } else { var _t1=document.createElement("span"); _t1.textContent=s.tanya||""; _lbl.appendChild(_t1); } } el("progress-fill").style.width=Math.round(((idx+1)/soalList.length)*100)+"%";
   var _dijawab=0, _benarLive=0; for(var _c=0;_c<soalList.length;_c++){ if(jwbList[_c]!==null&&jwbList[_c]!==undefined&&String(jwbList[_c]).trim()!=="") _dijawab++; if(terkunciList[_c]&&hasilTerkunciList[_c]&&hasilTerkunciList[_c].benar) _benarLive++; }
   if(el("lbl-timer")) el("lbl-timer").textContent="⏱ "+formatWaktuTes(waktuTesDetik);
   if(el("lbl-benar-live")) el("lbl-benar-live").textContent="⭐ Benar: "+_benarLive;
   if(el("lbl-dijawab")) el("lbl-dijawab").textContent="Sudah dijawab: "+_dijawab+"/"+soalList.length;
   renderGridNomor();
   var box=el("box-opsi"); while(box.firstChild) box.removeChild(box.firstChild);
+  /* V.12: rumus sudah inline di lbl-soal, tidak lagi blok terpisah yang bikin tumpang tindih */
   if(s.gambar){ var _g=document.createElement("img"); _g.src=s.gambar; _g.alt="Gambar soal"; _g.style.cssText="max-width:100%;max-height:260px;object-fit:contain;border-radius:12px;border:1px solid #e2e8f0;display:block;margin:0 auto 12px"; box.appendChild(_g); }
   var terkunci=!!terkunciList[idx]; var hasil=hasilTerkunciList[idx];
   if(jenisSoal(s)==="esai"){ var ta=document.createElement("textarea"); ta.placeholder="Ketik jawabanmu di sini... (bebas, pakai kalimatmu sendiri)"; ta.value=jwbList[idx]||""; ta.style.minHeight="140px"; if(terkunci){ ta.disabled=true; } else { ta.oninput=function(){ jwbList[idx]=ta.value; simpanProgress(); }; } box.appendChild(ta); if(!terkunci){ var hint=document.createElement("p"); hint.className="hint"; hint.textContent=(s.caraNilai==="urutan")?"Soal Susun Kata / Perbaiki Kalimat: urutan kata harus PERSIS sama dengan kunci. Tulis 1 kalimat dengan urutan yang benar. Huruf besar/kecil dan tanda baca tidak dihitung.":"Jawaban esai dinilai OTOMATIS dari kata kunci: kamu tidak harus menulis persis sama dengan kunci. Tulis kalimatmu sendiri — yang penting kata-kata pentingnya ada. Huruf besar/kecil dan tanda baca tidak dihitung."; box.appendChild(hint); var btnCek=document.createElement("button"); btnCek.type="button"; btnCek.className="btn btn-green"; btnCek.style.marginTop="10px"; btnCek.textContent="✅ Cek Jawaban"; btnCek.onclick=cekJawabanEsai; box.appendChild(btnCek); } else if(hasil){ box.appendChild(kotakPembahasan(s, hasil)); } }
-  else { var abjad=["A","B","C","D"]; for(var i=0;i<(s.opsi||[]).length;i++){ (function(teks,huruf){ var b=document.createElement("button"); b.type="button"; b.className="opt"; var sp=document.createElement("span"); sp.className="huruf"; sp.textContent=huruf; var tx=document.createElement("span"); tx.textContent=teks; b.appendChild(sp); b.appendChild(tx); if(terkunci){ b.disabled=true; var kunciTeks=(s.opsi||[])[s.kunci]; if(teks===kunciTeks){ b.classList.add("benar"); var ck=document.createElement("span"); ck.textContent=" ✓"; ck.style.fontWeight="800"; b.appendChild(ck); } else if(teks===jwbList[idx]){ b.classList.add("salah"); var xx=document.createElement("span"); xx.textContent=" ✗"; xx.style.fontWeight="800"; b.appendChild(xx); } else { b.classList.add("dim"); } } else { if(jwbList[idx]===teks) b.classList.add("sel"); b.onclick=function(){ jawabPG(teks); }; } box.appendChild(b); })(s.opsi[i], abjad[i]); } if(terkunci && hasil){ box.appendChild(kotakPembahasan(s, hasil)); } }
+  else { var abjad=["A","B","C","D"]; for(var i=0;i<(s.opsi||[]).length;i++){ (function(teks,huruf, idxOpsi){ var b=document.createElement("button"); b.type="button"; b.className="opt"; b.style.cssText="align-items:center;min-height:0;height:auto"; var sp=document.createElement("span"); sp.className="huruf"; sp.textContent=huruf; var tx=document.createElement("span"); tx.style.cssText="display:inline;line-height:1.9;word-break:break-word"; var htmlOpsi=((s.opsiHtml||[])[idxOpsi]||""); var rumusOpsi=((s.opsiRumus||[])[idxOpsi]||""); if(htmlOpsi){ tx.innerHTML=htmlOpsi; } else if(rumusOpsi){ var teksCad2=mathMLKeTeks(rumusOpsi); if(teks && teks!==teksCad2 && teks.trim()!==""){ var ts0=document.createElement("span"); ts0.textContent=teks+" "; tx.appendChild(ts0); var rs0=document.createElement("span"); rs0.style.cssText="display:inline-block;vertical-align:middle;font-size:1em;line-height:1"; rs0.innerHTML=rumusOpsi.replace(/displaystyle="true"/g,'displaystyle="false"'); tx.appendChild(rs0); } else { tx.innerHTML='<span style="display:inline-block;vertical-align:middle;font-size:1em;line-height:1">'+rumusOpsi.replace(/displaystyle="true"/g,'displaystyle="false"')+'</span>'; } } else { tx.textContent=teks; } b.appendChild(sp); b.appendChild(tx); if(terkunci){ b.disabled=true; var kunciTeks=(s.opsi||[])[s.kunci]; if(teks===kunciTeks){ b.classList.add("benar"); var ck=document.createElement("span"); ck.textContent=" ✓"; ck.style.fontWeight="800"; b.appendChild(ck); } else if(teks===jwbList[idx]){ b.classList.add("salah"); var xx=document.createElement("span"); xx.textContent=" ✗"; xx.style.fontWeight="800"; b.appendChild(xx); } else { b.classList.add("dim"); } } else { if(jwbList[idx]===teks) b.classList.add("sel"); b.onclick=function(){ jawabPG(teks); }; } box.appendChild(b); })(s.opsi[i], abjad[i], i); } if(terkunci && hasil){ box.appendChild(kotakPembahasan(s, hasil)); } }
   el("b-prev").style.visibility=(idx===0)?"hidden":"visible"; el("b-next").textContent=(idx===soalList.length-1)?"Selesai":"Selanjutnya"; window.scrollTo(0,0); simpanProgress();
 }
 function geser(a){ var _j=jwbList[idx]; var _kosong=(_j===null||_j===undefined||String(_j).trim()===""); if(a===1 && _kosong){ alert(jenisSoal(soalList[idx])==="esai"?"Ketik jawaban esaimu dulu ya!":"Pilih satu jawaban dulu ya!"); return; } if(idx+a>=0 && idx+a<soalList.length){ idx+=a; renderSoal(); } else if(idx+a===soalList.length){ selesai(); } }
@@ -1399,7 +1407,7 @@ function tambahBintang(n){ if(!n) return ambilBintang(); var d=ambilBintang(); d
 
 /* ================= V.55 - MODE DUOLINGO: Api Main, Permata, Kelinci ================= */
 /* V.55 - LABEL VERSI: 1 tempat aja! Tiap upgrade, cukup ganti angka di sini -> badge + tab browser ikut berubah */
-var VERSI_APLIKASI="V.9";
+var VERSI_APLIKASI="V.13";
 /* V.56i/V.56j - SAMAKAN SISWA tanpa peduli huruf besar/kecil + spasi.
    Dulu: nama dibandingkan harus PERSIS. Kalau nilai tersimpan atas nama "Chaca"
    tapi login ketik "chaca", Beranda + Profil + Nilai bilang "Belum ada tes" padahal udah tes.
@@ -2359,7 +2367,7 @@ async function jalankanPindahSubbab(){
 async function hapusMateri(id){ var m=materiCache.find(function(x){return x.id===id}); if(!confirm("Hapus materi '"+(m?m.judul:"")+"' beserta semua soalnya?")) return; try{ await db.collection("materi").doc(id).delete(); }catch(e){ alert("Gagal hapus: "+e.message); } }
 async function tambahFileKeMateri(id){ var m=materiCache.find(function(x){return x.id===id}); if(!m) return; var inp=document.createElement("input"); inp.type="file"; inp.multiple=true; inp.accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.jpg,.jpeg,.png"; inp.onchange=async function(){ var filesBaru=daftarFileMateri(m); for(var i=0;i<inp.files.length;i++){ try{ var satu=await simpanFileKeMateriBaru(inp.files[i]); filesBaru.push(satu); }catch(e){ alert(e.message); return; } } try{ await db.collection("materi").doc(id).update({files:filesBaru, fileNama:(filesBaru[0]?filesBaru[0].nama:""), fileTipe:(filesBaru[0]?filesBaru[0].tipe:""), fileData:(filesBaru[0]?filesBaru[0].data:""), fileUrl:(filesBaru[0]?filesBaru[0].url:"")}); alert("✅ "+inp.files.length+" file berhasil ditambahkan ke materi '"+m.judul+"'! Total file di materi ini sekarang: "+filesBaru.length+". Siswa sudah bisa download semuanya."); }catch(e){ alert("Gagal simpan file: "+e.message); } }; inp.click(); }
 async function hapusFileMateri(id, idx){ var m=materiCache.find(function(x){return x.id===id}); if(!m) return; var list=daftarFileMateri(m); var namaFile=list[idx]?list[idx].nama:"file"; if(idx===undefined||idx===null){ if(!confirm("Hapus SEMUA file dari materi '"+m.judul+"' ? Materi & soalnya tetap ada.")) return; list=[]; } else { if(!confirm("Hapus file '"+namaFile+"' dari materi '"+m.judul+"' ? Materi & soal tetap ada.")) return; list.splice(idx,1); } try{ await db.collection("materi").doc(id).update({files:list, fileNama:(list[0]?list[0].nama:""), fileTipe:(list[0]?list[0].tipe:""), fileData:(list[0]?list[0].data:""), fileUrl:(list[0]?list[0].url:"")}); if(modalFileMateriId===id){ var _mm=materiCache.find(function(x){return x.id===id}); if(_mm){ _mm.files=list; _mm.fileNama=(list[0]?list[0].nama:""); } renderModalFileMateri(); } }catch(e){ alert("Gagal hapus file: "+e.message); } }
-function buildWorksheetPageHTML(m, soalChunk, pageNo, totalPages, isKunci){ var abjad=["a","b","c","d"]; var isi=""; if(isKunci){ isi='<div style="border:1.5px solid #bfdbfe;background:#eff6ff;border-radius:10px;padding:14px;line-height:1.5"><b style="color:#1d4ed8">Kunci Jawaban (Untuk Guru - Jangan dibagikan ke siswa)</b><br><br>'+m.soal.map(function(s,i){ return (i+1)+'. '+(jenisSoal(s)==="esai"?('Esai - Acuan: '+(s.kunciEsai||'-')):["A","B","C","D"][s.kunci]); }).join('&nbsp;&nbsp;&nbsp;')+'<br><br>Materi: '+escapeHtmlWorksheet(m.judul)+' &bull; Kelas: '+escapeHtmlWorksheet(m.kelas||"-")+' &bull; Mapel: '+escapeHtmlWorksheet(m.mapel||"-")+'</div>'; } else { var jmlPGTotal=(m.soal||[]).filter(function(x){return jenisSoal(x)==="pg";}).length; var jmlEsaiTotal=(m.soal||[]).filter(function(x){return jenisSoal(x)==="esai";}).length; var sudahTampilPG=false; var sudahTampilEsai=false; soalChunk.forEach(function(s, idxChunk){ var idxGlobal=m.soal.indexOf(s); var j=jenisSoal(s); var judulSeksi=""; if(j==="pg" && !sudahTampilPG){ var adaPGsebelum=(m.soal||[]).slice(0, idxGlobal).some(function(x){return jenisSoal(x)==="pg";}); if(!adaPGsebelum) judulSeksi='<div style="margin:2px 0 14px"><div style="font-size:17px;font-weight:800">Soal Pilihan Ganda</div><div style="border-bottom:2px solid #111;margin-top:4px"></div></div>'; sudahTampilPG=true; } if(j==="esai" && !sudahTampilEsai){ var adaEsaiSebelum=(m.soal||[]).slice(0, idxGlobal).some(function(x){return jenisSoal(x)==="esai";}); if(!adaEsaiSebelum) judulSeksi='<div style="margin:2px 0 14px"><div style="font-size:17px;font-weight:800">Soal Esai</div><div style="border-bottom:2px solid #111;margin-top:4px"></div></div>'; sudahTampilEsai=true; } var isiSoal=""; if(j==="esai"){ isiSoal='<div style="font-size:15px;line-height:1.8;margin-top:4px;white-space:nowrap;overflow:hidden"><div>Jawab : ................................................................................................................</div></div>'; } else { isiSoal='<div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">'+(s.opsi||[]).map(function(opt, jj){ return '<div style="border:1.5px solid #cbd5e1;border-radius:10px;padding:9px 11px;display:flex;gap:10px;align-items:center;font-size:15px"><span style="width:26px;height:26px;min-width:26px;border:2px solid #111;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px">'+abjad[jj]+'</span>'+escapeHtmlWorksheet(opt)+'</div>'; }).join('')+'</div>'; } var nomorTampil=(j==="esai" && jmlEsaiTotal>0 && jmlPGTotal>0) ? ((idxGlobal - jmlPGTotal) + 1) : (idxGlobal + 1); isi+=judulSeksi+'<div style="display:flex;gap:12px;margin-bottom:20px;line-height:1.5"><div style="flex:0 0 34px;height:34px;border:2px solid #111;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px">'+nomorTampil+'</div><div style="flex:1"><div style="font-size:16px;font-weight:700;margin-bottom:10px">'+escapeHtmlWorksheet(s.tanya)+'</div>'+isiSoal+'</div></div>'; }); } var header=''; if(pageNo===1){ header='<div style="text-align:center;border-bottom:3px double #111;padding-bottom:14px;margin-bottom:18px"><div style="font-size:11px;letter-spacing:2px;color:#555;text-transform:uppercase">Sistem Ajar By Wita Gemini &bull; '+escapeHtmlWorksheet(m.mapel||"")+' Kelas '+escapeHtmlWorksheet(m.kelas||"")+'</div><div style="font-size:24px;font-weight:800;margin:8px 0 4px">'+escapeHtmlWorksheet(m.judul)+'</div><div style="font-size:12px;color:#555">Worksheet &bull; '+m.soal.length+' Soal</div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 32px;margin-bottom:18px;font-size:14px"><div style="border-bottom:1.5px dotted #999;padding-bottom:5px">Nama : ................................................................</div><div style="border-bottom:1.5px dotted #999;padding-bottom:5px">No Absen : ....................................</div><div style="border-bottom:1.5px dotted #999;padding-bottom:5px">Kelas : ................................................................</div><div style="border-bottom:1.5px dotted #999;padding-bottom:5px">Tanggal : ....................................</div></div><div style="background:#f0f7ff;border:1.5px solid #bfdbfe;border-radius:10px;padding:11px 14px;font-size:13.5px;line-height:1.5;margin-bottom:20px"><b style="color:#1d4ed8">Petunjuk:</b> Untuk Pilihan Ganda, berilah tanda silang <b>(\u2715)</b> pada lingkaran huruf <b>a, b, c, atau d</b> yang menurutmu benar! Untuk Esai, tulis jawabanmu pada garis titik-titik. Kerjakan sendiri ya, jangan mencontek! \uD83D\uDE4F</div>'; } var footer=''; if(!isKunci && pageNo===totalPages-1){ footer='<div style="margin-top:20px;border-top:2px solid #111;padding-top:14px;display:flex;justify-content:space-between;font-size:13px"><div><b>Catatan Guru:</b><br><br>.........................................................................</div><div style="border:2px solid #111;border-radius:10px;padding:10px 18px;text-align:center"><div style="font-size:11px;letter-spacing:1px">NILAI</div><b style="font-size:22px">___ / 100</b><div style="font-size:11px;margin-top:6px">Paraf Guru: .................</div></div></div>'; } return '<div style="width:794px;height:1123px;overflow:hidden;background:#fff;padding:44px 52px;font-family:\'Times New Roman\',serif;color:#111;line-height:1.5;box-sizing:border-box">'+header+isi+footer+'<div style="font-size:11px;color:#888;text-align:center;margin-top:14px">Halaman '+pageNo+' dari '+totalPages+'</div></div>'; }
+function buildWorksheetPageHTML(m, soalChunk, pageNo, totalPages, isKunci){ var abjad=["a","b","c","d"]; var isi=""; if(isKunci){ isi='<div style="border:1.5px solid #bfdbfe;background:#eff6ff;border-radius:10px;padding:14px;line-height:1.5"><b style="color:#1d4ed8">Kunci Jawaban (Untuk Guru - Jangan dibagikan ke siswa)</b><br><br>'+m.soal.map(function(s,i){ return (i+1)+'. '+(jenisSoal(s)==="esai"?('Esai - Acuan: '+(s.kunciEsai||'-')):["A","B","C","D"][s.kunci]); }).join('&nbsp;&nbsp;&nbsp;')+'<br><br>Materi: '+escapeHtmlWorksheet(m.judul)+' &bull; Kelas: '+escapeHtmlWorksheet(m.kelas||"-")+' &bull; Mapel: '+escapeHtmlWorksheet(m.mapel||"-")+'</div>'; } else { var jmlPGTotal=(m.soal||[]).filter(function(x){return jenisSoal(x)==="pg";}).length; var jmlEsaiTotal=(m.soal||[]).filter(function(x){return jenisSoal(x)==="esai";}).length; var sudahTampilPG=false; var sudahTampilEsai=false; soalChunk.forEach(function(s, idxChunk){ var idxGlobal=m.soal.indexOf(s); var j=jenisSoal(s); var judulSeksi=""; if(j==="pg" && !sudahTampilPG){ var adaPGsebelum=(m.soal||[]).slice(0, idxGlobal).some(function(x){return jenisSoal(x)==="pg";}); if(!adaPGsebelum) judulSeksi='<div style="margin:2px 0 14px"><div style="font-size:17px;font-weight:800">Soal Pilihan Ganda</div><div style="border-bottom:2px solid #111;margin-top:4px"></div></div>'; sudahTampilPG=true; } if(j==="esai" && !sudahTampilEsai){ var adaEsaiSebelum=(m.soal||[]).slice(0, idxGlobal).some(function(x){return jenisSoal(x)==="esai";}); if(!adaEsaiSebelum) judulSeksi='<div style="margin:2px 0 14px"><div style="font-size:17px;font-weight:800">Soal Esai</div><div style="border-bottom:2px solid #111;margin-top:4px"></div></div>'; sudahTampilEsai=true; } var rumusWs=""; /* V.12: rumus sudah inline di tanyaHtml */ var isiSoal=""; if(j==="esai"){ isiSoal='<div style="font-size:15px;line-height:1.8;margin-top:4px;white-space:nowrap;overflow:hidden"><div>Jawab : ................................................................................................................</div></div>'; } else { isiSoal='<div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">'+(s.opsi||[]).map(function(opt, jj){ var _ohW=((s.opsiHtml||[])[jj]||""); var _roW=((s.opsiRumus||[])[jj]||""); var _isiW=""; if(_ohW){ _isiW=_ohW; } else if(_roW){ var _teksW=mathMLKeTeks(_roW); if(opt && opt!==_teksW && String(opt).trim()!=="") _isiW=escapeHtmlWorksheet(opt)+" "+'<span style="display:inline-block;vertical-align:middle">'+_roW.replace(/displaystyle="true"/g,'displaystyle="false"')+'</span>'; else _isiW='<span style="display:inline-block;vertical-align:middle">'+_roW.replace(/displaystyle="true"/g,'displaystyle="false"')+'</span>'; } else { _isiW=escapeHtmlWorksheet(opt); } return '<div style="border:1.5px solid #cbd5e1;border-radius:10px;padding:9px 11px;display:flex;gap:10px;align-items:center;font-size:15px"><span style="width:26px;height:26px;min-width:26px;border:2px solid #111;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px">'+abjad[jj]+'</span><span style="font-size:16px;line-height:1.9;word-break:break-word">'+_isiW+'</span></div>'; }).join('')+'</div>'; } var nomorTampil=(j==="esai" && jmlEsaiTotal>0 && jmlPGTotal>0) ? ((idxGlobal - jmlPGTotal) + 1) : (idxGlobal + 1); isi+=judulSeksi+rumusWs+'<div style="display:flex;gap:12px;margin-bottom:20px;line-height:1.5"><div style="flex:0 0 34px;height:34px;border:2px solid #111;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px">'+nomorTampil+'</div><div style="flex:1"><div style="font-size:16px;font-weight:700;margin-bottom:10px">'+(s.tanyaHtml? s.tanyaHtml : (s.rumusHtml? escapeHtmlWorksheet((s.tanya||'').replace(/\[equation\]/g,' '))+' '+ '<span style="display:inline-block;vertical-align:middle">'+s.rumusHtml.replace(/displaystyle="true"/g,'displaystyle="false"')+'</span>' : escapeHtmlWorksheet(s.tanya)))+'</div>'+isiSoal+'</div></div>'; }); } var header=''; if(pageNo===1){ header='<div style="text-align:center;border-bottom:3px double #111;padding-bottom:14px;margin-bottom:18px"><div style="font-size:11px;letter-spacing:2px;color:#555;text-transform:uppercase">Sistem Ajar By Wita Gemini &bull; '+escapeHtmlWorksheet(m.mapel||"")+' Kelas '+escapeHtmlWorksheet(m.kelas||"")+'</div><div style="font-size:24px;font-weight:800;margin:8px 0 4px">'+escapeHtmlWorksheet(m.judul)+'</div><div style="font-size:12px;color:#555">Worksheet &bull; '+m.soal.length+' Soal</div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 32px;margin-bottom:18px;font-size:14px"><div style="border-bottom:1.5px dotted #999;padding-bottom:5px">Nama : ................................................................</div><div style="border-bottom:1.5px dotted #999;padding-bottom:5px">No Absen : ....................................</div><div style="border-bottom:1.5px dotted #999;padding-bottom:5px">Kelas : ................................................................</div><div style="border-bottom:1.5px dotted #999;padding-bottom:5px">Tanggal : ....................................</div></div><div style="background:#f0f7ff;border:1.5px solid #bfdbfe;border-radius:10px;padding:11px 14px;font-size:13.5px;line-height:1.5;margin-bottom:20px"><b style="color:#1d4ed8">Petunjuk:</b> Untuk Pilihan Ganda, berilah tanda silang <b>(\u2715)</b> pada lingkaran huruf <b>a, b, c, atau d</b> yang menurutmu benar! Untuk Esai, tulis jawabanmu pada garis titik-titik. Kerjakan sendiri ya, jangan mencontek! \uD83D\uDE4F</div>'; } var footer=''; if(!isKunci && pageNo===totalPages-1){ footer='<div style="margin-top:20px;border-top:2px solid #111;padding-top:14px;display:flex;justify-content:space-between;font-size:13px"><div><b>Catatan Guru:</b><br><br>.........................................................................</div><div style="border:2px solid #111;border-radius:10px;padding:10px 18px;text-align:center"><div style="font-size:11px;letter-spacing:1px">NILAI</div><b style="font-size:22px">___ / 100</b><div style="font-size:11px;margin-top:6px">Paraf Guru: .................</div></div></div>'; } return '<div style="width:794px;height:1123px;overflow:hidden;background:#fff;padding:44px 52px;font-family:\'Times New Roman\',serif;color:#111;line-height:1.5;box-sizing:border-box">'+header+isi+footer+'<div style="font-size:11px;color:#888;text-align:center;margin-top:14px">Halaman '+pageNo+' dari '+totalPages+'</div></div>'; }
 async function downloadWorksheetPDF(id, jmlPG, jmlEsai){ var m=materiCache.find(function(x){return x.id===id}); if(!m){ alert("Materi tidak ditemukan."); return; } var _sbW2=wsSubbabId?getSubbab(m,wsSubbabId):null; var bankWs2=wsSubbabId?soalDiSubbab(m,wsSubbabId):(wsTestId?soalDiTes(m,wsTestId):(m.soal||[])); if(bankWs2.length===0){ alert("Materi '"+m.judul+"' belum ada soalnya. Buat soal dulu, baru bisa download worksheet."); return; }
   var soalDipakai=bankWs2.slice(); if(jmlPG!==undefined && jmlEsai!==undefined){ var listPG=bankWs2.filter(function(x){return jenisSoal(x)==="pg";}); var listEs=bankWs2.filter(function(x){return jenisSoal(x)==="esai";}); if(jmlPG>listPG.length) jmlPG=listPG.length; if(jmlEsai>listEs.length) jmlEsai=listEs.length; if(jmlPG===0 && jmlEsai===0){ alert("Pilih dulu: PG atau Esai minimal 1."); return; } soalDipakai=acakArray(listPG).slice(0,jmlPG).concat(acakArray(listEs).slice(0,jmlEsai)); }
   var tesW2=getTes(m,wsTestId); var mPrint={judul:m.judul+(_sbW2?" • "+_sbW2.judul:(tesW2?" • "+tesW2.nama:"")), kelas:m.kelas, mapel:m.mapel, soal:soalDipakai}; wsTestId=null; wsSubbabId=null;  try{ if(typeof window.jspdf==="undefined"||typeof html2canvas==="undefined"){ throw new Error("Library PDF belum termuat, coba lagi dengan internet aktif."); } var perPage=5; var chunks=[]; for(var i=0;i<soalDipakai.length;i+=perPage) chunks.push(soalDipakai.slice(i,i+perPage)); chunks.push("KUNCI"); var totalPages=chunks.length; var wrap=document.createElement("div"); wrap.style="position:fixed;left:-10000px;top:0;z-index:-1"; document.body.appendChild(wrap); var pdf=new window.jspdf.jsPDF({orientation:"portrait", unit:"mm", format:"a4"}); for(var p=0;p<chunks.length;p++){ var isKunci=(chunks[p]==="KUNCI"); var chunkHtml=buildWorksheetPageHTML(mPrint, isKunci?[]:chunks[p], p+1, totalPages, isKunci); var pageDiv=document.createElement("div"); pageDiv.innerHTML=chunkHtml; wrap.appendChild(pageDiv); var canvas=await html2canvas(pageDiv.firstChild, {scale:2, useCORS:true, backgroundColor:"#ffffff"}); var imgData=canvas.toDataURL("image/png"); if(p>0) pdf.addPage(); pdf.addImage(imgData, "PNG", 0, 0, 210, 297); wrap.removeChild(pageDiv); } document.body.removeChild(wrap); pdf.save("Worksheet - "+m.judul+(tesW2?" - "+tesW2.nama:"")+".pdf"); }catch(e){ if(confirm("Gagal buat PDF otomatis: "+e.message+"\n\nMau buka versi Print saja? Nanti di Print pilih Save as PDF.")){ bukaWorksheetPrint(m.id); } } }
@@ -2374,7 +2382,7 @@ function bukaMateri(id){
   materiAktifId=id; var m=materiCache.find(function(x){return x.id===id}); if(!m) return;
   el("detail-judul").textContent=m.judul; el("detail-desk").textContent="Kelas "+(m.kelas||"-")+" • "+(m.mapel||"-")+(m.desk?" • "+m.desk:"");
   editSoalIndex=null; el("btn-simpan-soal").textContent="💾 Simpan Soal Ini (Online)"; hide("btn-batal-edit"); hide("label-edit-soal");
-  el("soal-tanya").value=""; el("soal-a").value=""; el("soal-b").value=""; el("soal-c").value=""; el("soal-d").value=""; el("soal-kunci").value="0"; el("soal-error").style.display="none";
+  setRichHTML("soal-tanya", ""); setRichHTML("soal-a", ""); setRichHTML("soal-b", ""); setRichHTML("soal-c", ""); setRichHTML("soal-d", ""); el("soal-kunci").value="0"; el("soal-error").style.display="none";
   tesAktifId=(m.tests&&m.tests[0])?m.tests[0].id:null; subbabAktifId=(m.subbabs&&m.subbabs[0])?m.subbabs[0].id:null; sembunyikanSemua(); show("page-materi-detail"); tampilNavGuru(); setNavGuruAktif("materi"); tampilkanSubbabTes(); isiDropdownSubbabTesGuru(); tampilkanSoalMateri(); window.scrollTo(0,0);
 }
 function tampilkanSoalMateri(){
@@ -2387,8 +2395,8 @@ function tampilkanSoalMateri(){
   var abjad=["A","B","C","D"];
   daftarSoal.forEach(function(s, idxSoal){
     var d=document.createElement("div"); d.className="materi-item";
-    var h=document.createElement("h3"); h.textContent=(idxSoal+1)+". "+(jenisSoal(s)==="esai"?("[ESAI"+(s.caraNilai==="urutan"?" · Urutan Kata":" · Kata Kunci")+"] "):"[PILIHAN GANDA] ")+s.tanya;
-    var pp=document.createElement("p"); if(jenisSoal(s)==="esai"){ pp.textContent="✍️ Esai - Jawaban acuan guru: "+(s.kunciEsai||"(belum diisi)"); } else { var lines=[]; (s.opsi||[]).forEach(function(o,i){ lines.push(abjad[i]+". "+o+(i===s.kunci?" ✅ KUNCI":"")); }); pp.textContent=lines.join("  •  "); }
+    var h=document.createElement("h3"); h.style.cssText="line-height:1.9;word-break:break-word"; var _hNum=document.createElement("span"); _hNum.textContent=(idxSoal+1)+". "+(jenisSoal(s)==="esai"?("[ESAI"+(s.caraNilai==="urutan"?" · Urutan Kata":" · Kata Kunci")+"] "):"[PILIHAN GANDA] "); h.appendChild(_hNum); if(s.tanyaHtml){ var _hT=document.createElement("span"); _hT.style.cssText="display:inline;line-height:1.9"; _hT.innerHTML=s.tanyaHtml; h.appendChild(_hT); } else if(s.rumusHtml){ var _hT2=document.createElement("span"); _hT2.textContent=(s.tanya||"").replace(/\[equation\]/g," ")+" "; h.appendChild(_hT2); var _hR=document.createElement("span"); _hR.style.cssText="display:inline-block;vertical-align:middle"; _hR.innerHTML=s.rumusHtml.replace(/displaystyle="true"/g,'displaystyle="false"'); h.appendChild(_hR); } else { var _hT3=document.createElement("span"); _hT3.textContent=s.tanya||""; h.appendChild(_hT3); }
+    var pp=document.createElement("p"); if(jenisSoal(s)==="esai"){ pp.textContent="✍️ Esai - Jawaban acuan guru: "+(s.kunciEsai||"(belum diisi)"); } else { var lines=[]; (s.opsi||[]).forEach(function(o,i){ var _oh=((s.opsiHtml||[])[i]||""); var _ro=((s.opsiRumus||[])[i]||""); var _tampil=_oh?mathMLKeTeks(_oh):(_ro?mathMLKeTeks(_ro):o); lines.push(abjad[i]+". "+_tampil+(i===s.kunci?" ✅ KUNCI":"")); }); pp.textContent=lines.join("  •  "); }
     var rowBtn=document.createElement("div"); rowBtn.className="row"; rowBtn.style.marginTop="10px";
     var bEdit=document.createElement("button"); bEdit.type="button"; bEdit.className="btn btn-orange btn-small"; bEdit.textContent="✏️ Edit Soal Ini"; bEdit.onclick=function(){ mulaiEditSoal(m.soal.indexOf(s)); };
     var bView=document.createElement("button"); bView.type="button"; bView.className="btn btn-small"; bView.textContent="👁 Preview"; bView.onclick=(function(mm, ss, idxDaftar){ return function(){ bukaPreviewSoal(mm.id, subbabAktifId, idxDaftar); }; })(m, s, idxSoal);
@@ -2418,19 +2426,19 @@ function bukaPreviewSoal(materiId, subbabId, idxDiDaftar){
   var modal=el("modal-preview-soal"); if(modal) modal.classList.remove("hidden");
 }
 function bukaPreviewDraftSoal(){
-  var tanya=el("soal-tanya") ? el("soal-tanya").value.trim() : "";
+  var tanya=getRichTeks("soal-tanya"); var tanyaHtml=getRichHTML("soal-tanya");
   if(!tanya){ alert("Tulis dulu soal / pertanyaannya, baru Preview."); if(el("soal-tanya")) el("soal-tanya").focus(); return; }
   var jenis=el("soal-jenis") ? el("soal-jenis").value : "pg";
-  var draft={tanya:tanya, jenis:jenis};
+  var _opsiDraft=[]; var _opsiHtmlDraft=[]; if(jenis==="pg"){ _opsiDraft=[getRichTeks("soal-a"), getRichTeks("soal-b"), getRichTeks("soal-c"), getRichTeks("soal-d")]; _opsiHtmlDraft=[getRichHTML("soal-a"), getRichHTML("soal-b"), getRichHTML("soal-c"), getRichHTML("soal-d")]; for(var _di=0;_di<4;_di++){ if(!_opsiDraft[_di] && _opsiHtmlDraft[_di]) _opsiDraft[_di]=mathMLKeTeks(_opsiHtmlDraft[_di]); } } var draft={tanya:tanya, tanyaHtml:tanyaHtml, jenis:jenis, opsi:_opsiDraft, opsiHtml:_opsiHtmlDraft, opsiRumus:[], rumusHtml:""};
   if(jenis==="esai"){
     draft.kunciEsai=el("soal-kunci-esai") ? el("soal-kunci-esai").value.trim() : "";
     draft.caraNilai=el("soal-cara-nilai") ? el("soal-cara-nilai").value : "kunci";
   } else {
-    draft.opsi=[el("soal-a")?el("soal-a").value.trim():"", el("soal-b")?el("soal-b").value.trim():"", el("soal-c")?el("soal-c").value.trim():"", el("soal-d")?el("soal-d").value.trim():""];
+    draft.opsi=[getRichTeks("soal-a"), getRichTeks("soal-b"), getRichTeks("soal-c"), getRichTeks("soal-d")]; draft.opsiHtml=[getRichHTML("soal-a"), getRichHTML("soal-b"), getRichHTML("soal-c"), getRichHTML("soal-d")];
     draft.kunci=el("soal-kunci") ? parseInt(el("soal-kunci").value,10) : 0;
     if(isNaN(draft.kunci)) draft.kunci=0;
   }
-  draft.pembahasan=el("soal-pembahasan") ? el("soal-pembahasan").value.trim() : "";
+  draft.pembahasan=getRichTeks("soal-pembahasan"); draft.pembahasanHtml=getRichHTML("soal-pembahasan");
   draft.umpanBalik="";
   var gbr="";
   try{ if(typeof gambarSoalBaru!=="undefined" && gambarSoalBaru) gbr=gambarSoalBaru; else if(typeof editSoalIndex!=="undefined" && editSoalIndex!==null){ var mm=materiCache.find(function(x){ return x.id===materiAktifId; }); if(mm && mm.soal && mm.soal[editSoalIndex]) gbr=mm.soal[editSoalIndex].gambar||""; } }catch(e){}
@@ -2479,7 +2487,7 @@ function renderPreviewSoal(){
   var abjad=["A","B","C","D"];
   /* --- Card persis seperti siswa: q-text + gambar + opsi/textarea --- */
   var card=document.createElement("div"); card.className="card"; card.style.padding="16px"; card.style.margin="0";
-  var q=document.createElement("div"); q.className="q-text"; q.textContent=(previewSoalState.idx+1)+". "+(s.tanya||"");
+  var q=document.createElement("div"); q.className="q-text"; q.style.cssText="line-height:1.9;word-break:break-word"; var _qNum=document.createElement("span"); _qNum.textContent=(previewSoalState.idx+1)+". "; q.appendChild(_qNum); if(s.tanyaHtml){ var _qT=document.createElement("span"); _qT.style.cssText="display:inline;line-height:1.9"; _qT.innerHTML=s.tanyaHtml; q.appendChild(_qT); } else if(s.rumusHtml){ var _qT2=document.createElement("span"); _qT2.textContent=(s.tanya||"").replace(/\[equation\]/g," ")+" "; q.appendChild(_qT2); var _qR=document.createElement("span"); _qR.style.cssText="display:inline-block;vertical-align:middle"; _qR.innerHTML=s.rumusHtml.replace(/displaystyle="true"/g,'displaystyle="false"'); q.appendChild(_qR); } else { var _qT3=document.createElement("span"); _qT3.textContent=s.tanya||""; q.appendChild(_qT3); }
   card.appendChild(q);
   if(s.gambar){ var img=document.createElement("img"); img.src=s.gambar; img.alt="Gambar soal"; img.style.cssText="max-width:100%;max-height:260px;object-fit:contain;border-radius:12px;border:1px solid #e2e8f0;display:block;margin:0 auto 12px"; card.appendChild(img); }
   if(isEsai){
@@ -2490,20 +2498,20 @@ function renderPreviewSoal(){
     hint.textContent=(s.caraNilai==="urutan")?"Soal Susun Kata / Perbaiki Kalimat: urutan kata harus PERSIS sama dengan kunci. Tulis 1 kalimat dengan urutan yang benar. Huruf besar/kecil dan tanda baca tidak dihitung.":"Jawaban esai dinilai OTOMATIS dari kata kunci: kamu tidak harus menulis persis sama dengan kunci. Tulis kalimatmu sendiri — yang penting kata-kata pentingnya ada. Huruf besar/kecil dan tanda baca tidak dihitung.";
     card.appendChild(hint);
   } else {
-    var tampilOpsi=(s.opsi||[]).map(function(teks,i){ return {teks:teks, orig:i}; });
+    var tampilOpsi=(s.opsi||[]).map(function(teks,i){ return {teks:teks, orig:i, rumus:((s.opsiRumus||[])[i]||""), html:((s.opsiHtml||[])[i]||"")}; });
     if(previewSoalState.acak){
       for(var sh=tampilOpsi.length-1; sh>0; sh--){ var jx=Math.floor(Math.random()*(sh+1)); var tmp=tampilOpsi[sh]; tampilOpsi[sh]=tampilOpsi[jx]; tampilOpsi[jx]=tmp; }
     }
     tampilOpsi.forEach(function(item, di){
-      (function(teks, huruf){
-        var b=document.createElement("button"); b.type="button"; b.className="opt";
+      (function(teks, huruf, rumusOpsi, htmlOpsi){
+        var b=document.createElement("button"); b.type="button"; b.className="opt"; b.style.cssText="align-items:center;min-height:0;height:auto";
         var sp=document.createElement("span"); sp.className="huruf"; sp.textContent=huruf;
-        var tx=document.createElement("span"); tx.textContent=teks;
+        var tx=document.createElement("span"); tx.style.cssText="display:inline;line-height:1.9;word-break:break-word"; if(htmlOpsi){ tx.innerHTML=htmlOpsi; } else if(rumusOpsi){ var teksCad2=mathMLKeTeks(rumusOpsi); if(teks && teks!==teksCad2 && teks.trim()!==""){ var ts=document.createElement("span"); ts.textContent=teks+" "; tx.appendChild(ts); var rs=document.createElement("span"); rs.style.cssText="display:inline-block;vertical-align:middle"; rs.innerHTML=rumusOpsi.replace(/displaystyle="true"/g,'displaystyle="false"'); tx.appendChild(rs); } else { tx.innerHTML='<span style="display:inline-block;vertical-align:middle">'+rumusOpsi.replace(/displaystyle="true"/g,'displaystyle="false"')+'</span>'; } } else { tx.textContent=teks; }
         b.appendChild(sp); b.appendChild(tx);
         if(previewSoalState.jawabanPreview===teks) b.classList.add("sel");
         b.onclick=function(){ previewSoalState.jawabanPreview=teks; var semua=card.querySelectorAll(".opt"); for(var k=0;k<semua.length;k++) semua[k].classList.remove("sel"); b.classList.add("sel"); };
         card.appendChild(b);
-      })(item.teks, abjad[di]);
+      })(item.teks, abjad[di], item.rumus, item.html);
     });
     var bAcak=document.createElement("button"); bAcak.type="button"; bAcak.className="btn btn-gray btn-small"; bAcak.style.marginTop="6px";
     bAcak.textContent=previewSoalState.acak?"🔀 Kembalikan Urutan Asli":"🔀 Acak Opsi (Simulasi Tes)";
@@ -2531,14 +2539,13 @@ function renderPreviewSoal(){
       pK.textContent="🔑 Kunci guru (sebelum diacak): "+abjad[kunciIdx]+". "+kunciTeks;
       gbox.appendChild(pK);
     }
-    var pb=String(s.pembahasan||"").trim();
-    var ub=String(s.umpanBalik||"").trim();
-    var pbTampil=pb;
-    if(ub && pb.indexOf(ub)<0) pbTampil=(pbTampil?pbTampil+"\n":"")+ub;
-    if(pbTampil){
-      var pB=document.createElement("p"); pB.style.margin="6px 0 0"; pB.style.fontSize="13px"; pB.style.lineHeight="1.6"; pB.style.whiteSpace="pre-wrap";
-      pB.textContent="💬 Pembahasan / Umpan Balik (muncul ke siswa kalau jawabannya salah): "+pbTampil;
-      gbox.appendChild(pB);
+    var pbHtml=String(s.pembahasanHtml||"").trim(); var pb=String(s.pembahasan||"").trim(); var ub=String(s.umpanBalik||"").trim();
+    if(pbHtml || pb || ub){
+      var pB=document.createElement("div"); pB.style.margin="6px 0 0"; pB.style.fontSize="13px"; pB.style.lineHeight="1.9"; pB.style.whiteSpace="pre-wrap"; pB.style.wordBreak="break-word";
+      var pBL=document.createElement("span"); pBL.textContent="💬 Pembahasan / Umpan Balik (muncul ke siswa kalau jawabannya salah): "; pB.appendChild(pBL);
+      var pBI=document.createElement("span"); pBI.style.cssText="display:inline;line-height:1.9";
+      if(pbHtml){ pBI.innerHTML=pbHtml; if(ub && pbHtml.indexOf(escapeHtml(ub))<0 && pbHtml.indexOf(ub)<0){ pBI.innerHTML=pbHtml+"<br>"+escapeHtml(ub); } } else { var _pbTampil=pb; if(ub && _pbTampil.indexOf(ub)<0) _pbTampil=(_pbTampil?_pbTampil+"\n":"")+ub; pBI.textContent=_pbTampil; }
+      pB.appendChild(pBI); gbox.appendChild(pB);
     }
   }
   var cat=el("preview-soal-catatan");
@@ -2551,12 +2558,12 @@ function renderPreviewSoal(){
 function mulaiEditSoal(idxSoal){
   var m=materiCache.find(function(x){return x.id===materiAktifId}); if(!m || !m.soal || !m.soal[idxSoal]) return;
   var s=m.soal[idxSoal]; editSoalIndex=idxSoal; if(s.testId){ tesAktifId=s.testId; } if(s.subbabId){ subbabAktifId=s.subbabId; } isiDropdownSubbabTesGuru(); if(el("soal-tes") && s.testId) el("soal-tes").value=s.testId;
-  el("soal-tanya").value=s.tanya; if(el("soal-jenis")) el("soal-jenis").value=jenisSoal(s); onJenisSoal(); var _op=s.opsi||[]; el("soal-a").value=_op[0]||""; el("soal-b").value=_op[1]||""; el("soal-c").value=_op[2]||""; el("soal-d").value=_op[3]||""; el("soal-kunci").value=String(s.kunci||0); if(el("soal-kunci-esai")) el("soal-kunci-esai").value=s.kunciEsai||""; if(el("soal-cara-nilai")) el("soal-cara-nilai").value=s.caraNilai||"kunci"; if(el("soal-pembahasan")){ var _pb=s.pembahasan||""; if(s.umpanBalik && _pb.indexOf(s.umpanBalik)<0){ _pb=(_pb?_pb+"\n":"")+s.umpanBalik; } el("soal-pembahasan").value=_pb; }
-  el("btn-simpan-soal").textContent="✅ Update Soal Ini (Online)"; show("btn-batal-edit"); show("label-edit-soal"); gambarSoalBaru=null; gambarSoalDihapus=false; var _fi=el("soal-gambar"); if(_fi) _fi.value=""; tampilPreviewGambarSoal(s.gambar||"");
+  var _tanyaHtml=s.tanyaHtml||""; if(!_tanyaHtml && s.rumusHtml){ _tanyaHtml=escapeHtmlRumus(s.tanya||"")+" "+'<span style="display:inline-block;vertical-align:middle">'+s.rumusHtml.replace(/displaystyle="true"/g,'displaystyle="false"')+'</span>'; if(_tanyaHtml.indexOf("[equation]")>=0) _tanyaHtml=_tanyaHtml.replace(/\[equation\]/g, '<span style="display:inline-block;vertical-align:middle">'+s.rumusHtml.replace(/displaystyle="true"/g,'displaystyle="false"')+'</span>'); } if(!_tanyaHtml) _tanyaHtml=escapeHtmlRumus(s.tanya||""); setRichHTML("soal-tanya", _tanyaHtml); if(el("soal-jenis")) el("soal-jenis").value=jenisSoal(s); onJenisSoal(); var _op=s.opsi||[]; var _opHtml=s.opsiHtml||[]; var _opRumus=s.opsiRumus||[]; for(var _oiE=0;_oiE<4;_oiE++){ var _h=_opHtml[_oiE]||""; if(!_h && _opRumus[_oiE]){ var _t=_op[_oiE]||""; var _tRumus=mathMLKeTeks(_opRumus[_oiE]); if(_t && _t!==_tRumus) _h=escapeHtmlRumus(_t)+" "+'<span style="display:inline-block;vertical-align:middle">'+_opRumus[_oiE].replace(/displaystyle="true"/g,'displaystyle="false"')+'</span>'; else if(_opRumus[_oiE]) _h='<span style="display:inline-block;vertical-align:middle">'+_opRumus[_oiE].replace(/displaystyle="true"/g,'displaystyle="false"')+'</span>'; } if(!_h) _h=escapeHtmlRumus(_op[_oiE]||""); setRichHTML("soal-"+["a","b","c","d"][_oiE], _h); } el("soal-kunci").value=String(s.kunci||0); if(el("soal-kunci-esai")) el("soal-kunci-esai").value=s.kunciEsai||""; if(el("soal-cara-nilai")) el("soal-cara-nilai").value=s.caraNilai||"kunci"; if(el("soal-pembahasan")){ var _pbHtml=s.pembahasanHtml||""; if(!_pbHtml && s.pembahasan) _pbHtml=escapeHtmlRumus(s.pembahasan); if(s.umpanBalik){ var _ubTeks=s.umpanBalik; var _pbTeks=getRichTeks("soal-pembahasan"); /* cek apakah umpan balik sudah ada */ var _cekHtml=_pbHtml||""; if(_cekHtml.indexOf(escapeHtmlRumus(_ubTeks))<0 && _cekHtml.indexOf(_ubTeks)<0){ _pbHtml=(_pbHtml? _pbHtml+"<br>":"")+escapeHtmlRumus(_ubTeks); } } setRichHTML("soal-pembahasan", _pbHtml); }
+  el("btn-simpan-soal").textContent="✅ Update Soal Ini (Online)"; show("btn-batal-edit"); show("label-edit-soal"); gambarSoalBaru=null; gambarSoalDihapus=false; var _fi=el("soal-gambar"); if(_fi) _fi.value=""; tampilPreviewGambarSoal(s.gambar||""); 
   window.scrollTo(0,0); el("soal-tanya").focus();
 }
 function batalEditSoal(){
-  editSoalIndex=null; el("soal-tanya").value=""; el("soal-a").value=""; el("soal-b").value=""; el("soal-c").value=""; el("soal-d").value=""; el("soal-kunci").value="0"; if(el("soal-jenis")) el("soal-jenis").value="pg"; if(el("soal-kunci-esai")) el("soal-kunci-esai").value=""; if(el("soal-cara-nilai")) el("soal-cara-nilai").value="kunci"; if(el("soal-pembahasan")) el("soal-pembahasan").value=""; gambarSoalBaru=null; gambarSoalDihapus=false; var _fi2=el("soal-gambar"); if(_fi2) _fi2.value=""; tampilPreviewGambarSoal(""); onJenisSoal();
+  editSoalIndex=null; setRichHTML("soal-tanya", ""); setRichHTML("soal-a", ""); setRichHTML("soal-b", ""); setRichHTML("soal-c", ""); setRichHTML("soal-d", ""); el("soal-kunci").value="0"; if(el("soal-jenis")) el("soal-jenis").value="pg"; if(el("soal-kunci-esai")) el("soal-kunci-esai").value=""; if(el("soal-cara-nilai")) el("soal-cara-nilai").value="kunci"; setRichHTML("soal-pembahasan", ""); gambarSoalBaru=null; gambarSoalDihapus=false; var _fi2=el("soal-gambar"); if(_fi2) _fi2.value=""; tampilPreviewGambarSoal(""); onJenisSoal();
   el("btn-simpan-soal").textContent="💾 Simpan Soal Ini (Online)"; hide("btn-batal-edit"); hide("label-edit-soal");
 }
 function jenisSoal(s){ var j=(s && s.jenis) ? String(s.jenis).toLowerCase().trim() : ""; if(j==="esai"||j==="essay"||j==="uraian"||j==="isian"||j==="2"||j.indexOf("esai")>=0||j.indexOf("essay")>=0) return "esai"; return "pg"; }
@@ -2565,6 +2572,454 @@ function onJenisSoal(){ var j=el("soal-jenis")?el("soal-jenis").value:"pg"; if(j
 var gambarSoalBaru=null, gambarSoalDihapus=false;
 function tampilPreviewGambarSoal(src){ var w=el("preview-gambar-soal"); if(!w) return; while(w.firstChild) w.removeChild(w.firstChild); if(!src) return; var img=document.createElement("img"); img.src=src; img.style.cssText="max-width:220px;max-height:160px;object-fit:contain;border-radius:10px;border:1px solid #cbd5e1;display:block;margin:8px 0"; w.appendChild(img); var hb=document.createElement("button"); hb.type="button"; hb.className="btn btn-red btn-small"; hb.textContent="🗑 Hapus Gambar"; hb.onclick=function(){ gambarSoalBaru=null; gambarSoalDihapus=true; var fi=el("soal-gambar"); if(fi) fi.value=""; tampilPreviewGambarSoal(""); }; w.appendChild(hb); }
 function kompresGambarSoal(file){ var rd=new FileReader(); rd.onload=function(){ var img=new Image(); img.onload=function(){ var max=700; var w=img.width, hh=img.height; if(w>max){ hh=Math.round(hh*max/w); w=max; } var cv=document.createElement("canvas"); cv.width=w; cv.height=hh; cv.getContext("2d").drawImage(img,0,0,w,hh); var q=0.75, out=cv.toDataURL("image/jpeg", q); while(out.length>150000 && q>0.4){ q-=0.1; out=cv.toDataURL("image/jpeg", q); } gambarSoalBaru=out; gambarSoalDihapus=false; tampilPreviewGambarSoal(out); }; img.src=rd.result; }; rd.readAsDataURL(file); }
+
+/* ================= V.10 - COPY-PASTE EQUATION DARI WORD =================
+   Word nyimpen equation dalam 3 bentuk sekaligus pas di-copy:
+   teks polos, HTML+MathML, dan kadang gambar.
+   Kotak teks biasa cuma ngambil teks polos -> format hilang.
+   Di sini: kotak Tempel Equation (contenteditable) + paste di kolom Soal
+   ditangkap, MathML dibersihkan (hanya tag math yang aman), gambar
+   jadi gambar soal. Disimpan di soal.rumusHtml, tampil di tes siswa,
+   Preview, Daftar Soal, dan Worksheet. */
+var rumusHtmlBaru="";
+var opsiRumusBaru=["","","",""];
+/* ================= V.12 - INLINE EQUATION (1 kalimat utuh) =================
+   V.10/V.11 pakai kotak terpisah (soal + rumus box) -> pecahan jadi blok
+   sendiri, tumpang tindih, tidak bisa "1/2 adalah senilai dengan 2/4".
+   V.12: soal & opsi jadi 1 editor rich (contenteditable) yang sama.
+   Ketik teks + paste equation Word langsung di tengah kalimat, equation
+   disisipkan INLINE (displaystyle=false, vertical-align:middle), tidak
+   jadi blok. Disimpan sebagai tanyaHtml / opsiHtml (HTML) + tanya / opsi
+   (teks cadangan untuk nilai & cari). Soal lama (rumusHtml/opsiRumus)
+   tetap dibaca, dirender inline juga supaya tidak tumpang tindih. */
+var editorAktifId="soal-tanya";
+function catatEditorAktif(id){ editorAktifId=id; }
+function getRichTeks(id){
+  var e=el(id); if(!e) return "";
+  if(e.tagName==="TEXTAREA" || e.tagName==="INPUT") return (e.value||"").replace(/\s+/g," ").trim();
+  /* Div contenteditable: textContent, tapi MathML diubah jadi teks (1/2) */
+  var clone=null;
+  try{
+    clone=e.cloneNode(true);
+    var maths=clone.querySelectorAll ? clone.querySelectorAll("math") : [];
+    for(var i=0;i<maths.length;i++){ var sp=document.createElement("span"); sp.textContent=" "+mathMLKeTeks(maths[i].outerHTML||"")+" "; if(maths[i].parentNode) maths[i].parentNode.replaceChild(sp, maths[i]); }
+    var imgs=clone.querySelectorAll ? clone.querySelectorAll("img") : [];
+    for(var j=0;j<imgs.length;j++){ var sp2=document.createElement("span"); sp2.textContent=" [gambar] "; if(imgs[j].parentNode) imgs[j].parentNode.replaceChild(sp2, imgs[j]); }
+    return (clone.textContent||"").replace(/\s+/g," ").trim();
+  }catch(err){ return (e.textContent||"").replace(/\s+/g," ").trim(); }
+}
+function getRichHTML(id){
+  var e=el(id); if(!e) return "";
+  if(e.tagName==="TEXTAREA" || e.tagName==="INPUT") return escapeHtmlRumus(e.value||"");
+  var html=e.innerHTML||"";
+  return bersihkanRichHTML(html);
+}
+function setRichHTML(id, html){
+  var e=el(id); if(!e) return;
+  if(e.tagName==="TEXTAREA" || e.tagName==="INPUT"){ e.value=""; try{ var tmp=document.createElement("div"); tmp.innerHTML=html||""; e.value=tmp.textContent||""; }catch(err){ e.value=""; } return; }
+  e.innerHTML=html||"";
+}
+function bersihkanRichHTML(html){
+  var h=String(html||"").trim();
+  if(!h) return "";
+  if(h==="<br>"||h==="<div><br></div>") return "";
+  /* Buang placeholder / tag Word yang nyelip */
+  h=h.replace(/<!--[\s\S]*?-->/g, "");
+  h=h.replace(/<style[\s\S]*?<\/style>/gi, "").replace(/<script[\s\S]*?<\/script>/gi, "");
+  /* Bersihkan MathML satu per satu, ganti displaystyle jadi false (inline) */
+  h=h.replace(/<math[\s\S]*?<\/math>/gi, function(m){ var b=bersihkanHTMLRumus(m); return b.replace(/displaystyle="true"/g, 'displaystyle="false"'); });
+  /* Bersihkan <img>: hanya data:image yang diizinkan, style inline kecil */
+  h=h.replace(/<img[^>]*>/gi, function(imgTag){
+    var srcM=imgTag.match(/src="([^"]+)"/i);
+    if(!srcM) return "";
+    var src=srcM[1];
+    if(src.indexOf("data:image/")!==0) return "";
+    if(src.length>200000) return "";
+    return '<img src="'+src+'" alt="Equation" style="max-height:32px;max-width:100%;vertical-align:middle;display:inline-block;background:#fff;border-radius:4px;padding:1px 3px">';
+  });
+  /* Strip event handler / javascript / on* */
+  if(/on\w+\s*=|javascript:/i.test(h)){
+    h=h.replace(/\s+on\w+="[^"]*"/gi, "").replace(/\s+on\w+='[^']*'/gi, "");
+  }
+  /* Hanya izinkan tag aman, yang lain di-unwrap (isinya dipertahankan) */
+  /* Simpel & aman: buang tag yang jelas berbahaya */
+  h=h.replace(/<\/?(script|iframe|object|embed|form|input|button|select|textarea|link|meta)[^>]*>/gi, "");
+  /* Buang atribut style yang mengandung position:absolute / fixed (penyebab tumpang tindih) */
+  h=h.replace(/style="[^"]*(position\s*:\s*(absolute|fixed)|z-index)[^"]*"/gi, 'style="display:inline-block;vertical-align:middle"');
+  if(h.length>30000) h=h.slice(0,30000);
+  return h;
+}
+function sisipHTMLKeEditor(editorId, html){
+  var e=el(editorId); if(!e) return;
+  e.focus();
+  try{
+    if(document.execCommand && document.queryCommandSupported && document.queryCommandSupported("insertHTML")){
+      document.execCommand("insertHTML", false, html);
+      return;
+    }
+  }catch(err){}
+  try{
+    var sel=window.getSelection(); if(sel && sel.rangeCount>0){ var range=sel.getRangeAt(0); range.deleteContents(); var tmp=document.createElement("div"); tmp.innerHTML=html; var frag=document.createDocumentFragment(); while(tmp.firstChild) frag.appendChild(tmp.firstChild); range.insertNode(frag); sel.collapseToEnd(); }
+    else { e.innerHTML=(e.innerHTML||"")+html; }
+  }catch(err2){ e.innerHTML=(e.innerHTML||"")+html; }
+}
+function sisipSimbolInline(simbol){
+  var id=editorAktifId||"soal-tanya";
+  var e=el(id); if(!e) e=el("soal-tanya");
+  if(!e) return;
+  catatEditorAktif(id);
+  e.focus();
+  try{ document.execCommand("insertText", false, simbol); }catch(err){ sisipHTMLKeEditor(id, "<span>"+simbol+"</span>"); }
+}
+function kompresGambarInline(file, editorId){
+  var rd=new FileReader(); rd.onload=function(){ var img=new Image(); img.onload=function(){ var max=600; var w=img.width, hh=img.height; if(w>max){ hh=Math.round(hh*max/w); w=max; } var cv=document.createElement("canvas"); cv.width=w; cv.height=hh; cv.getContext("2d").drawImage(img,0,0,w,hh); var q=0.8, out=cv.toDataURL("image/jpeg", q); while(out.length>120000 && q>0.4){ q-=0.1; out=cv.toDataURL("image/jpeg", q); } var html='<img src="'+out+'" alt="Equation" style="max-height:32px;max-width:100%;vertical-align:middle;display:inline-block;background:#fff;border-radius:4px;padding:1px 3px">'; sisipHTMLKeEditor(editorId, html); }; img.src=rd.result; }; rd.readAsDataURL(file);
+}
+function onPasteRich(e, editorId){
+  try{
+    var cd=(e.clipboardData||window.clipboardData); if(!cd) return;
+    catatEditorAktif(editorId);
+    /* 1. Gambar -> sisip inline kecil */
+    var items=cd.items||[];
+    for(var i=0;i<items.length;i++){
+      var it=items[i];
+      if(it && it.type && it.type.indexOf("image/")===0){
+        e.preventDefault();
+        var file=it.getAsFile ? it.getAsFile() : null;
+        if(file) kompresGambarInline(file, editorId);
+        return;
+      }
+    }
+    var html=cd.getData("text/html")||"";
+    var teks=cd.getData("text/plain")||cd.getData("text")||"";
+    /* 2. HTML dari Word: bisa teks + equation campur, bersihkan & sisip inline */
+    if(html && (html.indexOf("<math")>=0 || html.indexOf("o:math")>=0 || html.indexOf("m:oMath")>=0 || html.indexOf("<img")>=0)){
+      e.preventDefault();
+      var bersih=bersihkanHTMLInline(html);
+      if(bersih){ sisipHTMLKeEditor(editorId, bersih); return; }
+      /* Fallback: kalau bersih kosong, pakai MathML pertama */
+      var m1=bersihkanHTMLRumus(html);
+      if(m1){ sisipHTMLKeEditor(editorId, '<span style="display:inline-block;vertical-align:middle">'+m1.replace(/displaystyle="true"/g,'displaystyle="false"')+'</span>'); return; }
+    }
+    if(html && html.trim()){
+      /* HTML tanpa math (misal copy kalimat dari Word): ambil teksnya saja, jangan bawa style Word yang bikin tumpang tindih */
+      /* Biarkan paste bawaan kalau hanya teks ber-format ringan, tapi bersihkan lewat teks polos agar aman */
+      if(teks && teks.trim()){
+        e.preventDefault();
+        sisipHTMLKeEditor(editorId, "<span>"+escapeHtmlRumus(teks)+"</span>");
+        return;
+      }
+    }
+    /* 3. Teks polos: sisip biasa */
+    if(teks){
+      /* Biarkan browser handle, tapi pastikan tidak bawa format aneh: cegah default & sisip teks */
+      e.preventDefault();
+      sisipHTMLKeEditor(editorId, "<span>"+escapeHtmlRumus(teks)+"</span>");
+      return;
+    }
+  }catch(err){ /* biarkan paste bawaan */ }
+}
+function bersihkanHTMLInline(html){
+  var h=String(html||"");
+  if(!h) return "";
+  /* Ambil isi <body> kalau ada */
+  var bodyM=h.match(/<body[\s\S]*?>([\s\S]*)<\/body>/i);
+  if(bodyM) h=bodyM[1];
+  /* Buang komentar, style, script */
+  h=h.replace(/<!--[\s\S]*?-->/g, "").replace(/<style[\s\S]*?<\/style>/gi, "").replace(/<script[\s\S]*?<\/script>/gi, "");
+  /* Ganti MathML dengan placeholder agar tidak rusak saat strip tag */
+  var mathList=[];
+  h=h.replace(/<math[\s\S]*?<\/math>/gi, function(m){
+    var b=bersihkanHTMLRumus(m);
+    b=b.replace(/displaystyle="true"/g,'displaystyle="false"');
+    var idx=mathList.length; mathList.push('<span style="display:inline-block;vertical-align:middle;font-size:1em;line-height:1">'+b+'</span>');
+    return "\u0000MATH"+idx+"\u0000";
+  });
+  /* Buang tag Word / VML / Office */
+  h=h.replace(/<o:[^>]*>[\s\S]*?<\/o:[^>]*>/gi, " ").replace(/<w:[^>]*>[\s\S]*?<\/w:[^>]*>/gi, " ").replace(/<v:[^>]*>[\s\S]*?<\/v:[^>]*>/gi, " ");
+  /* Gambar inline dari Word */
+  h=h.replace(/<img[^>]*>/gi, function(imgTag){
+    var srcM=imgTag.match(/src="([^"]+)"/i);
+    if(!srcM) return "";
+    var src=srcM[1];
+    if(src.indexOf("data:image/")!==0) return "";
+    return '<img src="'+src+'" alt="Equation" style="max-height:32px;max-width:100%;vertical-align:middle;display:inline-block;background:#fff;border-radius:4px;padding:1px 3px">';
+  });
+  /* Strip semua tag kecuali placeholder & img, pertahankan teks */
+  /* Hapus tag blok yang bikin baris baru berlebihan, ganti jadi spasi */
+  h=h.replace(/<\/?(p|div|tr|li|h[1-6])[^>]*>/gi, " ");
+  h=h.replace(/<[^>]+>/g, " ");
+  /* Kembalikan MathML */
+  h=h.replace(/\u0000MATH(\d+)\u0000/g, function(full, n){ return mathList[parseInt(n,10)]||""; });
+  /* Rapikan spasi, tapi jangan hilangkan MathML */
+  /* MathML sudah dalam span, spasi di luarnya aman */
+  h=h.replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
+  if(!h) return "";
+  /* Jika hasil hanya teks tanpa math, bungkus span */
+  if(h.indexOf("<math")<0 && h.indexOf("<img")<0){
+    return "<span>"+escapeHtmlRumus(h)+"</span>";
+  }
+  return h;
+}
+
+function escapeHtmlRumus(s){ return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+function bersihkanHTMLRumus(html){
+  var h=String(html||"");
+  if(!h) return "";
+  /* 1. Ambil <math>...</math> kalau ada */
+  var m=h.match(/<math[\s\S]*?<\/math>/i);
+  var mathHtml=m ? m[0] : "";
+  if(mathHtml){
+    /* Buang <annotation>...</annotation> (isinya LaTeX, tidak perlu) */
+    mathHtml=mathHtml.replace(/<annotation[\s\S]*?<\/annotation>/gi, "");
+    /* Buang tag Word / VML / Office yang nyelip */
+    mathHtml=mathHtml.replace(/<o:[^>]*>[\s\S]*?<\/o:[^>]*>/gi, "").replace(/<w:[^>]*>[\s\S]*?<\/w:[^>]*>/gi, "").replace(/<v:[^>]*>[\s\S]*?<\/v:[^>]*>/gi, "");
+    /* Strip semua atribut kecuali xmlns di <math> */
+    mathHtml=mathHtml.replace(/<(math|mrow|mi|mo|mn|mfrac|msup|msub|msubsup|msqrt|mroot|mtext|mspace|munder|mover|munderover|mtable|mtr|mtd|semantics|mstyle|mfenced|mpadded|mphantom|merror|maction|mprescripts|none|mmultiscripts|mlabeledtr)([^>]*)>/gi, function(full, tag){
+      var low=String(tag).toLowerCase();
+      if(low==="math") return '<math xmlns="http://www.w3.org/1998/Math/MathML" displaystyle="false">';
+      return "<"+low+">";
+    });
+    /* Buang tag yang tidak diizinkan, tapi pertahankan isinya */
+    mathHtml=mathHtml.replace(/<\/?(o:p|span|font|b|i|u|p|div|o:math|m:oMath|m:oMathPara)[^>]*>/gi, "");
+    /* Buang event handler / javascript yang mungkin nyelip */
+    if(/on\w+\s*=|javascript:|data:text\/html/i.test(mathHtml)) return "";
+    if(mathHtml.length>20000) mathHtml=mathHtml.slice(0,20000);
+    return mathHtml;
+  }
+  /* 2. Kalau tidak ada <math>, tapi ada <o:math> (Word lama) -> ambil teksnya */
+  var o=h.match(/<o:math[\s\S]*?<\/o:math>/i);
+  if(o){
+    var teksO=o[0].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    if(teksO) return "<span>"+escapeHtmlRumus(teksO)+"</span>";
+  }
+  return "";
+}
+function mathMLKeTeks(html){
+  var h=String(html||"");
+  if(!h) return "";
+  if(h.indexOf("<")<0) return h.trim();
+  /* mfrac: (pembilang/penyebut) */
+  var guard=0;
+  while(/<mfrac/i.test(h) && guard<20){
+    guard++;
+    h=h.replace(/<mfrac[^>]*>([\s\S]*?)<\/mfrac>/gi, function(full, inner){
+      /* Pisah jadi 2 bagian: cari penutup tag anak pertama */
+      /* Cara sederhana: ambil semua teks, pisah tengah kalau ada 2 angka */
+      var teks=inner.replace(/<[^>]+>/g, "|").split("|").filter(function(x){ return String(x).trim()!==""; });
+      if(teks.length>=2) return "("+teks[0].trim()+"/"+teks[1].trim()+")";
+      if(teks.length===1) return "("+teks[0].trim()+")";
+      return "(?)";
+    });
+  }
+  /* msup: basis + pangkat */
+  h=h.replace(/<msup[^>]*>([\s\S]*?)<\/msup>/gi, function(full, inner){
+    var parts=inner.replace(/<[^>]+>/g, "|").split("|").filter(function(x){ return String(x).trim()!==""; });
+    if(parts.length>=2){
+      var basis=parts[0].trim(), pang=parts[1].trim();
+      var supMap={"0":"⁰","1":"¹","2":"²","3":"³","4":"⁴","5":"⁵","6":"⁶","7":"⁷","8":"⁸","9":"⁹","-":"⁻","+":"⁺"};
+      if(/^[0-9+-]+$/.test(pang) && pang.length<=2){
+        var sup=""; for(var i=0;i<pang.length;i++) sup+=supMap[pang[i]]||pang[i];
+        return basis+sup;
+      }
+      return basis+"^"+pang;
+    }
+    return parts.join("");
+  });
+  /* msqrt: √(isi) */
+  h=h.replace(/<msqrt[^>]*>([\s\S]*?)<\/msqrt>/gi, function(full, inner){
+    var teks=inner.replace(/<[^>]+>/g, "").trim();
+    return "√("+teks+")";
+  });
+  /* msub: basis_sub */
+  h=h.replace(/<msub[^>]*>([\s\S]*?)<\/msub>/gi, function(full, inner){
+    var parts=inner.replace(/<[^>]+>/g, "|").split("|").filter(function(x){ return String(x).trim()!==""; });
+    if(parts.length>=2) return parts[0].trim()+"_"+parts[1].trim();
+    return parts.join("");
+  });
+  var teksAkhir=h.replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
+  return teksAkhir;
+}
+function tampilkanPreviewRumusTempel(){
+  var w=el("preview-rumus-tempel"); if(!w) return;
+  while(w.firstChild) w.removeChild(w.firstChild);
+  if(!rumusHtmlBaru) return;
+  var box=document.createElement("div");
+  box.style.cssText="background:#eff6ff;border:1.5px solid #93c5fd;border-radius:10px;padding:10px 12px;font-size:19px;line-height:1.6";
+  var lbl=document.createElement("div"); lbl.style.cssText="font-size:12px;font-weight:800;color:#1d4ed8;margin-bottom:4px"; lbl.textContent="📐 Equation yang akan tampil di siswa:";
+  box.appendChild(lbl);
+  var isi=document.createElement("div"); isi.innerHTML=rumusHtmlBaru;
+  box.appendChild(isi);
+  var teks=document.createElement("div"); teks.style.cssText="font-size:12px;color:#475569;margin-top:6px"; teks.textContent="Teks cadangan (kalau MathML tidak tampil): "+mathMLKeTeks(rumusHtmlBaru);
+  box.appendChild(teks);
+  w.appendChild(box);
+  var rk=el("rumus-tempel"); if(rk){ rk.innerHTML=rumusHtmlBaru; }
+}
+function hapusRumusTempel(){
+  rumusHtmlBaru="";
+  var rk=el("rumus-tempel"); if(rk) rk.innerHTML="";
+  var w=el("preview-rumus-tempel"); if(w){ while(w.firstChild) w.removeChild(w.firstChild); }
+}
+function sisipTeksKeField(field, teks){
+  if(!field) return;
+  if(field.isContentEditable || field.getAttribute && field.getAttribute("contenteditable")==="true"){
+    field.focus();
+    try{ document.execCommand("insertText", false, teks); }catch(e){ field.innerHTML=(field.innerHTML||"")+teks; }
+    return;
+  }
+  try{
+    var start=field.selectionStart, end=field.selectionEnd;
+    if(typeof start==="number"){
+      var v=field.value||"";
+      field.value=v.slice(0,start)+teks+v.slice(end);
+      var pos=start+teks.length;
+      field.setSelectionRange(pos,pos);
+    } else { field.value=(field.value||"")+teks; }
+    field.focus();
+  }catch(e){ field.value=(field.value||"")+teks; }
+}
+function sisipSimbolRumus(simbol){ sisipSimbolInline(simbol); }
+function onPasteRumus(e){
+  try{
+    var cd=(e.clipboardData||window.clipboardData); if(!cd) return;
+    /* Gambar dari Word -> jadi gambar soal */
+    var items=cd.items||[];
+    for(var i=0;i<items.length;i++){
+      var it=items[i];
+      if(it && it.type && it.type.indexOf("image/")===0){
+        e.preventDefault();
+        var file=it.getAsFile ? it.getAsFile() : null;
+        if(file) kompresGambarSoal(file);
+        else {
+          var blob=cd.getData("image/png");
+        }
+        var rk=el("rumus-tempel"); if(rk) rk.textContent="";
+        alert("Equation gambar dari Word sudah ditempel → jadi Gambar Soal di atas pilihan jawaban. Cek di Preview ya.");
+        return;
+      }
+    }
+    var html=cd.getData("text/html")||"";
+    var teks=cd.getData("text/plain")||cd.getData("text")||"";
+    if(html && (html.indexOf("<math")>=0 || html.indexOf("o:math")>=0 || html.indexOf("m:oMath")>=0)){
+      var bersih=bersihkanHTMLRumus(html);
+      if(bersih){
+        e.preventDefault();
+        rumusHtmlBaru=bersih;
+        tampilkanPreviewRumusTempel();
+        return;
+      }
+    }
+    if(teks && teks.trim()){
+      /* Teks polos: simpan sebagai equation teks, biar tetap tampil */
+      e.preventDefault();
+      rumusHtmlBaru="<span>"+escapeHtmlRumus(teks.trim())+"</span>";
+      tampilkanPreviewRumusTempel();
+      return;
+    }
+  }catch(err){ /* biarkan paste bawaan jalan kalau gagal */ }
+}
+function onPasteKeSoalTanya(e){
+  try{
+    var cd=(e.clipboardData||window.clipboardData); if(!cd) return;
+    var items=cd.items||[];
+    for(var i=0;i<items.length;i++){
+      var it=items[i];
+      if(it && it.type && it.type.indexOf("image/")===0){
+        e.preventDefault();
+        var file=it.getAsFile ? it.getAsFile() : null;
+        if(file) kompresGambarSoal(file);
+        alert("Gambar equation sudah ditempel → jadi Gambar Soal. Cek di Preview ya.");
+        return;
+      }
+    }
+    var html=cd.getData("text/html")||"";
+    if(html && (html.indexOf("<math")>=0 || html.indexOf("o:math")>=0 || html.indexOf("m:oMath")>=0)){
+      var bersih=bersihkanHTMLRumus(html);
+      if(bersih){
+        e.preventDefault();
+        rumusHtmlBaru=bersih;
+        tampilkanPreviewRumusTempel();
+        var field=el("soal-tanya");
+        if(field && field.value.indexOf("[equation]")<0){
+          sisipTeksKeField(field, " [equation]");
+        }
+        return;
+      }
+    }
+    /* Kalau cuma teks polos, biarkan paste bawaan jalan */
+  }catch(err){}
+}
+function onPasteKeOpsi(e, fieldId, idxOpsi){
+  try{
+    var cd=(e.clipboardData||window.clipboardData); if(!cd) return;
+    var idx=(typeof idxOpsi==="number" ? idxOpsi : ({"soal-a":0,"soal-b":1,"soal-c":2,"soal-d":3}[fieldId]||0));
+    /* Gambar equation -> jadi gambar di opsi ini (jenis apapun, termasuk gambar) */
+    var items=cd.items||[];
+    for(var i=0;i<items.length;i++){
+      var it=items[i];
+      if(it && it.type && it.type.indexOf("image/")===0){
+        e.preventDefault();
+        var file=it.getAsFile ? it.getAsFile() : null;
+        if(file) kompresGambarOpsi(file, idx);
+        else alert("Gambar equation di pilihan belum terbaca. Coba copy lagi dari Word, atau paste ke kotak Equation di bawah kolom ini.");
+        return;
+      }
+    }
+    var html=cd.getData("text/html")||"";
+    if(html && (html.indexOf("<math")>=0 || html.indexOf("o:math")>=0 || html.indexOf("m:oMath")>=0)){
+      var bersih=bersihkanHTMLRumus(html);
+      if(bersih){
+        e.preventDefault();
+        if(typeof opsiRumusBaru!=="undefined") opsiRumusBaru[idx]=bersih;
+        var rkO=el("rumus-opsi-"+idx); if(rkO) rkO.innerHTML=bersih;
+        /* Jangan isi kolom teks dengan versi Unicode kalau sudah ada equation, biar tidak duplikat. Kalau kolom kosong, biarkan kosong — saat simpan akan diisi teks cadangan otomatis. */
+        return;
+      }
+    }
+    /* Kalau cuma teks polos, biarkan paste bawaan jalan */
+  }catch(err){}
+}
+function onPasteRumusOpsi(e, idx){
+  try{
+    var cd=(e.clipboardData||window.clipboardData); if(!cd) return;
+    var items=cd.items||[];
+    for(var i=0;i<items.length;i++){
+      var it=items[i];
+      if(it && it.type && it.type.indexOf("image/")===0){
+        e.preventDefault();
+        var file=it.getAsFile ? it.getAsFile() : null;
+        if(file) kompresGambarOpsi(file, idx);
+        else alert("Gambar equation belum terbaca. Coba copy lagi dari Word.");
+        return;
+      }
+    }
+    var html=cd.getData("text/html")||"";
+    var teks=cd.getData("text/plain")||cd.getData("text")||"";
+    if(html && (html.indexOf("<math")>=0 || html.indexOf("o:math")>=0 || html.indexOf("m:oMath")>=0)){
+      var bersih=bersihkanHTMLRumus(html);
+      if(bersih){
+        e.preventDefault();
+        if(typeof opsiRumusBaru!=="undefined") opsiRumusBaru[idx]=bersih;
+        var rk=el("rumus-opsi-"+idx); if(rk) rk.innerHTML=bersih;
+        return;
+      }
+    }
+    if(teks && teks.trim()){
+      e.preventDefault();
+      var esc="<span>"+escapeHtmlRumus(teks.trim())+"</span>";
+      if(typeof opsiRumusBaru!=="undefined") opsiRumusBaru[idx]=esc;
+      var rk2=el("rumus-opsi-"+idx); if(rk2) rk2.innerHTML=esc;
+      return;
+    }
+  }catch(err){}
+}
+function hapusRumusOpsi(idx){
+  if(typeof opsiRumusBaru!=="undefined") opsiRumusBaru[idx]="";
+  var rk=el("rumus-opsi-"+idx); if(rk) rk.innerHTML="";
+}
+function kompresGambarOpsi(file, idx){
+  var rd=new FileReader(); rd.onload=function(){ var img=new Image(); img.onload=function(){ var max=700; var w=img.width, hh=img.height; if(w>max){ hh=Math.round(hh*max/w); w=max; } var cv=document.createElement("canvas"); cv.width=w; cv.height=hh; cv.getContext("2d").drawImage(img,0,0,w,hh); var q=0.75, out=cv.toDataURL("image/jpeg", q); while(out.length>150000 && q>0.4){ q-=0.1; out=cv.toDataURL("image/jpeg", q); } var htmlImg='<img src="'+out+'" alt="Equation" style="max-width:100%;max-height:120px;object-fit:contain;display:block;margin:0 auto">'; if(typeof opsiRumusBaru!=="undefined") opsiRumusBaru[idx]=htmlImg; var rk=el("rumus-opsi-"+idx); if(rk) rk.innerHTML=htmlImg; alert("Equation gambar sudah ditempel ke pilihan "+["A","B","C","D"][idx]+". Cek di Preview ya."); }; img.src=rd.result; }; rd.readAsDataURL(file);
+}
+
 /* V.56l - 2 mode pembuat soal: Manual (tetap) + Somatis (tempel, langsung jadi soal) */
 var modeBuatSoal="manual";
 var somatisHasil=[];
@@ -2617,13 +3072,13 @@ function parseSomatis(teks){
         for(var i=0;i<4;i++){ if(opsi[i].toLowerCase()===k.toLowerCase()){ idx=i; break; } }
       }
       if(idx<0){ galat.push({no:nomorBlok, alasan:"KUNCI tidak dikenali — isi huruf A / B / C / D"}); return; }
-      hasil.push({jenis:"pg", tanya:field.TANYA, opsi:[field.A, field.B, field.C, field.D], kunci:idx, pembahasan:field["UMPAN BALIK"]||""});
+      hasil.push({jenis:"pg", tanya:field.TANYA, opsi:[field.A, field.B, field.C, field.D], kunci:idx, pembahasan:field["UMPAN BALIK"]||"", pembahasanHtml:escapeHtml(field["UMPAN BALIK"]||"")});
     } else {
       /* V.56m - Blok ESAI: nggak ada A-D, tapi ada KUNCI ESAI */
       if(!field["KUNCI ESAI"]){ galat.push({no:nomorBlok, alasan:"KUNCI ESAI-nya kosong / tidak ketemu — soal Esai butuh KUNCI ESAI"}); return; }
       var cara=String(field["CARA NILAI"]||"").toLowerCase();
       var caraNilai=cara.indexOf("urut")>=0?"urutan":"kunci";
-      hasil.push({jenis:"esai", tanya:field.TANYA, kunciEsai:field["KUNCI ESAI"], caraNilai:caraNilai, pembahasan:field["UMPAN BALIK"]||""});
+      hasil.push({jenis:"esai", tanya:field.TANYA, kunciEsai:field["KUNCI ESAI"], caraNilai:caraNilai, pembahasan:field["UMPAN BALIK"]||"", pembahasanHtml:escapeHtml(field["UMPAN BALIK"]||"")});
     }
   }
   /* V.56m - Pengaman: TANYA: baru = soal baru (biar tetap kebaca walau tanpa garis ---) */
@@ -2659,7 +3114,7 @@ function pratinjauSomatis(){
       d.style="background:#fff7ed;border:1px solid #fdba74;border-radius:10px;padding:10px;margin-bottom:8px;font-size:13px;line-height:1.6";
       var htmlE="<b>"+(i+1)+". "+escapeHtml(s.tanya)+"</b><br>";
       htmlE+="<span style='color:#9a3412'>✏️ ESAI • Kunci: "+escapeHtml(s.kunciEsai)+" • Cara nilai: "+(s.caraNilai==="urutan"?"urutan":"kunci")+"</span><br>";
-      if(s.pembahasan) htmlE+="<span style='color:#475569'>💬 Umpan balik: "+escapeHtml(s.pembahasan)+"</span>";
+      if(s.pembahasanHtml || s.pembahasan) htmlE+="<span style='color:#475569'>💬 Umpan balik: "+escapeHtml(s.pembahasanHtml? mathMLKeTeks(s.pembahasanHtml) : s.pembahasan)+"</span>";
       d.innerHTML=htmlE;
     } else {
       d.style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:10px;margin-bottom:8px;font-size:13px;line-height:1.6";
@@ -2667,7 +3122,7 @@ function pratinjauSomatis(){
       ["A","B","C","D"].forEach(function(huruf, j){
         html+=(j===s.kunci?"✅ <b>":"&nbsp;&nbsp;&nbsp; ")+huruf+". "+escapeHtml(s.opsi[j])+(j===s.kunci?"</b>":"")+"<br>";
       });
-      if(s.pembahasan) html+="<span style='color:#475569'>💬 Umpan balik: "+escapeHtml(s.pembahasan)+"</span>";
+      if(s.pembahasanHtml || s.pembahasan) html+="<span style='color:#475569'>💬 Umpan balik: "+escapeHtml(s.pembahasanHtml? mathMLKeTeks(s.pembahasanHtml) : s.pembahasan)+"</span>";
       d.innerHTML=html;
     }
     wadah.appendChild(d);
@@ -2706,8 +3161,8 @@ async function simpanSomatis(){
   var nPGBaru=somatisHasil.filter(function(x){return x.jenis!=="esai";}).length; var nEsBaru=somatisHasil.filter(function(x){return x.jenis==="esai";}).length; var teksBerhasil=""; if(nPGBaru>0 && nEsBaru>0) teksBerhasil=nPGBaru+" PG + "+nEsBaru+" Esai"; else if(nPGBaru>0) teksBerhasil=nPGBaru+" soal PG"; else teksBerhasil=nEsBaru+" soal Esai";
   var soalBaru=(m.soal||[]).slice();
   somatisHasil.forEach(function(s){
-    if(s.jenis==="esai"){ soalBaru.push({tanya:s.tanya, jenis:"esai", opsi:[], kunci:0, kunciEsai:s.kunciEsai, caraNilai:s.caraNilai, pembahasan:s.pembahasan, gambar:"", subbabId:sbPilihId, testId:tesPilih.id}); }
-    else { soalBaru.push({tanya:s.tanya, jenis:"pg", opsi:s.opsi, kunci:s.kunci, kunciEsai:"", pembahasan:s.pembahasan, gambar:"", subbabId:sbPilihId, testId:tesPilih.id}); }
+    if(s.jenis==="esai"){ soalBaru.push({tanya:s.tanya, jenis:"esai", opsi:[], kunci:0, kunciEsai:s.kunciEsai, caraNilai:s.caraNilai, pembahasan:s.pembahasan, pembahasanHtml:s.pembahasanHtml||escapeHtml(s.pembahasan||""), gambar:"", subbabId:sbPilihId, testId:tesPilih.id}); }
+    else { soalBaru.push({tanya:s.tanya, jenis:"pg", opsi:s.opsi, kunci:s.kunci, kunciEsai:"", pembahasan:s.pembahasan, pembahasanHtml:s.pembahasanHtml||escapeHtml(s.pembahasan||""), gambar:"", subbabId:sbPilihId, testId:tesPilih.id}); }
   });
   if(JSON.stringify(soalBaru).length>900000){ var e3=el("somatis-error"); if(e3){ e3.textContent="Soal di materi ini sudah terlalu banyak / besar. Hapus beberapa soal dulu, lalu simpan lagi."; e3.style.display="block"; } return; }
   /* V.56l - LAYAR DULU: tampilin dulu di Daftar Soal, baru kirim ke base (kayak V.56k) */
@@ -2726,15 +3181,15 @@ async function simpanSomatis(){
   }
 }
 async function tambahSoal(){
-  var tanya=el("soal-tanya").value.trim(); var jenis=el("soal-jenis")?el("soal-jenis").value:"pg";
-  var a="", b="", c="", d="", kunci=0, kunciEsai="", caraNilai="kunci", pembahasan="";
-  pembahasan=el("soal-pembahasan")?el("soal-pembahasan").value.trim():""; if(jenis==="esai"){ kunciEsai=el("soal-kunci-esai")?el("soal-kunci-esai").value.trim():""; caraNilai=el("soal-cara-nilai")?el("soal-cara-nilai").value:"kunci"; if(!tanya){ el("soal-error").textContent="Tulis soal / pertanyaannya dulu!"; el("soal-error").style.display="block"; return; } }
-  else { a=el("soal-a").value.trim(); b=el("soal-b").value.trim(); c=el("soal-c").value.trim(); d=el("soal-d").value.trim(); kunci=parseInt(el("soal-kunci").value,10); if(!tanya || !a || !b || !c || !d){ el("soal-error").textContent="Lengkapi soal + semua pilihan A, B, C, D dulu!"; el("soal-error").style.display="block"; return; } }
+  var tanya=getRichTeks("soal-tanya"); var tanyaHtml=getRichHTML("soal-tanya"); var jenis=el("soal-jenis")?el("soal-jenis").value:"pg";
+  var a="", b="", c="", d="", kunci=0, kunciEsai="", caraNilai="kunci", pembahasan="", pembahasanHtml="";
+  pembahasan=getRichTeks("soal-pembahasan"); pembahasanHtml=getRichHTML("soal-pembahasan"); if(jenis==="esai"){ kunciEsai=el("soal-kunci-esai")?el("soal-kunci-esai").value.trim():""; caraNilai=el("soal-cara-nilai")?el("soal-cara-nilai").value:"kunci"; if(!tanya){ el("soal-error").textContent="Tulis soal / pertanyaannya dulu!"; el("soal-error").style.display="block"; return; } }
+  else { a=getRichTeks("soal-a"); b=getRichTeks("soal-b"); c=getRichTeks("soal-c"); d=getRichTeks("soal-d"); var aHtml=getRichHTML("soal-a"); var bHtml=getRichHTML("soal-b"); var cHtml=getRichHTML("soal-c"); var dHtml=getRichHTML("soal-d"); var opsiHtmlSimpan=[aHtml||"", bHtml||"", cHtml||"", dHtml||""]; kunci=parseInt(el("soal-kunci").value,10); if(!tanya || ((!a && !aHtml) || (!b && !bHtml) || (!c && !cHtml) || (!d && !dHtml))){ el("soal-error").textContent="Lengkapi soal + semua pilihan A, B, C, D dulu! (Boleh teks saja, atau Equation saja, atau keduanya.)"; el("soal-error").style.display="block"; return; } }
   el("soal-error").style.display="none";
   var m=materiCache.find(function(x){return x.id===materiAktifId}); if(!m) return;
   var soalBaru=(m.soal||[]).slice();
   var tesPilihId=el("soal-tes")?el("soal-tes").value:(tesAktifId||""); var tesPilih=getTes(m,tesPilihId)||(m.tests||[])[0]; var sbPilihId=tesPilih?tesPilih.subbabId:(el("soal-subbab")?el("soal-subbab").value:""); if(!tesPilih){ el("soal-error").textContent="Sub Bab ini belum siap. Buka lagi dari tab Soal."; el("soal-error").style.display="block"; return; } var gbrSoal = gambarSoalDihapus ? "" : (gambarSoalBaru!==null ? gambarSoalBaru : (editSoalIndex!==null ? ((m.soal[editSoalIndex]||{}).gambar||"") : ""));
-  var objBaru=(jenis==="esai")?{tanya:tanya, jenis:"esai", opsi:[], kunci:0, kunciEsai:kunciEsai, caraNilai:caraNilai, pembahasan:pembahasan, gambar:gbrSoal, subbabId:sbPilihId, testId:tesPilih.id}:{tanya:tanya, jenis:"pg", opsi:[a,b,c,d], kunci:kunci, kunciEsai:"", pembahasan:pembahasan, gambar:gbrSoal, subbabId:sbPilihId, testId:tesPilih.id};
+  var rumusHtml = ""; var opsiRumusSimpan=[]; var opsiHtmlUntukSimpan=(typeof opsiHtmlSimpan!=="undefined"?opsiHtmlSimpan:[]); var a2=a, b2=b, c2=c, d2=d; if(jenis==="pg"){ if(!a2 && opsiHtmlSimpan[0]) a2=mathMLKeTeks(opsiHtmlSimpan[0]); if(!b2 && opsiHtmlSimpan[1]) b2=mathMLKeTeks(opsiHtmlSimpan[1]); if(!c2 && opsiHtmlSimpan[2]) c2=mathMLKeTeks(opsiHtmlSimpan[2]); if(!d2 && opsiHtmlSimpan[3]) d2=mathMLKeTeks(opsiHtmlSimpan[3]); } var objBaru=(jenis==="esai")?{tanya:tanya, tanyaHtml:tanyaHtml, jenis:"esai", opsi:[], kunci:0, kunciEsai:kunciEsai, caraNilai:caraNilai, pembahasan:pembahasan, pembahasanHtml:pembahasanHtml, gambar:gbrSoal, rumusHtml:"", opsiRumus:[], opsiHtml:[], subbabId:sbPilihId, testId:tesPilih.id}:{tanya:tanya, tanyaHtml:tanyaHtml, jenis:"pg", opsi:[a2,b2,c2,d2], opsiHtml:opsiHtmlUntukSimpan, kunci:kunci, kunciEsai:"", pembahasan:pembahasan, pembahasanHtml:pembahasanHtml, gambar:gbrSoal, rumusHtml:"", opsiRumus:[], subbabId:sbPilihId, testId:tesPilih.id};
   if(editSoalIndex!==null){ var lama=m.soal[editSoalIndex]||{}; if(lama.testId && !objBaru.testId) objBaru.testId=lama.testId; if(lama.subbabId && !objBaru.subbabId) objBaru.subbabId=lama.subbabId; soalBaru[editSoalIndex]=objBaru; } else { soalBaru.push(objBaru); }
   if(JSON.stringify(soalBaru).length>900000){ el("soal-error").textContent="Soal bergambar di materi ini sudah terlalu banyak / besar. Hapus gambar di beberapa soal dulu, lalu simpan lagi."; el("soal-error").style.display="block"; return; }
   var sedangEdit = (editSoalIndex!==null);
